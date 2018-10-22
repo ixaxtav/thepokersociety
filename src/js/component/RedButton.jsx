@@ -4,7 +4,7 @@ class RedButton extends React.Component {
 	render() {
 		const divStyle = {
 			margin: "auto",
-			width: "200px"
+			width: "250px"
 		};
 
 		const buttonStyle = {
@@ -15,10 +15,10 @@ class RedButton extends React.Component {
 			textDecoration: "none",
 			display: "inline-block",
 			fontSize: "26px",
-			width: "200px"
+			width: "250px"
 		};
 		return (
-			<div style={divStyle} className="mx-auto">
+			<div style={divStyle}>
 				<button style={buttonStyle}> Log In </button>
 			</div>
 		);

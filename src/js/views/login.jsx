@@ -9,8 +9,9 @@ export class Login extends React.Component {
 		return (
 			<div className="container bgblack">
 				<img src={pokerLogo} className="logo" />
-				<div className="mxAuto">
+				<div className="text-center pt-2 pb-2">
 					<input
+						className="inputStyle"
 						type="text"
 						placeholder="username"
 						value=""
@@ -18,22 +19,27 @@ export class Login extends React.Component {
 					/>
 				</div>
 
-				<div className="mx-auto">
+				<div className="text-center pt-2">
 					<input
+						className="inputStyle"
 						type="password"
 						placeholder="password"
 						value=""
 						name="password"
 					/>
 				</div>
-				<div className="text-right pr-5">
+				<div className="text-right pr-5 pb-3">
 					<a href="#"> Forgot password?</a>
 				</div>
 
 				<RedButton />
 
-				<div>
-					<a href="#">Click here to create one</a>
+				<div className="pt-5 text-center">
+					<span className="text-white">Dont have an account?</span>
+					<br />
+					<a href="#" className="linkStyle">
+						Click here to create one
+					</a>
 				</div>
 			</div>
 		);
