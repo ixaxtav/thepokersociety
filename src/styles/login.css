@@ -1,0 +1,15 @@
+body { 
+    background-color: black;
+    margin: 0;
+}
+
+
+.logo {
+    display:block;
+    margin: 0 auto;
+    width: 60%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
