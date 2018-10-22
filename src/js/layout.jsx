@@ -6,6 +6,7 @@ import { Home } from "./views/home.jsx";
 import { Demo } from "./views/demo.jsx";
 import { Single } from "./views/single.jsx";
 import { Login } from "./views/login.jsx";
+import { SignUp } from "./views/signup.jsx";
 import Store from "./store/appContext.jsx";
 
 import { Navbar } from "./component/navbar.jsx";
@@ -15,6 +16,9 @@ import { Footer } from "./component/footer.jsx";
 export class Layout extends React.Component {
 	render() {
 		const LoginContainer = () => <Route path="/login" component={Login} />;
+		const SignUpContainer = () => (
+			<Route path="/register" component={SignUp} />
+		);
 
 		const DefaultContainer = () => (
 			<div className="container">
@@ -32,6 +36,11 @@ export class Layout extends React.Component {
 				<ScrollToTop>
 					<Switch>
 						<Route exact path="/login" component={LoginContainer} />
+						<Route
+							exact
+							path="/register"
+							component={SignUpContainer}
+						/>
 						<Route component={DefaultContainer} />
 					</Switch>
 				</ScrollToTop>
