@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RedButton from "../component/RedButton.jsx";
+import BackButton from "../component/BackButton.jsx";
 import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
 
 export class SignUp extends React.Component {
 	render() {
 		return (
-			<div className="container bgblack">
+			<div className="container blackbg">
 				<img src={pokerLogo} className="logo" />
 
 				<h3 className="text-white text-center">Sign up to</h3>
-				<h3 className="text-white text-center pb-2">
+				<h3 className="text-white text-center pb-4">
 					ThePokerSociety.com
 				</h3>
 
@@ -46,6 +47,8 @@ export class SignUp extends React.Component {
 				</div>
 
 				<RedButton />
+
+				<BackButton />
 			</div>
 		);
 	}
