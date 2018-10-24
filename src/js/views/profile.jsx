@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RedButton from "../component/RedButton.jsx";
-import BackButton from "../component/BackButton.jsx";
 import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
 

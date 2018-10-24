@@ -5,6 +5,7 @@ import ScrollToTop from "./component/functional/scrollToTop.jsx";
 import { Home } from "./views/home.jsx";
 import { Demo } from "./views/demo.jsx";
 import { Profile } from "./views/profile.jsx";
+import { MySchedule } from "./views/myschedule.jsx";
 import { Single } from "./views/single.jsx";
 import { Login } from "./views/login.jsx";
 import { SignUp } from "./views/signup.jsx";
@@ -27,6 +28,7 @@ export class Layout extends React.Component {
 				<Route exact path="/" component={Home} />
 				<Route path="/demo" component={Demo} />
 				<Route path="/profile" component={Profile} />
+				<Route path="/myschedule" component={MySchedule} />
 				<Route path="/single/:theid" component={Single} />
 				<Route render={() => <h1>Not found!</h1>} />
 				<Footer />
