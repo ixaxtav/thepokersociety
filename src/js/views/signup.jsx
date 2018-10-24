@@ -47,8 +47,6 @@ export class SignUp extends React.Component {
 				</div>
 
 				<RedButton />
-
-				<BackButton />
 			</div>
 		);
 	}
