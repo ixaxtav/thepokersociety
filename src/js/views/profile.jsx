@@ -15,19 +15,23 @@ export class Profile extends React.Component {
 		};
 
 		return (
-			<div className="container">
+			<div className="container pt-2">
 				<h3>Hello Lou Stadlet</h3>
-				<div className="row justify-content-center itemStyle">
-					<div className="col-2">
-						<i className="far fa-calendar-alt" /> Tournament
-						Calendar
+				<div className="row text-center pt-2">
+					<div className="col">
+						<i className="far fa-calendar-alt" />
 					</div>
-					<div className="col-2">
-						<i className="fas fa-book-open" /> My Schedules
+					<div className="col">
+						<i className="fas fa-book-open" />
 					</div>
-					<div className="col-2">
-						<i className="fas fa-cog" /> My Account
+					<div className="col">
+						<i className="fas fa-cog" />
 					</div>
+				</div>
+				<div className="row text-center">
+					<div className="col">Calendar</div>
+					<div className="col">My Schedules</div>
+					<div className="col">My Account</div>
 				</div>
 			</div>
 		);
