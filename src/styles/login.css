@@ -1,7 +1,12 @@
-body { 
+
+
+.blackbg { 
     background-color: black;
-    margin: 0;
-    padding: 0;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      min-width: 100%;
+      min-height: 100%;
 }
 
 
@@ -27,3 +32,11 @@ body {
     font-size: 26px;
 }
 
+.linkStyle{
+    text-decoration: none;
+    color: white;
+}
+.linkStyle:hover{
+    text-decoration: none;
+    color: white;
+}

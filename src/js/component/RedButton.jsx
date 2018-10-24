@@ -19,7 +19,7 @@ class RedButton extends React.Component {
 		};
 		return (
 			<div style={divStyle}>
-				<button style={buttonStyle} />
+				<button style={buttonStyle}> Login </button>
 			</div>
 		);
 	}
