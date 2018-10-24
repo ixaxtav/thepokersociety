@@ -6,6 +6,9 @@ import { Home } from "./views/home.jsx";
 import { Demo } from "./views/demo.jsx";
 import { Profile } from "./views/profile.jsx";
 import { MySchedule } from "./views/myschedule.jsx";
+import { YourSchedule } from "./views/yourschedule.jsx";
+import { MyAccount } from "./views/myaccount.jsx";
+import { Confirmation } from "./views/confirmschedule.jsx";
 import { Single } from "./views/single.jsx";
 import { Login } from "./views/login.jsx";
 import { SignUp } from "./views/signup.jsx";
@@ -29,6 +32,9 @@ export class Layout extends React.Component {
 				<Route path="/demo" component={Demo} />
 				<Route path="/profile" component={Profile} />
 				<Route path="/myschedule" component={MySchedule} />
+				<Route path="/yourschedule" component={YourSchedule} />
+				<Route path="/myaccount" component={MyAccount} />
+				<Route path="/confirm" component={Confirmation} />
 				<Route path="/single/:theid" component={Single} />
 				<Route render={() => <h1>Not found!</h1>} />
 				<Footer />
