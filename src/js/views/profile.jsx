@@ -16,16 +16,16 @@ export class Profile extends React.Component {
 
 		return (
 			<div className="container">
-				<h1>Hello Lou Stadlet</h1>
+				<h3>Hello Lou Stadlet</h3>
 				<div className="row justify-content-center itemStyle">
-					<div className="col-xs">
+					<div className="col-2">
 						<i className="far fa-calendar-alt" /> Tournament
 						Calendar
 					</div>
-					<div className="col-xs">
+					<div className="col-2">
 						<i className="fas fa-book-open" /> My Schedules
 					</div>
-					<div className="col-xs">
+					<div className="col-2">
 						<i className="fas fa-cog" /> My Account
 					</div>
 				</div>
