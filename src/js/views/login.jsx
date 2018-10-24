@@ -7,7 +7,7 @@ import "../../styles/login.css";
 export class Login extends React.Component {
 	render() {
 		return (
-			<div className="container bgblack">
+			<div className="container bgblack p-0 m-0">
 				<img src={pokerLogo} className="logo" />
 				<div className="text-center pt-2 pb-2">
 					<input

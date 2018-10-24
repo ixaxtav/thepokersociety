@@ -25,7 +25,7 @@ export class Home extends React.Component {
 					Made by{" "}
 					<a href="http://www.4geeksacademy.com">4Geeks Academy</a>,
 					with love!
-				</p>
+				</p>{" "}
 			</div>
 		);
 	}

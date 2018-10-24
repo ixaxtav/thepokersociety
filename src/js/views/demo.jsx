@@ -8,7 +8,7 @@ import "../../styles/demo.css";
 export class Demo extends React.Component {
 	render() {
 		return (
-			<div className="container">
+			<div className="container m-0 p-0">
 				<ul className="list-group">
 					<Context.Consumer>
 						{({ store, actions }) => {

@@ -21,7 +21,7 @@ export class Layout extends React.Component {
 		);
 
 		const DefaultContainer = () => (
-			<div className="container">
+			<div className="container m-0 p-0">
 				<Navbar />
 				<Route exact path="/" component={Home} />
 				<Route path="/demo" component={Demo} />
