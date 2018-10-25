@@ -40,9 +40,12 @@ export class Login extends React.Component {
 				<div className="pt-5 text-center">
 					<span className="text-white">Dont have an account?</span>
 					<br />
-					<a href="#" className="linkStyle">
+					<Link
+						className="navbar-brand"
+						to="/register"
+						style={{ color: "#990000", fontSize: "14px" }}>
 						Click here to create one
-					</a>
+					</Link>
 				</div>
 			</div>
 		);

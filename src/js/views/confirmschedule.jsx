@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/login.css";
+import BackButton from "../component/BackButton.jsx";
+import { FilterDropdown } from "../component/dropdown.jsx";
 
 export class Confirmation extends React.Component {
 	render() {
@@ -18,6 +20,7 @@ export class Confirmation extends React.Component {
 						</tr>
 					</tbody>
 				</table>
+				<BackButton />
 			</div>
 		);
 	}

@@ -17,13 +17,25 @@ export class Profile extends React.Component {
 				<h3>Hello Lou Stadlet</h3>
 				<div className="row text-center pt-2">
 					<div className="col">
-						<i className="far fa-calendar-alt" />
+						<Link
+							to="/tournaments"
+							style={{ color: "black", fontSize: "32px" }}>
+							<i className="far fa-calendar-alt" />
+						</Link>
 					</div>
 					<div className="col">
-						<i className="fas fa-book-open" />
+						<Link
+							to="/myschedule"
+							style={{ color: "black", fontSize: "32px" }}>
+							<i className="fas fa-book-open" />
+						</Link>
 					</div>
 					<div className="col">
-						<i className="fas fa-cog" />
+						<Link
+							to="/myaccount"
+							style={{ color: "black", fontSize: "32px" }}>
+							<i className="fas fa-cog" />
+						</Link>
 					</div>
 				</div>
 				<div className="row text-center">

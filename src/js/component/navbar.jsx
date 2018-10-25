@@ -1,18 +1,19 @@
 import React from "react";
 import "../../styles/navbar.css";
 import pokerIcon from "../../img/pokericon.png";
+import { Link, NavLink } from "react-router-dom";
 
 export class Navbar extends React.Component {
 	render() {
 		return (
 			<div className="container p-0 m-0">
 				<nav className="navbar navbar-expand-lg navbar-light bg-light">
-					<a className="navbar-brand" href="#">
+					<Link className="navbar-brand" to="/">
 						<span className="mr-2">
 							<img src={pokerIcon} />
 						</span>
 						The Poker Society
-					</a>
+					</Link>
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -26,13 +27,15 @@ export class Navbar extends React.Component {
 					<div className="collapse navbar-collapse" id="navbarNav">
 						<ul className="navbar-nav">
 							<li className="nav-item active">
-								<a className="nav-link" href="#">
+								<NavLink className="nav-link" to="/home">
 									Home
-								</a>
+								</NavLink>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#">
-									Contact
+								<a
+									className="nav-link"
+									href="mailto:info@thepokersociety.com">
+									Contact Us
 								</a>
 							</li>
 						</ul>
