@@ -47,6 +47,14 @@ export class SignUp extends React.Component {
 				</div>
 
 				<RedButton />
+				<div className="text-center">
+					<Link
+						className="navbar-brand text-center"
+						to="/login"
+						style={{ color: "#990000", fontSize: "14px" }}>
+						Back to login
+					</Link>
+				</div>
 			</div>
 		);
 	}
