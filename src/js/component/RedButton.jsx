@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class RedButton extends React.Component {
 	render() {
@@ -19,10 +21,17 @@ class RedButton extends React.Component {
 		};
 		return (
 			<div style={divStyle}>
-				<button style={buttonStyle}> Login </button>
+				<Link to={this.props.to}>
+					<button style={buttonStyle}> {this.props.label} </button>
+				</Link>
 			</div>
 		);
 	}
 }
+
+RedButton.propTypes = {
+	label: PropTypes.string.isRequired,
+	to: PropTypes.string.isRequired
+};
 
 export default RedButton;
