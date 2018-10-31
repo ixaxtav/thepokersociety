@@ -30,8 +30,8 @@ class RedButton extends React.Component {
 }
 
 RedButton.propTypes = {
-	label: PropTypes.string.isRequired,
-	to: PropTypes.string.isRequired
+	label: PropTypes.string,
+	to: PropTypes.string
 };
 
 export default RedButton;

@@ -55,7 +55,7 @@ export class MyAccount extends React.Component {
 						change my password
 					</div>
 				</div>
-				<RedButton />
+				<RedButton to="/profile" label="Update Information" />
 			</div>
 		);
 	}

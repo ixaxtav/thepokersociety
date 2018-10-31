@@ -13,7 +13,7 @@ import { Single } from "./views/single.jsx";
 import { Login } from "./views/login.jsx";
 import { SignUp } from "./views/signup.jsx";
 import Store from "./store/appContext.jsx";
-
+import { Calendar } from "./views/calendar.jsx";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 

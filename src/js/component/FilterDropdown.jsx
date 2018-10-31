@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/login.css";
 
 class FilterDropdown extends React.Component {
 	render() {

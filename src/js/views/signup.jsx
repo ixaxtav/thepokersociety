@@ -10,12 +10,10 @@ export class SignUp extends React.Component {
 		return (
 			<div className="container blackbg">
 				<img src={pokerLogo} className="logo" />
-
 				<h3 className="text-white text-center">Sign up to</h3>
 				<h3 className="text-white text-center pb-4">
 					ThePokerSociety.com
 				</h3>
-
 				<div className="text-center pt-2 pb-2">
 					<input
 						className="inputStyle"
@@ -25,7 +23,6 @@ export class SignUp extends React.Component {
 						name="firstName"
 					/>
 				</div>
-
 				<div className="text-center pt-2 pb-2">
 					<input
 						className="inputStyle"
@@ -35,7 +32,6 @@ export class SignUp extends React.Component {
 						name="lastName"
 					/>
 				</div>
-
 				<div className="text-center pt-2 pb-4">
 					<input
 						className="inputStyle"
@@ -45,8 +41,8 @@ export class SignUp extends React.Component {
 						name="email"
 					/>
 				</div>
+				<RedButton to="/login" label="Sign up" />
 
-				<RedButton />
 				<div className="text-center">
 					<Link
 						className="navbar-brand text-center"

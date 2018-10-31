@@ -35,7 +35,7 @@ export class Login extends React.Component {
 					</a>
 				</div>
 
-				<RedButton to="/profile" label="login" />
+				<RedButton to="/profile" label="Login" />
 
 				<div className="pt-5 text-center">
 					<span className="text-white">Dont have an account?</span>
