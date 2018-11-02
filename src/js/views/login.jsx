@@ -3,8 +3,25 @@ import { Link } from "react-router-dom";
 import RedButton from "../component/RedButton.jsx";
 import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
+import validator from "validator";
 
 export class Login extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			username: "",
+			password: ""
+		};
+	}
+
+	handleChange(e) {
+		this.setState({ [e.target.id]: e.target.value });
+	}
+
+	handleSubmit(e) {
+		event.preventDefault();
+	}
+
 	render() {
 		return (
 			<div className="container blackbg p-0 m-0">
@@ -14,7 +31,9 @@ export class Login extends React.Component {
 						className="inputStyle"
 						type="text"
 						placeholder="username"
-						value=""
+						id="username"
+						value={this.state.username}
+						onChange={e => this.handleChange(e)}
 						name="username"
 					/>
 				</div>
@@ -23,8 +42,10 @@ export class Login extends React.Component {
 					<input
 						className="inputStyle"
 						type="password"
+						id="password"
 						placeholder="password"
-						value=""
+						value={this.state.password}
+						onChange={e => this.handleChange(e)}
 						name="password"
 					/>
 				</div>

@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/functional/scrollToTop.jsx";
 
 import { Home } from "./views/home.jsx";
-import { Demo } from "./views/demo.jsx";
 import { Profile } from "./views/profile.jsx";
 import { MySchedule } from "./views/myschedule.jsx";
 import { YourSchedule } from "./views/yourschedule.jsx";
@@ -12,8 +11,7 @@ import { Confirmation } from "./views/confirmschedule.jsx";
 import { Single } from "./views/single.jsx";
 import { Login } from "./views/login.jsx";
 import { SignUp } from "./views/signup.jsx";
-import Store from "./store/appContext.jsx";
-import { Calendar } from "./views/calendar.jsx";
+import Calendar from "./views/calendar.jsx";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 
@@ -28,15 +26,25 @@ export class Layout extends React.Component {
 		const DefaultContainer = () => (
 			<div className="container m-0 p-0">
 				<Navbar />
-				<Route exact path="/" component={Home} />
-				<Route path="/demo" component={Demo} />
-				<Route path="/profile" component={Profile} />
-				<Route path="/myschedule" component={MySchedule} />
-				<Route path="/yourschedule" component={YourSchedule} />
-				<Route path="/myaccount" component={MyAccount} />
-				<Route path="/confirm" component={Confirmation} />
-				<Route path="/single/:theid" component={Single} />
-				<Route render={() => <h1>Not found!</h1>} />
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route exact path="/profile" component={Profile} />
+					<Route exact path="/myschedule" component={MySchedule} />
+					<Route
+						exact
+						path="/yourschedule"
+						component={YourSchedule}
+					/>
+					<Route exact path="/myaccount" component={MyAccount} />
+					<Route exact path="/confirm" component={Confirmation} />
+					<Route exact path="/single/:theid" component={Single} />
+					<Route
+						exact
+						path="/calendar/:cal_id"
+						component={Calendar}
+					/>
+					<Route render={() => <h1>Not found!</h1>} />
+				</Switch>
 				<Footer />
 			</div>
 		);
@@ -59,4 +67,4 @@ export class Layout extends React.Component {
 	}
 }
 
-export default Store(Layout);
+export default Layout;

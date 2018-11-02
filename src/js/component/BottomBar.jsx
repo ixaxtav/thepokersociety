@@ -11,13 +11,7 @@ class BottomBar extends React.Component {
 		};
 	}
 
-	componentWillReceiveProps() {
-		this.setState({
-			menuItems: this.props.menuItems
-		});
-	}
-
-	componentWillMount() {
+	componentDidMount() {
 		this.setState({
 			menuItems: this.props.menuItems
 		});

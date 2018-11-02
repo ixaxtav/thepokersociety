@@ -1,27 +1,21 @@
-const getState = scope => {
-	return {
-		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
-		},
-		actions: {
-			changeColor: (element, color) => {
-				let store = scope.state.store;
-				store.demo[element].background = color;
-				scope.setState({ store });
-			}
-		}
-	};
-};
+import Flux from "@4geeksacademy/react-flux-dash";
+class TheStore extends Flux.DashStore {
+	constructor() {
+		super();
 
-export default getState;
+		this.state = {
+			menu: [],
+			tournaments: {}
+		};
+		// Or Declare an event with some imutable transformation logic
+		this.addEvent("tournaments");
+	}
+	getTournaments(slug) {
+		if (typeof this.state.tournaments[slug] == "undefined") return null;
+		else return this.state.tournaments[slug];
+	}
+	setTournaments(slug, data) {
+		this.state.tournaments[slug] = data;
+	}
+}
+export default new TheStore();
