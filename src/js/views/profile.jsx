@@ -9,7 +9,7 @@ export class Profile extends React.Component {
 			verticalAlign: "top",
 			display: "inline-block",
 			textAlign: "center",
-			width: "50px"
+			width: "60px"
 		};
 
 		return (
