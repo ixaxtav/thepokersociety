@@ -9,7 +9,7 @@ export class Profile extends React.Component {
 			verticalAlign: "top",
 			display: "inline-block",
 			textAlign: "center",
-			width: "60px"
+			width: "50px"
 		};
 
 		return (
@@ -18,7 +18,7 @@ export class Profile extends React.Component {
 				<div className="row text-center pt-2">
 					<div className="col">
 						<Link
-							to="/tournaments"
+							to="/calendar/99611"
 							style={{ color: "black", fontSize: "32px" }}>
 							<i className="far fa-calendar-alt" />
 						</Link>

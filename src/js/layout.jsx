@@ -10,6 +10,7 @@ import { MyAccount } from "./views/myaccount.jsx";
 import { Confirmation } from "./views/confirmschedule.jsx";
 import { Single } from "./views/single.jsx";
 import { Login } from "./views/login.jsx";
+import { TournamentInfo } from "./views/tournamentinfo.jsx";
 import { SignUp } from "./views/signup.jsx";
 import Calendar from "./views/calendar.jsx";
 import { Navbar } from "./component/navbar.jsx";
@@ -37,6 +38,8 @@ export class Layout extends React.Component {
 					/>
 					<Route exact path="/myaccount" component={MyAccount} />
 					<Route exact path="/confirm" component={Confirmation} />
+					<Route exact path="/info" component={TournamentInfo} />
+					<Route exact path="/single/:theid" component={Single} />
 					<Route exact path="/single/:theid" component={Single} />
 					<Route
 						exact
