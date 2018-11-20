@@ -6,6 +6,22 @@ import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
 
 export class SignUp extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			firstName: "",
+			lastName: "",
+			email: ""
+		};
+	}
+
+	handleOnChange(e) {
+		this.setState({ [e.target.id]: e.target.value });
+	}
+
+	handleSubmit(e) {
+		event.preventDefault();
+	}
 	render() {
 		return (
 			<div className="container blackbg">
@@ -18,8 +34,10 @@ export class SignUp extends React.Component {
 					<input
 						className="inputStyle"
 						type="text"
+						id="firstName"
 						placeholder="First Name"
-						value=""
+						onChange={e => this.handleOnChange(e)}
+						value={this.state.firstName}
 						name="firstName"
 					/>
 				</div>
@@ -27,8 +45,10 @@ export class SignUp extends React.Component {
 					<input
 						className="inputStyle"
 						type="text"
+						id="lastName"
 						placeholder="Last Name"
-						value=""
+						onChange={e => this.handleOnChange(e)}
+						value={this.state.lastName}
 						name="lastName"
 					/>
 				</div>
@@ -36,12 +56,18 @@ export class SignUp extends React.Component {
 					<input
 						className="inputStyle"
 						type="email"
+						id="email"
 						placeholder="email"
-						value=""
+						onChange={e => this.handleOnChange(e)}
+						value={this.state.email}
 						name="email"
 					/>
 				</div>
-				<RedButton to="/login" label="Sign up" />
+				<RedButton
+					to="/login"
+					label="Sign up"
+					onClick={() => this.onSubmit()}
+				/>
 
 				<div className="text-center">
 					<Link

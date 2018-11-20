@@ -14,7 +14,7 @@ export class Login extends React.Component {
 		};
 	}
 
-	handleChange(e) {
+	handleOnChange(e) {
 		this.setState({ [e.target.id]: e.target.value });
 	}
 
@@ -33,7 +33,7 @@ export class Login extends React.Component {
 						placeholder="username"
 						id="username"
 						value={this.state.username}
-						onChange={e => this.handleChange(e)}
+						onChange={e => this.handleOnChange(e)}
 						name="username"
 					/>
 				</div>
@@ -45,7 +45,7 @@ export class Login extends React.Component {
 						id="password"
 						placeholder="password"
 						value={this.state.password}
-						onChange={e => this.handleChange(e)}
+						onChange={e => this.handleOnChange(e)}
 						name="password"
 					/>
 				</div>

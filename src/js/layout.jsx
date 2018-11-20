@@ -9,6 +9,7 @@ import { YourSchedule } from "./views/yourschedule.jsx";
 import { MyAccount } from "./views/myaccount.jsx";
 import { Confirmation } from "./views/confirmschedule.jsx";
 import { Single } from "./views/single.jsx";
+import { Casino } from "./views/Casino.jsx";
 import { Login } from "./views/login.jsx";
 import { TournamentInfo } from "./views/tournamentinfo.jsx";
 import { SignUp } from "./views/signup.jsx";
@@ -16,8 +17,10 @@ import Calendar from "./views/calendar.jsx";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 
+import Store from "./store/appContext.jsx";
+
 //create your first component
-export class Layout extends React.Component {
+class Layout extends React.Component {
 	render() {
 		const LoginContainer = () => <Route path="/login" component={Login} />;
 		const SignUpContainer = () => (
@@ -41,6 +44,8 @@ export class Layout extends React.Component {
 					<Route exact path="/info" component={TournamentInfo} />
 					<Route exact path="/single/:theid" component={Single} />
 					<Route exact path="/single/:theid" component={Single} />
+					<Route exact path="/casino/:casino_id" component={Casino} />
+					<Route exact path="/tournament/:theid" />
 					<Route
 						exact
 						path="/calendar/:cal_id"
@@ -70,4 +75,4 @@ export class Layout extends React.Component {
 	}
 }
 
-export default Layout;
+export default Store(Layout);
