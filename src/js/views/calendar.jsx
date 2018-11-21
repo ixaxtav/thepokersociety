@@ -16,7 +16,6 @@ export default class Calendar extends Flux.View {
 			searchType: null, //the search criteria (date, time, tournament name, buy in, etc)
 			searchString: "", //the query value on the search input
 			error: null, //if there is any errors
-
 			stick: false, //the sticky bar on the top
 			stickySyles: {}, //styles of the stick bar
 			stickySyles2: {} //styles of the stick bar
@@ -27,6 +26,7 @@ export default class Calendar extends Flux.View {
 		this.todayTournament = null;
 		this.todayPosition = 0;
 		this.rounder = null;
+		this._isMounted = false;
 	}
 
 	componentDidMount() {
@@ -54,6 +54,7 @@ export default class Calendar extends Flux.View {
 			"scroll",
 			this.handleScrollTable.bind(this)
 		);
+		this._isMounted = true;
 	}
 	componentWillUnmount() {
 		//top the events listener to avoid memory overflow.
@@ -63,6 +64,8 @@ export default class Calendar extends Flux.View {
 				"scroll",
 				this.handleScrollTable.bind(this)
 			);
+
+		this._isMounted = false;
 	}
 
 	//this function syncs the horizontal scroll of the table (if any) with the scroll of the website
@@ -93,7 +96,7 @@ export default class Calendar extends Flux.View {
 					}
 				});
 			}
-		} else
+		} else if (!this.state.loading)
 			this.setState({ stickySyles: {}, stickySyles2: {}, sticky: false });
 	}
 
@@ -117,7 +120,7 @@ export default class Calendar extends Flux.View {
 						data
 					);
 					// and also refresh the local list of tournaments and rerender the calendar view
-					this.fillTournaments(data);
+					if (this._isMounted) this.fillTournaments(data);
 				} else throw new Error("Invalid  not found");
 			})
 			.catch(error => {
@@ -129,6 +132,7 @@ export default class Calendar extends Flux.View {
 	fillTournaments(data) {
 		this.todayTournament = null;
 		this.setState({
+			loading: false,
 			tournaments: data.map(t => {
 				t[0] = new Date(t[0]);
 				return t;

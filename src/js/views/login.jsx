@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import RedButton from "../component/RedButton.jsx";
 import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
-import validator from "validator";
+import PropTypes from "prop-types";
 
 export class Login extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			username: "",
-			password: ""
+			password: "",
+			errors: {}
 		};
 	}
 
@@ -18,11 +19,26 @@ export class Login extends React.Component {
 		this.setState({ [e.target.id]: e.target.value });
 	}
 
-	handleSubmit(e) {
+	handleOnSubmit(e) {
 		event.preventDefault();
+		const { username, password } = this.state;
+
+		// VALIDATION
+		if (username === "") {
+			this.setState({ errors: { username: "Username is required" } });
+			return;
+		}
+		if (password === "") {
+			this.setState({ errors: { password: "Password is required" } });
+			return;
+		}
+
+		this.props.history.push("/");
 	}
 
 	render() {
+		const { username, password, errors } = this.state;
+
 		return (
 			<div className="container blackbg p-0 m-0">
 				<img src={pokerLogo} className="logo" />
@@ -32,9 +48,10 @@ export class Login extends React.Component {
 						type="text"
 						placeholder="username"
 						id="username"
-						value={this.state.username}
+						value={username}
 						onChange={e => this.handleOnChange(e)}
 						name="username"
+						error={errors.username}
 					/>
 				</div>
 
@@ -44,9 +61,10 @@ export class Login extends React.Component {
 						type="password"
 						id="password"
 						placeholder="password"
-						value={this.state.password}
+						value={password}
 						onChange={e => this.handleOnChange(e)}
 						name="password"
+						error={errors.password}
 					/>
 				</div>
 				<div className="text-center pt-2 pb-2">
@@ -56,7 +74,11 @@ export class Login extends React.Component {
 					</a>
 				</div>
 
-				<RedButton to="/profile" label="Login" />
+				<RedButton
+					to="/profile"
+					label="Login"
+					onSubmit={e => this.handleOnSubmit(e)}
+				/>
 
 				<div className="pt-5 text-center">
 					<span className="text-white">Dont have an account?</span>
@@ -72,3 +94,7 @@ export class Login extends React.Component {
 		);
 	}
 }
+
+Login.propTypes = {
+	history: PropTypes.function
+};
