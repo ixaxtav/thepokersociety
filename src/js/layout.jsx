@@ -6,6 +6,7 @@ import { Home } from "./views/home.jsx";
 import { Profile } from "./views/profile.jsx";
 import { MySchedule } from "./views/myschedule.jsx";
 import { YourSchedule } from "./views/yourschedule.jsx";
+import { TournamentView } from "./views/tournamentview.jsx";
 import { MyAccount } from "./views/myaccount.jsx";
 import { Confirmation } from "./views/confirmschedule.jsx";
 import { Single } from "./views/single.jsx";
@@ -41,11 +42,14 @@ class Layout extends React.Component {
 					/>
 					<Route exact path="/myaccount" component={MyAccount} />
 					<Route exact path="/confirm" component={Confirmation} />
-					<Route exact path="/info" component={TournamentInfo} />
 					<Route exact path="/single/:theid" component={Single} />
 					<Route exact path="/single/:theid" component={Single} />
 					<Route exact path="/casino/:casino_id" component={Casino} />
-					<Route exact path="/tournament/:theid" />
+					<Route
+						exact
+						path="/tournament/:tournament_id"
+						component={TournamentView}
+					/>
 					<Route
 						exact
 						path="/calendar/:cal_id"
