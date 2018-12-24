@@ -4,7 +4,7 @@ import ScrollToTop from "./component/functional/scrollToTop.jsx";
 
 import { Home } from "./views/home.jsx";
 import { Profile } from "./views/profile.jsx";
-import { MySchedule } from "./views/myschedule.jsx";
+import { MySchedules } from "./views/myschedules.jsx";
 import { YourSchedule } from "./views/yourschedule.jsx";
 import { TournamentView } from "./views/tournamentview.jsx";
 import { MyAccount } from "./views/myaccount.jsx";
@@ -12,12 +12,12 @@ import { Confirmation } from "./views/confirmschedule.jsx";
 import { Single } from "./views/single.jsx";
 import { Casino } from "./views/Casino.jsx";
 import { Login } from "./views/login.jsx";
+import { ScheduleView } from "./views/scheduleview.jsx";
 import { TournamentInfo } from "./views/tournamentinfo.jsx";
 import { SignUp } from "./views/signup.jsx";
 import Calendar from "./views/calendar.jsx";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
-
 import Store from "./store/appContext.jsx";
 
 //create your first component
@@ -34,7 +34,8 @@ class Layout extends React.Component {
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route exact path="/profile" component={Profile} />
-					<Route exact path="/myschedule" component={MySchedule} />
+					<Route exact path="/myschedule" component={MySchedules} />
+
 					<Route
 						exact
 						path="/yourschedule"
@@ -45,6 +46,11 @@ class Layout extends React.Component {
 					<Route exact path="/single/:theid" component={Single} />
 					<Route exact path="/single/:theid" component={Single} />
 					<Route exact path="/casino/:casino_id" component={Casino} />
+					<Route
+						exact
+						path="/schedule/:schedule_id"
+						component={ScheduleView}
+					/>
 					<Route
 						exact
 						path="/tournament/:tournament_id"

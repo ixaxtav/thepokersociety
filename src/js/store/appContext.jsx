@@ -17,14 +17,7 @@ const Store = PassedComponent => {
 			});
 		}
 
-		componentDidMount() {
-			const HOST =
-				// Set your fetchs/Ajax requests here.
-				// make sure you're using the store: this.state.store
-				fetch("http://admin.thepokersociety.com/wp-json/wp/v2/casino")
-					.then(rsp => rsp.json())
-					.then(casinos => this.state.actions.setCasinos(casinos));
-		}
+		componentDidMount() {}
 
 		render() {
 			return (

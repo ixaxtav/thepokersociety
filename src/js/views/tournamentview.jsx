@@ -28,11 +28,7 @@ export const TournamentView = property => (
 						onClick={() => actions.addToSchedule(tour)}>
 						{tour ? tour.post_title : "Tournament not found"}
 					</h4>
-					<ul>
-						{store.schedule.map(tournament => (
-							<li key={tournament.ID}>{tournament.ID}</li>
-						))}
-					</ul>
+
 					<div
 						className="row"
 						style={{
@@ -69,18 +65,34 @@ export const TournamentView = property => (
 							{tour ? tour.blinds : "Blinds not found"}
 						</div>
 					</div>
-					<div className="col-11 mx-auto p-3 text-left">
-						<div
-							className="btn-group w-100"
-							role="group"
-							arial-label="Basic Example">
-							<Link to="/calendar/109584">
-								<button className="btn btn-light form-control">
-									<i className="fas fa-arrow-circle-left" />{" "}
-									Back{" "}
-								</button>
+
+					<div className="row text-center pt-2">
+						<div className="col">
+							<Link
+								to="/calendar/109584"
+								style={{ color: "black", fontSize: "32px" }}>
+								<i className="fas fa-arrow-circle-left" />
 							</Link>
 						</div>
+						<div className="col">
+							<Link
+								to="/myschedule"
+								style={{ color: "black", fontSize: "32px" }}>
+								<i className="fas fa-clipboard-list" />
+							</Link>
+						</div>
+						<div className="col">
+							<Link
+								to="/confirm"
+								style={{ color: "black", fontSize: "32px" }}>
+								<i className="fas fa-plus-circle" />
+							</Link>
+						</div>
+					</div>
+					<div className="row text-center">
+						<div className="col">Back to Calendar</div>
+						<div className="col">Structure</div>
+						<div className="col">Add to Schedule</div>
 					</div>
 				</div>
 			);

@@ -11,8 +11,24 @@ const getState = ({ getStore, setStore }) => {
 
 			// this variable is used to render a single tournament on the /tournament/:tournament_id view
 			currentTournament: null,
+			currentCasino: null,
 
-			schedule: [],
+			schedules: [
+				{
+					id: 1,
+					name: "Vegas 2012",
+					total: 9000,
+					attempts: [
+						{
+							tournamentName: "Pompano Beach",
+							tournamentId: 123,
+							price: 3000,
+							bullets: 2
+						}
+					]
+				}
+			],
+
 			user: null
 		},
 		actions: {
@@ -37,9 +53,25 @@ const getState = ({ getStore, setStore }) => {
 					.then(data => setStore({ currentTournament: data }))
 					.catch(error => console.error(error));
 			},
+			fetchSingleCasino(casinoID) {
+				const store = getStore();
+				fetch(`${store.HOST}/casino/${casinoID}`)
+					.then(resp => resp.json())
+					.then(data => setStore({ currentCasino: data }))
+					.catch(error => console.error(error));
+			},
 			addToSchedule: tour => {
 				const store = getStore();
-				setStore({ schedule: store.schedule.concat([tour]) });
+				setStore({
+					schedules: store.schedules.concat([
+						{
+							tournament: tour,
+							price: tour.price,
+							bullet: 1,
+							id: tour.ID
+						}
+					])
+				});
 			}
 		}
 	};

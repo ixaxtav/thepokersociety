@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class BackButton extends React.Component {
 	render() {
@@ -17,9 +18,12 @@ class BackButton extends React.Component {
 		};
 		return (
 			<div style={divBackStyle}>
-				<button style={buttonBackStyle}>
-					<span className="fas fa-undo-alt" /> Back to the tournament{" "}
-				</button>
+				<Link to="/calendar/109584">
+					<button style={buttonBackStyle}>
+						<span className="fas fa-undo-alt" /> Back to the
+						tournament{" "}
+					</button>
+				</Link>
 			</div>
 		);
 	}
