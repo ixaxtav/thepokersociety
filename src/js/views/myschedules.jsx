@@ -15,10 +15,12 @@ export const MySchedules = () => (
 						<li>
 							{s.name} | Total = {""}
 							{s.total}$
-							<i
-								className="fas fa-plus-circle"
-								style={{ marginLeft: "15px" }}
-							/>
+							<Link to={"/schedule/" + s.id}>
+								<i
+									className="fas fa-plus-circle"
+									style={{ marginLeft: "15px" }}
+								/>
+							</Link>
 						</li>
 					</ul>
 				))}

@@ -83,7 +83,7 @@ export const TournamentView = property => (
 						</div>
 						<div className="col">
 							<Link
-								to="/confirm"
+								to="/myschedule"
 								style={{ color: "black", fontSize: "32px" }}>
 								<i className="fas fa-plus-circle" />
 							</Link>

@@ -65,12 +65,78 @@ const getState = ({ getStore, setStore }) => {
 				setStore({
 					schedules: store.schedules.concat([
 						{
-							tournament: tour,
-							price: tour.price,
-							bullet: 1,
-							id: tour.ID
+							id: Math.floor(Math.random() * 100),
+							name: "Vegas 2012",
+							total: 9000,
+							attempts: [
+								{
+									tournamentName: "Pompano Beach",
+									tournamentId: 123,
+									price: 3000,
+									bullets: 2
+								}
+							]
 						}
 					])
+				});
+			},
+
+			deleteToSchedule: tournamentId => {
+				const store = getStore();
+				setStore({
+					schedules: store.schedules.filter(t => t.id != tournamentId)
+				});
+			},
+
+			addBullet: (scheduleId, tournamentId) => {
+				const store = getStore();
+
+				setStore({
+					schedules: store.schedules.map(s => {
+						if (scheduleId == s.id) {
+							return Object.assign(s, {
+								attempts: s.attempts.map(a => a.bullets + 1)
+							});
+						} else {
+							return s;
+						}
+					})
+				});
+			},
+
+			substractBullet: (scheduleId, tournamentId) => {
+				const store = getStore();
+
+				setStore({
+					schedules: store.schedules.map((s, t) => {
+						if (scheduleId == s.id && tournamentId == t.id) {
+							return Object.assign(s, {
+								attempts: s.attempts.map(
+									a => a.tournamentId + 1
+								)
+							});
+						} else {
+							return t;
+						}
+					})
+				});
+			},
+
+			deleteAttempt: (scheduleId, tournamentId) => {
+				const store = getStore();
+
+				setStore({
+					schedules: store.schedules.map(s => {
+						if (scheduleId == s.id) {
+							return Object.assign(s, {
+								attempts: s.attempts.filter(
+									a => a.tournamentId != tournamentId
+								)
+							});
+						} else {
+							return s;
+						}
+					})
 				});
 			}
 		}

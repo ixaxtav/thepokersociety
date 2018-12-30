@@ -8,7 +8,7 @@ export class Navbar extends React.Component {
 		return (
 			<div className="container p-0 m-0">
 				<nav className="navbar navbar-expand-lg navbar-light bg-light">
-					<Link className="navbar-brand" to="/">
+					<Link className="navbar-brand" to="/calendar/109584">
 						<span className="mr-2">
 							<img src={pokerIcon} />
 						</span>
