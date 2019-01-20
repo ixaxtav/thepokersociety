@@ -6,6 +6,7 @@ import { Home } from "./views/home.jsx";
 import { Profile } from "./views/profile.jsx";
 import { MySchedules } from "./views/myschedules.jsx";
 import { YourSchedule } from "./views/yourschedule.jsx";
+import { AllSavedSchedules } from "./views/allSavedSchedules.jsx";
 import { TournamentView } from "./views/tournamentview.jsx";
 import { MyAccount } from "./views/myaccount.jsx";
 import { Confirmation } from "./views/confirmschedule.jsx";
@@ -19,6 +20,7 @@ import Calendar from "./views/calendar.jsx";
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import Store from "./store/appContext.jsx";
+import { PrivateRoute } from "bc-react-session";
 
 //create your first component
 class Layout extends React.Component {
@@ -29,24 +31,34 @@ class Layout extends React.Component {
 		);
 
 		const DefaultContainer = () => (
-			<div className="container m-0 p-0">
+			<div className="m-0 p-0">
 				<Navbar />
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<Route exact path="/profile" component={Profile} />
-					<Route exact path="/myschedule" component={MySchedules} />
+					<PrivateRoute exact path="/profile" component={Profile} />
+					<PrivateRoute
+						exact
+						path="/myschedule"
+						component={MySchedules}
+					/>
+					<PrivateRoute
+						exact
+						path="/allschedules"
+						component={AllSavedSchedules}
+					/>
 
-					<Route
+					<PrivateRoute
 						exact
 						path="/yourschedule"
 						component={YourSchedule}
 					/>
-					<Route exact path="/myaccount" component={MyAccount} />
-					<Route exact path="/confirm" component={Confirmation} />
-					<Route exact path="/single/:theid" component={Single} />
-					<Route exact path="/single/:theid" component={Single} />
+					<PrivateRoute
+						exact
+						path="/myaccount"
+						component={MyAccount}
+					/>
 					<Route exact path="/casino/:casino_id" component={Casino} />
-					<Route
+					<PrivateRoute
 						exact
 						path="/schedule/:schedule_id"
 						component={ScheduleView}

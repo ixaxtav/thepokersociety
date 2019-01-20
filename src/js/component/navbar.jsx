@@ -6,7 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 export class Navbar extends React.Component {
 	render() {
 		return (
-			<div className="container p-0 m-0">
+			<div className=" p-0 m-0">
 				<nav className="navbar navbar-expand-lg navbar-light bg-light">
 					<Link className="navbar-brand" to="/calendar/109584">
 						<span className="mr-2">
@@ -24,7 +24,7 @@ export class Navbar extends React.Component {
 						aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon" />
 					</button>
-					<div className="collapse navbar-collapse" id="navbarNav">
+					<div className=" navbar-collapse" id="navbarNav">
 						<ul className="navbar-nav">
 							<li className="nav-item active">
 								<NavLink className="nav-link" to="/home">

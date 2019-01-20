@@ -21,9 +21,10 @@ class RedButton extends React.Component {
 		};
 		return (
 			<div style={divStyle}>
-				<Link to={this.props.to}>
-					<button style={buttonStyle}> {this.props.label} </button>
-				</Link>
+				<button style={buttonStyle} onClick={this.props.onClick}>
+					{" "}
+					{this.props.label}{" "}
+				</button>
 			</div>
 		);
 	}
@@ -31,7 +32,7 @@ class RedButton extends React.Component {
 
 RedButton.propTypes = {
 	label: PropTypes.string,
-	to: PropTypes.string
+	onClick: PropTypes.func
 };
 
 export default RedButton;

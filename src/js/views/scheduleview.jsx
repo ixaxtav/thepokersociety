@@ -32,18 +32,20 @@ export const ScheduleView = property => (
 										<i
 											className="fas fa-plus-circle"
 											onClick={e =>
-												actions.addBullet(
+												actions.updateBullet(
 													schedule.id,
-													s.tournamentId
+													s.tournamentId,
+													s.bullets + 1
 												)
 											}
 										/>{" "}
 										<i
 											className="fas fa-minus-circle"
 											onClick={e =>
-												actions.substractBullet(
+												actions.updateBullet(
 													schedule.id,
-													s.tournamentId
+													s.tournamentId,
+													s.bullets - 1
 												)
 											}
 										/>
@@ -64,6 +66,16 @@ export const ScheduleView = property => (
 							))}
 						</tbody>
 					</table>
+					<button
+						onClick={e => {
+							e.preventDefault();
+							{
+								actions.saveUserSchedule();
+							}
+						}}>
+						{" "}
+						click to save schedule
+					</button>
 				</div>
 			);
 		}}

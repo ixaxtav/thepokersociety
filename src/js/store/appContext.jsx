@@ -1,5 +1,6 @@
 import React from "react";
 import getState from "./storeContext.js";
+import { Session } from "bc-react-session";
 
 export const Context = React.createContext(null);
 
@@ -17,7 +18,14 @@ const Store = PassedComponent => {
 			});
 		}
 
-		componentDidMount() {}
+		componentDidMount() {
+			const session = Session.getSession();
+			const payload = Session.getPayload();
+
+			if (session.isValid) {
+				this.setState({ store: payload });
+			}
+		}
 
 		render() {
 			return (

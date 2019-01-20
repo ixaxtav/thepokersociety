@@ -44,23 +44,17 @@ export const TournamentView = property => (
 						style={{
 							textAlign: "center"
 						}}>
-						<div
-							className="col"
-							onClick={() => actions.addToSchedule(tour)}>
+						<div className="col">
 							{" "}
 							{tour ? tour["buy-in"] : "Buy in not found"}
 						</div>
-						<div
-							className="col"
-							onClick={() => actions.addToSchedule(tour)}>
+						<div className="col">
 							{" "}
 							{tour
 								? tour["starting-stack"]
 								: "Starting Stack not found"}
 						</div>
-						<div
-							className="col"
-							onClick={() => actions.addToSchedule(tour)}>
+						<div className="col">
 							{" "}
 							{tour ? tour.blinds : "Blinds not found"}
 						</div>
@@ -85,7 +79,10 @@ export const TournamentView = property => (
 							<Link
 								to="/myschedule"
 								style={{ color: "black", fontSize: "32px" }}>
-								<i className="fas fa-plus-circle" />
+								<i
+									className="fas fa-plus-circle"
+									onClick={() => actions.addToSchedule(tour)}
+								/>
 							</Link>
 						</div>
 					</div>

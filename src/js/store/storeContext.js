@@ -1,17 +1,30 @@
+import { Session } from "bc-react-session";
+
+const HOST = "http://admin.thepokersociety.com/wp-json/ps/v1";
 const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
-			HOST: "http://admin.thepokersociety.com/wp-json/ps/v1",
-
 			// the list of cassinos is build when the application starts and it is used throught the entire application
 			casinos: [],
 
 			// this variable should be used to render the list of tournaments in /calendar
 			tournaments: [],
 
+			users: [],
+
 			// this variable is used to render a single tournament on the /tournament/:tournament_id view
 			currentTournament: null,
 			currentCasino: null,
+
+			creatingNewUser: false,
+
+			user: {
+				username: "",
+				email: "",
+				token: null,
+				firstName: "",
+				LastName: ""
+			},
 
 			schedules: [
 				{
@@ -27,42 +40,145 @@ const getState = ({ getStore, setStore }) => {
 						}
 					]
 				}
-			],
-
-			user: null
+			]
 		},
 		actions: {
+			setStoreAndSession(payload) {
+				setStore(payload);
+
+				//save on the session as well
+				const store = getStore();
+				Session.setPayload(Object.assign(store, payload));
+			},
 			setCasinos: casinos => {
-				setStore({ casinos });
+				this.setStoreAndSession({ casinos });
 			},
 			fetchTournaments(calendarId) {
 				const store = getStore();
-				fetch(`${store.HOST}/tournament/calendar/${calendarId}`)
+				fetch(`${HOST}/tournament/calendar/${calendarId}`)
 					.then(resp => resp.json())
 					.then(data => {
 						if (Array.isArray(data))
-							setStore({ tournaments: data });
+							this.setStoreAndSession({ tournaments: data });
 						else throw new Error("Tournaments not found");
 					})
 					.catch(error => console.error(error));
 			},
 			fetchSingleTournaments(tournamentId) {
 				const store = getStore();
-				fetch(`${store.HOST}/tournament/${tournamentId}`)
+				fetch(`${HOST}/tournament/${tournamentId}`)
 					.then(resp => resp.json())
-					.then(data => setStore({ currentTournament: data }))
+					.then(data =>
+						this.setStoreAndSession({ currentTournament: data })
+					)
 					.catch(error => console.error(error));
 			},
 			fetchSingleCasino(casinoID) {
 				const store = getStore();
-				fetch(`${store.HOST}/casino/${casinoID}`)
+				fetch(`${HOST}/casino/${casinoID}`)
 					.then(resp => resp.json())
-					.then(data => setStore({ currentCasino: data }))
+					.then(data =>
+						this.setStoreAndSession({ currentCasino: data })
+					)
 					.catch(error => console.error(error));
 			},
-			addToSchedule: tour => {
+
+			signUp(username, email, password) {
+				fetch(`${HOST}/signup`, {
+					method: "POST",
+					body: JSON.stringify({
+						username: username,
+						email: email,
+						password: password
+					})
+				})
+					.then(resp => {
+						if (resp.status == 200) resp.json();
+						else
+							throw new Error(
+								"Error: The response code is not 200"
+							);
+					})
+					.then(data => {
+						this.setStoreAndSession({ userID: data.user_id });
+					})
+					.catch(error => console.error("Error!!"));
+			},
+
+			login(username, password, callback) {
+				fetch(
+					`http://admin.thepokersociety.com/wp-json/jwt-auth/v1/token`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							username: username,
+							password: password
+						})
+					}
+				)
+					.then(resp => {
+						if (resp.status == 200) return resp.json();
+						else {
+							callback(
+								new Error("Invalid username and password")
+							);
+						}
+					})
+					.then(data => {
+						const store = getStore();
+						Session.start({
+							payload: Object.assign(store, {
+								user: {
+									token: data.token,
+									email: data.user_email,
+									username: data.user_nicename
+								}
+							}),
+							expiration: 86400000
+						});
+						this.setStoreAndSession({});
+						callback();
+					})
+					.catch(error => {
+						console.error("Error!!");
+						callback(error);
+					});
+			},
+
+			saveUserSchedule() {
 				const store = getStore();
-				setStore({
+
+				fetch(`${HOST}/schedules/${store.user.username}`, {
+					method: "POST",
+					body: JSON.stringify(store.schedules)
+				})
+					.then(resp => {
+						if (resp.status == 200) resp.json();
+						else
+							throw new Error(
+								"Error: The response code is not 200"
+							);
+					})
+					.then(data => {
+						//this.setStoreAndSession({ userID: data.user_id });
+					})
+					.catch(error => console.error("Error!!"));
+			},
+
+			retrieveUser(userID) {
+				const store = getStore();
+				fetch(`${HOST}/schedules/${userID}`)
+					.then(resp => resp.json())
+					.then(data => this.setStoreAndSession({ userID: data }))
+					.catch(error => console.error("Error!!"));
+			},
+
+			addToSchedule(tour) {
+				const store = getStore();
+				this.setStoreAndSession({
 					schedules: store.schedules.concat([
 						{
 							id: Math.floor(Math.random() * 100),
@@ -81,21 +197,26 @@ const getState = ({ getStore, setStore }) => {
 				});
 			},
 
-			deleteToSchedule: tournamentId => {
+			deleteToSchedule(tournamentId) {
 				const store = getStore();
-				setStore({
+				this.setStoreAndSession({
 					schedules: store.schedules.filter(t => t.id != tournamentId)
 				});
 			},
 
-			addBullet: (scheduleId, tournamentId) => {
+			updateBullet(scheduleId, tournamentId, bulletCount) {
 				const store = getStore();
 
-				setStore({
-					schedules: store.schedules.map(s => {
+				this.setStoreAndSession({
+					schedules: store.schedules.map((s, t) => {
 						if (scheduleId == s.id) {
 							return Object.assign(s, {
-								attempts: s.attempts.map(a => a.bullets + 1)
+								attempts: s.attempts.map(a => {
+									if (tournamentId == a.tournamentId) {
+										a.bullets = Math.abs(bulletCount);
+									}
+									return a;
+								})
 							});
 						} else {
 							return s;
@@ -104,28 +225,18 @@ const getState = ({ getStore, setStore }) => {
 				});
 			},
 
-			substractBullet: (scheduleId, tournamentId) => {
+			toggleNewScheduleButton() {
 				const store = getStore();
 
-				setStore({
-					schedules: store.schedules.map((s, t) => {
-						if (scheduleId == s.id && tournamentId == t.id) {
-							return Object.assign(s, {
-								attempts: s.attempts.map(
-									a => a.tournamentId + 1
-								)
-							});
-						} else {
-							return t;
-						}
-					})
+				this.setStoreAndSession({
+					creatingNewUser: !store.creatingNewUser
 				});
 			},
 
-			deleteAttempt: (scheduleId, tournamentId) => {
+			deleteAttempt(scheduleId, tournamentId) {
 				const store = getStore();
 
-				setStore({
+				this.setStoreAndSession({
 					schedules: store.schedules.map(s => {
 						if (scheduleId == s.id) {
 							return Object.assign(s, {
