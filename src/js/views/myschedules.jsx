@@ -34,7 +34,7 @@ export const MySchedules = () => (
 						</ul>
 					))}
 
-					{store.creatingNewUser == true ? (
+					{store.creatingNewUser != true ? (
 						<div className="row justify-content-center pb-2">
 							<div clssName="col">
 								<button
@@ -60,7 +60,10 @@ export const MySchedules = () => (
 								<button
 									className="btn btn-outline-primary"
 									type="button"
-									id="button-addon2">
+									id="button-addon2"
+									onClick={() =>
+										actions.toggleNewScheduleButton()
+									}>
 									Accept
 								</button>
 							</div>

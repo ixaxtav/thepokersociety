@@ -15,8 +15,9 @@ const getState = ({ getStore, setStore }) => {
 			// this variable is used to render a single tournament on the /tournament/:tournament_id view
 			currentTournament: null,
 			currentCasino: null,
-
+			// toggles j
 			creatingNewUser: false,
+			navbarCollapse: false,
 
 			user: {
 				username: "",
@@ -230,6 +231,14 @@ const getState = ({ getStore, setStore }) => {
 
 				this.setStoreAndSession({
 					creatingNewUser: !store.creatingNewUser
+				});
+			},
+
+			navbarCollapseItems() {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					navbarCollapse: !store.navbarCollapse
 				});
 			},
 
