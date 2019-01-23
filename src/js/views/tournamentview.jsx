@@ -70,7 +70,7 @@ export const TournamentView = property => (
 						</div>
 						<div className="col">
 							<Link
-								to="/myschedule"
+								to="/allschedules"
 								style={{ color: "black", fontSize: "32px" }}>
 								<i className="fas fa-clipboard-list" />
 							</Link>

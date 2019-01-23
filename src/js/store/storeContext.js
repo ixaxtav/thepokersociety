@@ -205,6 +205,13 @@ const getState = ({ getStore, setStore }) => {
 				});
 			},
 
+			deleteOneSchedule(scheduleId) {
+				const store = getStore();
+				this.setStoreAndSession({
+					schedules: store.schedules.filter(s => s.id == 1)
+				});
+			},
+
 			updateBullet(scheduleId, tournamentId, bulletCount) {
 				const store = getStore();
 

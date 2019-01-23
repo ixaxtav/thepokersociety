@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import "../../styles/login.css";
 import { Context } from "../store/appContext.jsx";
 
-export const MySchedules = () => (
+export const MySchedules = property => (
 	<Context.Consumer>
 		{({ store, actions }) => {
-			console.log(store);
+			const schedule = store.schedules.find(
+				s => s.id == property.match.params.schedule_id
+			);
+
+			const tour = store.currentTournament;
+
 			return (
 				<div className="container">
 					<h3>
@@ -24,12 +29,14 @@ export const MySchedules = () => (
 										className="fas fa-plus-circle"
 										style={{ marginLeft: "15px" }}
 									/>
-
-									<i
-										className="far fa-trash-alt"
-										style={{ marginLeft: "15px" }}
-									/>
 								</Link>
+								<i
+									className="far fa-trash-alt"
+									style={{ marginLeft: "15px" }}
+									onClick={e =>
+										actions.deleteOneSchedule(schedule)
+									}
+								/>
 							</li>
 						</ul>
 					))}
@@ -52,7 +59,7 @@ export const MySchedules = () => (
 							<input
 								type="text"
 								className="form-control"
-								placeholder="Recipient's username"
+								placeholder="Type the name of the schedule..."
 								aria-label="Recipient's username"
 								aria-describedby="button-addon2"
 							/>
@@ -61,9 +68,7 @@ export const MySchedules = () => (
 									className="btn btn-outline-primary"
 									type="button"
 									id="button-addon2"
-									onClick={() =>
-										actions.toggleNewScheduleButton()
-									}>
+									onClick={() => actions.addToSchedule(tour)}>
 									Accept
 								</button>
 							</div>

@@ -6,6 +6,9 @@ import { Context } from "../store/appContext.jsx";
 export const AllSavedSchedules = property => (
 	<Context.Consumer>
 		{({ store, actions }) => {
+			const schedule = store.schedules.find(
+				s => s.id == property.match.params.schedule_id
+			);
 			return (
 				<div className="container pt-2">
 					<h3 className="text-center pt-2">All Saved Schedules</h3>
@@ -24,12 +27,14 @@ export const AllSavedSchedules = property => (
 							</tr>
 						</thead>
 						<tbody className="textCenter">
-							<tr className="text-center">
-								<td>schedule name</td>
+							{store.schedules.map((s, i) => (
+								<tr className="text-center" key={i}>
+									<td>{s.name}</td>
 
-								<td>games </td>
-								<td>total</td>
-							</tr>
+									<td> 1231</td>
+									<td>{s.total}</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</div>
