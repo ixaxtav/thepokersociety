@@ -34,7 +34,7 @@ class Layout extends React.Component {
 			<div className="m-0 p-0">
 				<Navbar />
 				<Switch>
-					<Route exact path="/" component={Home} />
+					<Route exact path="/" component={Calendar} />
 					<PrivateRoute exact path="/profile" component={Profile} />
 					<PrivateRoute
 						exact

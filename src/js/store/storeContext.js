@@ -149,6 +149,11 @@ const getState = ({ getStore, setStore }) => {
 					});
 			},
 
+			logout() {
+				//const store = getStore();
+				Session.destroy();
+			},
+
 			saveUserSchedule() {
 				const store = getStore();
 
