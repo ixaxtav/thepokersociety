@@ -79,10 +79,7 @@ export const TournamentView = property => (
 							<Link
 								to="/myschedule"
 								style={{ color: "black", fontSize: "32px" }}>
-								<i
-									className="fas fa-plus-circle"
-									onClick={() => actions.addToSchedule(tour)}
-								/>
+								<i className="fas fa-plus-circle" />
 							</Link>
 						</div>
 					</div>

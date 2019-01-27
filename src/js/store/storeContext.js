@@ -188,14 +188,16 @@ const getState = ({ getStore, setStore }) => {
 					schedules: store.schedules.concat([
 						{
 							id: Math.floor(Math.random() * 100),
-							name: "Vegas 2012",
-							total: 9000,
+							name: "",
+							total: "",
 							attempts: [
 								{
-									tournamentName: "Pompano Beach",
-									tournamentId: 123,
-									price: 3000,
-									bullets: 2
+									tournamentName: "",
+									tournamentId: Math.floor(
+										Math.random() * 100
+									),
+									price: "",
+									bullets: ""
 								}
 							]
 						}

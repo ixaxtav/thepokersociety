@@ -9,7 +9,6 @@ import { YourSchedule } from "./views/yourschedule.jsx";
 import { AllSavedSchedules } from "./views/allSavedSchedules.jsx";
 import { TournamentView } from "./views/tournamentview.jsx";
 import { MyAccount } from "./views/myaccount.jsx";
-import { Confirmation } from "./views/confirmschedule.jsx";
 import { Single } from "./views/single.jsx";
 import { Casino } from "./views/Casino.jsx";
 import { Login } from "./views/login.jsx";
@@ -34,7 +33,7 @@ class Layout extends React.Component {
 			<div className="m-0 p-0">
 				<Navbar />
 				<Switch>
-					<Route exact path="/" component={Calendar} />
+					<Route exact path="/" component={Home} />
 					<PrivateRoute exact path="/profile" component={Profile} />
 					<PrivateRoute
 						exact

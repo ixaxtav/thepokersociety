@@ -46,9 +46,8 @@ export const Navbar = () => (
 									<li className="nav-item">
 										<a
 											className="nav-link"
-											href={
-												"mailto:info@thepokersociety.com"
-											}>
+											href="mailto:info@thepokersociety.com">
+											{" "}
 											Contact Us
 										</a>
 									</li>
