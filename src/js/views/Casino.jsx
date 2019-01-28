@@ -14,14 +14,55 @@ export const Casino = property => (
 			}
 			return (
 				<div>
-					<h1
+					<h4
+						className="text-center mt-4"
 						onClick={() =>
 							actions.addToSchedule(store.currentCasino)
 						}>
 						{store.currentCasino
 							? store.currentCasino.post_title
 							: "Casino not found"}
-					</h1>
+					</h4>
+					<div
+						className="row"
+						style={{
+							textAlign: "center",
+							backgroundColor: "#C0C0C0"
+						}}>
+						<div className="col-11 mx-auto p-3">
+							{store.currentCasino.location.address}
+						</div>
+					</div>
+					<div className="text-center p-3">
+						<p>{store.currentCasino.post_content}</p>
+					</div>
+					<div
+						className="btn-group w-100 text-center"
+						role="group"
+						aria-label="Basic example">
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href={store.currentCasino.website}
+							className="btn btn-light form-control">
+							Go to Website
+						</a>
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href={`https://www.google.com/maps?daddr=${
+								store.currentCasino.location.lat
+							},${store.currentCasino.location.lng}`}
+							className="btn btn-light form-control">
+							Location
+						</a>
+						<a
+							rel="noopener noreferrer"
+							href="javascript:history.back()"
+							className="btn btn-light form-control">
+							Back to calendar
+						</a>
+					</div>
 					<ul>
 						{store.tournaments
 							.filter(
