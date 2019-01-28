@@ -46,7 +46,7 @@ export const MySchedules = property => (
 							<div clssName="col">
 								<button
 									type="button"
-									className="btn btn-primary "
+									className="btn btn-light form-control border"
 									onClick={() =>
 										actions.toggleNewScheduleButton()
 									}>
@@ -65,7 +65,7 @@ export const MySchedules = property => (
 							/>
 							<div className="input-group-append">
 								<button
-									className="btn btn-outline-primary"
+									className="btn btn-outline-dark"
 									type="button"
 									id="button-addon2"
 									onClick={() => actions.addToSchedule(tour)}>

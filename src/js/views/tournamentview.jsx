@@ -68,13 +68,26 @@ export const TournamentView = property => (
 								<i className="fas fa-arrow-circle-left" />
 							</Link>
 						</div>
-						<div className="col">
-							<Link
-								to="/allschedules"
-								style={{ color: "black", fontSize: "32px" }}>
-								<i className="fas fa-clipboard-list" />
-							</Link>
-						</div>
+
+						{tour["structure-sheet"] != null ? (
+							<div className="col">
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={tour["structure-sheet"]}
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="fas fa-clipboard-list" />
+								</a>
+							</div>
+						) : (
+							<div className="col text-danger pt-2">
+								No structure
+							</div>
+						)}
+
 						<div className="col">
 							<Link
 								to="/myschedule"
@@ -83,10 +96,21 @@ export const TournamentView = property => (
 							</Link>
 						</div>
 					</div>
+
 					<div className="row text-center">
 						<div className="col">Back to Calendar</div>
-						<div className="col">Structure</div>
+
+						{tour["structure-sheet"] != null ? (
+							<div className="col">Structure</div>
+						) : (
+							<div className="col" />
+						)}
+
 						<div className="col">Add to Schedule</div>
+					</div>
+
+					<div className="row text-center font-italic">
+						<div className="col-11 p-3">{tour.post_content}</div>
 					</div>
 				</div>
 			);

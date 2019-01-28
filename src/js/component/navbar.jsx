@@ -12,7 +12,7 @@ export const Navbar = () => (
 			return (
 				<div className=" p-0 m-0">
 					<nav className="navbar navbar-expand-lg navbar-light bg-light">
-						<Link className="navbar-brand" to="/calendar/109584">
+						<Link className="navbar-brand" to="/">
 							<span className="mr-2">
 								<img src={pokerIcon} />
 							</span>
@@ -37,9 +37,7 @@ export const Navbar = () => (
 								id="navbarNav">
 								<ul className="navbar-nav">
 									<li className="nav-item active">
-										<NavLink
-											className="nav-link"
-											to="/calendar/109584">
+										<NavLink className="nav-link" to="/">
 											Home
 										</NavLink>
 									</li>

@@ -30,13 +30,13 @@ const getState = ({ getStore, setStore }) => {
 			schedules: [
 				{
 					id: 1,
-					name: "Vegas 2012",
+					name: "Schedule Name",
 					total: 9000,
 					attempts: [
 						{
-							tournamentName: "Pompano Beach",
+							tournamentName: "Tournament Name",
 							tournamentId: 123,
-							price: 3000,
+							price: 9000,
 							bullets: 2
 						}
 					]

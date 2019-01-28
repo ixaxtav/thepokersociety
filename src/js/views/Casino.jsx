@@ -44,7 +44,7 @@ export const Casino = property => (
 							target="_blank"
 							rel="noopener noreferrer"
 							href={store.currentCasino.website}
-							className="btn btn-light form-control">
+							className="btn btn-light form-control border">
 							Go to Website
 						</a>
 						<a
@@ -53,13 +53,13 @@ export const Casino = property => (
 							href={`https://www.google.com/maps?daddr=${
 								store.currentCasino.location.lat
 							},${store.currentCasino.location.lng}`}
-							className="btn btn-light form-control">
+							className="btn btn-light form-control border">
 							Location
 						</a>
 						<a
 							rel="noopener noreferrer"
 							href="javascript:history.back()"
-							className="btn btn-light form-control">
+							className="btn btn-light form-control border">
 							Back to calendar
 						</a>
 					</div>
