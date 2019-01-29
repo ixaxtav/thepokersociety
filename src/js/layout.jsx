@@ -4,7 +4,7 @@ import ScrollToTop from "./component/functional/scrollToTop.jsx";
 
 import { Home } from "./views/home.jsx";
 import { Profile } from "./views/profile.jsx";
-import { MySchedules } from "./views/myschedules.jsx";
+import MySchedules from "./views/myschedules.jsx";
 import { YourSchedule } from "./views/yourschedule.jsx";
 import { AllSavedSchedules } from "./views/allSavedSchedules.jsx";
 import { TournamentView } from "./views/tournamentview.jsx";

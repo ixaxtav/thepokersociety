@@ -189,7 +189,30 @@ const getState = ({ getStore, setStore }) => {
 						{
 							id: Math.floor(Math.random() * 100),
 							name: "",
-							total: "",
+							total: 0,
+							attempts: [
+								{
+									tournamentName: tour.post_title,
+									tournamentId: Math.floor(
+										Math.random() * 100
+									),
+									price: tour["buy-in"],
+									bullets: 2
+								}
+							]
+						}
+					])
+				});
+			},
+
+			createSchedule(temporalScheduleName) {
+				const store = getStore();
+				this.setStoreAndSession({
+					schedules: store.schedules.concat([
+						{
+							id: Math.floor(Math.random() * 100),
+							name: temporalScheduleName,
+							total: 0,
 							attempts: [
 								{
 									tournamentName: "",
@@ -197,7 +220,7 @@ const getState = ({ getStore, setStore }) => {
 										Math.random() * 100
 									),
 									price: "",
-									bullets: ""
+									bullets: 2
 								}
 							]
 						}
