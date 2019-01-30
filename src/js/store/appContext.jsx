@@ -25,6 +25,22 @@ const Store = PassedComponent => {
 			if (session.isValid) {
 				this.setState({ store: payload });
 			}
+			fetch(
+				"http://admin.thepokersociety.com/wp-json/wp-api-menus/v2/menus/2"
+			)
+				.then(resp => resp.json())
+				.then(data => {
+					// do something with the returned posts
+					this.setState({
+						store: Object.assign(this.state.store, {
+							menu: { children: data.items }
+						})
+					});
+				})
+				.catch(function(err) {
+					// handle error
+					console.error(err);
+				});
 		}
 
 		render() {

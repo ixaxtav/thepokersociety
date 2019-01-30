@@ -1,58 +1,60 @@
+/* global $ */
 import React from "react";
 import { Link } from "react-router-dom";
 import pokerImg from "../../img/poker-society.jpg";
 import "../../styles/home.css";
+import { Context } from "../store/appContext.jsx";
 
-export class Home extends React.Component {
-	state = {
-		isOpen: false
-	};
-
-	toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
-
-	render() {
-		const menuClass = `dropdown-menu${
-			this.state.isOpen ? " show" : ""
-		} text-center`;
-		return (
-			<div clasNames="container">
-				<div className="row">
-					<div className="col-sm">
-						<div className="dropdown" onClick={this.toggleOpen}>
-							<button
-								className="btn btn-light btn-lg btn-block dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true">
-								Ft.Lauderdale - Miami
-							</button>
-							<div
-								className={menuClass}
-								aria-labelledby="dropdownMenuButton">
-								<a
-									className="dropdown-item"
-									href="/calendar/109025">
-									January 2019
-								</a>
-								<a
-									className="dropdown-item"
-									href="/calendar/117083">
-									February 2019
-								</a>
-								<a
-									className="dropdown-item"
-									href="/calendar/117416">
-									March 2019
-								</a>
-							</div>
-						</div>
+const menuChilds = menu =>
+	menu.children.map((item, i) => (
+		<div key={i}>
+			{typeof item.children == "undefined" ||
+			item.children.length == 0 ? (
+				<Link className="dropdown-item" to={item.url}>
+					{item.title}
+				</Link>
+			) : (
+				<div className="submenu">
+					<button className="nav-link submenu-toggle">
+						{item.title}
+					</button>
+					<div
+						className="dropdown-menu"
+						aria-labelledby="navbarDropdown">
+						{menuChilds(item)}
 					</div>
 				</div>
-				<div className="fill">
-					<img src={pokerImg} alt="" />
-				</div>
-			</div>
+			)}
+		</div>
+	));
+
+export class Home extends React.Component {
+	componentDidMount() {
+		$(".dropdown-toggle, .submenu-toggle").click(function(e) {
+			$(this).toggleClass("open");
+			$(this)
+				.siblings(".dropdown-menu")
+				.toggleClass("show");
+		});
+	}
+	render() {
+		return (
+			<Context.Consumer>
+				{({ store, actions }) => {
+					return (
+						<div>
+							<div className="row">
+								<div className="col-sm">
+									{menuChilds(store.menu)}
+								</div>
+							</div>
+							<div className="fill">
+								<img src={pokerImg} alt="" />
+							</div>
+						</div>
+					);
+				}}
+			</Context.Consumer>
 		);
 	}
 }

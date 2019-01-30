@@ -9,6 +9,7 @@ export const Navbar = () => (
 	<Context.Consumer>
 		{({ store, actions }) => {
 			const session = Session.get();
+
 			return (
 				<div className=" p-0 m-0">
 					<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,7 +37,7 @@ export const Navbar = () => (
 								className=" navbar-collapse justify-content-right"
 								id="navbarNav">
 								<ul className="navbar-nav">
-									<li className="nav-item active">
+									<li className="nav-item">
 										<NavLink className="nav-link" to="/">
 											Home
 										</NavLink>
@@ -48,6 +49,13 @@ export const Navbar = () => (
 											{" "}
 											Contact Us
 										</a>
+									</li>
+									<li className="nav-item">
+										<NavLink
+											className="nav-link"
+											to="/profile">
+											Profile
+										</NavLink>
 									</li>
 									<li className="nav-item">
 										{session.isValid ? (

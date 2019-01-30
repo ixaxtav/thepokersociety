@@ -12,6 +12,10 @@ const getState = ({ getStore, setStore }) => {
 
 			users: [],
 
+			menu: {
+				children: []
+			},
+
 			// this variable is used to render a single tournament on the /tournament/:tournament_id view
 			currentTournament: null,
 			currentCasino: null,
@@ -154,7 +158,7 @@ const getState = ({ getStore, setStore }) => {
 				Session.destroy();
 			},
 
-			saveUserSchedule() {
+			saveAllUserSchedules() {
 				const store = getStore();
 
 				fetch(`${HOST}/schedules/${store.user.username}`, {
@@ -182,26 +186,27 @@ const getState = ({ getStore, setStore }) => {
 					.catch(error => console.error("Error!!"));
 			},
 
-			addToSchedule(tour) {
+			addToSchedule(scheduleId, tour) {
 				const store = getStore();
+
 				this.setStoreAndSession({
-					schedules: store.schedules.concat([
-						{
-							id: Math.floor(Math.random() * 100),
-							name: "",
-							total: 0,
-							attempts: [
-								{
-									tournamentName: tour.post_title,
-									tournamentId: Math.floor(
-										Math.random() * 100
-									),
-									price: tour["buy-in"],
-									bullets: 2
-								}
-							]
+					schedules: store.schedules.map((s, t) => {
+						if (scheduleId == s.id) {
+							return Object.assign(s, {
+								total: tour["buy-in"],
+								attempts: [
+									{
+										tournamentName: tour.post_title,
+										tournamentId: tour.ID,
+										price: tour["buy-in"],
+										bullets: 1
+									}
+								]
+							});
+						} else {
+							return s;
 						}
-					])
+					})
 				});
 			},
 
@@ -238,7 +243,7 @@ const getState = ({ getStore, setStore }) => {
 			deleteOneSchedule(scheduleId) {
 				const store = getStore();
 				this.setStoreAndSession({
-					schedules: store.schedules.filter(s => s.id == 1)
+					schedules: store.schedules.filter(s => s.id != scheduleId)
 				});
 			},
 
@@ -248,7 +253,17 @@ const getState = ({ getStore, setStore }) => {
 				this.setStoreAndSession({
 					schedules: store.schedules.map((s, t) => {
 						if (scheduleId == s.id) {
+							let total = 0;
+							s.attempts.forEach(a => {
+								total +=
+									parseFloat(a.price.replace("$", "")) *
+									(a.tournamentId == tournamentId)
+										? bulletCount
+										: a.bullets;
+							});
+
 							return Object.assign(s, {
+								total: total,
 								attempts: s.attempts.map(a => {
 									if (tournamentId == a.tournamentId) {
 										a.bullets = Math.abs(bulletCount);
@@ -285,7 +300,17 @@ const getState = ({ getStore, setStore }) => {
 				this.setStoreAndSession({
 					schedules: store.schedules.map(s => {
 						if (scheduleId == s.id) {
+							let total = 0;
+							s.attempts.forEach(a => {
+								total +=
+									parseFloat(a.price.replace("$", "")) *
+									(a.tournamentId == tournamentId)
+										? 0
+										: a.bullets;
+							});
+
 							return Object.assign(s, {
+								total: total,
 								attempts: s.attempts.filter(
 									a => a.tournamentId != tournamentId
 								)

@@ -33,7 +33,7 @@ export class Profile extends React.Component {
 								</div>
 								<div className="col">
 									<Link
-										to="/myschedule"
+										to="/allschedules"
 										style={{
 											color: "black",
 											fontSize: "32px"

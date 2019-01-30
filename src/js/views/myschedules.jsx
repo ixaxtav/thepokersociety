@@ -39,7 +39,10 @@ export default class MySchedule extends React.Component {
 												className="fas fa-plus-circle"
 												style={{ marginLeft: "15px" }}
 												onClick={e =>
-													actions.addToSchedule(tour)
+													actions.addToSchedule(
+														s.id,
+														tour
+													)
 												}
 											/>
 										</Link>
@@ -56,7 +59,7 @@ export default class MySchedule extends React.Component {
 
 							{store.creatingNewUser != true ? (
 								<div className="row justify-content-center pb-2">
-									<div clssName="col">
+									<div className="col">
 										<button
 											type="button"
 											className="btn btn-light form-control border"

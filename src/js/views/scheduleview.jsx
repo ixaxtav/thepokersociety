@@ -50,7 +50,10 @@ export const ScheduleView = property => (
 											}
 										/>
 									</td>
-									<td>{s.price * s.bullets}</td>
+									<td>
+										{parseFloat(s.price.replace("$", "")) *
+											s.bullets}
+									</td>
 									<td>
 										<i
 											className="far fa-trash-alt"
@@ -67,14 +70,13 @@ export const ScheduleView = property => (
 						</tbody>
 					</table>
 					<button
+						className="btn btn-light form-control border"
 						onClick={e => {
 							e.preventDefault();
-							{
-								actions.saveUserSchedule();
-							}
+							actions.saveAllUserSchedules();
 						}}>
 						{" "}
-						click to save schedule
+						Save Tournament
 					</button>
 				</div>
 			);
