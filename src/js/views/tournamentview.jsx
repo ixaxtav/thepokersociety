@@ -22,10 +22,7 @@ export const TournamentView = property => (
 
 			return (
 				<div>
-					<h4
-						className="mt-4"
-						style={{ textAlign: "center" }}
-						onClick={() => actions.addToSchedule(tour)}>
+					<h4 className="mt-4" style={{ textAlign: "center" }}>
 						{tour ? tour.post_title : "Tournament not found"}
 					</h4>
 

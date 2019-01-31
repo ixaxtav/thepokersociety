@@ -28,7 +28,7 @@ const getState = ({ getStore, setStore }) => {
 				email: "",
 				token: null,
 				firstName: "",
-				LastName: ""
+				lastName: ""
 			},
 
 			schedules: [
@@ -205,6 +205,26 @@ const getState = ({ getStore, setStore }) => {
 							});
 						} else {
 							return s;
+						}
+					})
+				});
+			},
+
+			updateAccountInfo(token) {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					users: store.user.map(u => {
+						if (u == store.user.token) {
+							return Object.assign(u, {
+								username: store.user.username,
+								email: "",
+								token: store.user.token,
+								firstName: "",
+								lastName: ""
+							});
+						} else {
+							return u;
 						}
 					})
 				});
