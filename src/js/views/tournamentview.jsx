@@ -62,11 +62,11 @@ export const TournamentView = property => (
 
 					<div className="row text-center pt-2">
 						<div className="col">
-							<Link
-								to="/calendar/109584"
+							<a
+								href="javascript:history.back()"
 								style={{ color: "black", fontSize: "32px" }}>
 								<i className="fas fa-arrow-circle-left" />
-							</Link>
+							</a>
 						</div>
 
 						{tour["structure-sheet"] != null ? (

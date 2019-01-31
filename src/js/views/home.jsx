@@ -15,11 +15,11 @@ const menuChilds = menu =>
 				</Link>
 			) : (
 				<div className="submenu">
-					<button className="nav-link submenu-toggle">
+					<button className="nav-link submenu-toggle btn btn-block  btn-light dropdown-toggle">
 						{item.title}
 					</button>
 					<div
-						className="dropdown-menu"
+						className="dropdown-menu btn btn-block  btn-light text-center m-0"
 						aria-labelledby="navbarDropdown">
 						{menuChilds(item)}
 					</div>
@@ -44,12 +44,17 @@ export class Home extends React.Component {
 					return (
 						<div>
 							<div className="row">
-								<div className="col-sm">
+								<div className="col-sm  pr-0 pl-0">
 									{menuChilds(store.menu)}
 								</div>
 							</div>
-							<div className="fill">
-								<img src={pokerImg} alt="" />
+
+							<div
+								style={{
+									height: "100vh",
+									backgroundColor: "black"
+								}}>
+								<img src={pokerImg} className="fill" alt="" />
 							</div>
 						</div>
 					);

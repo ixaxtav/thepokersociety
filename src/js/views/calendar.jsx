@@ -322,7 +322,7 @@ export default class Calendar extends Flux.View {
 			);
 		});
 		return (
-			<div className="tournaments">
+			<div className="tournaments" style={{ paddingBotton: "50px" }}>
 				{this.state.error ? (
 					<div className="alert alert-danger text-center">
 						{this.state.error}
@@ -348,13 +348,15 @@ export default class Calendar extends Flux.View {
 						)}
 						<div
 							className="calendar"
+							style={{ overflow: "auto", marginTop: "-55px" }}
 							ref={c => (this.calendar = c)}>
 							<table
 								className={
 									"table-responsive table table-striped " +
 									(this.state.zoom ? "zoomed" : "")
 								}
-								ref={c => (this.tableBody = c)}>
+								ref={c => (this.tableBody = c)}
+								style={{ marginTop: "39px", fontSize: "6px" }}>
 								<thead
 									style={this.state.stickySyles}
 									ref={c => (this.thead = c)}>

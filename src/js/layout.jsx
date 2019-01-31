@@ -74,7 +74,6 @@ class Layout extends React.Component {
 					/>
 					<Route render={() => <h1>Not found!</h1>} />
 				</Switch>
-				<Footer />
 			</div>
 		);
 

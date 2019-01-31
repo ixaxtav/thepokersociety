@@ -10,13 +10,13 @@ export const AllSavedSchedules = property => (
 				<div className="container pt-2">
 					<h3 className="text-center pt-2">All Saved Schedules</h3>
 					<table
-						className="table textCenter justify-content-center"
+						className="table table-bordered textCenter justify-content-center"
 						style={{
 							tableLayout: "fixed",
 							width: "340px",
 							margin: "auto"
 						}}>
-						<thead className="pt-2 text-center">
+						<thead className="pt-2 text-center  thead-dark">
 							<tr>
 								<th scope="col">Name</th>
 								<th scope="col">Game</th>
