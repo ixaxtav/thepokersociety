@@ -42,19 +42,26 @@ export class Home extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					return (
-						<div>
-							<div className="row">
-								<div className="col-sm  pr-0 pl-0">
-									{menuChilds(store.menu)}
+						<div
+							className="home text-center"
+							style={{ backgroundImage: `url(${pokerImg})` }}>
+							<div className="lobster row h-100 text-white">
+								<div className="col my-auto">
+									{" "}
+									<h2 style={{ fontSize: "36px" }}>
+										{" "}
+										Start by selecting a calendar:
+									</h2>
+									<nav className="navbar navbar-expand-lg navbar-light bg-light select-tournament opensans">
+										<div
+											className="collapse navbar-collapse show active"
+											id="navbarTogglerDemo03">
+											<ul className="navbar-nav mr-auto">
+												{menuChilds(store.menu)}
+											</ul>
+										</div>
+									</nav>
 								</div>
-							</div>
-
-							<div
-								style={{
-									height: "100vh",
-									backgroundColor: "black"
-								}}>
-								<img src={pokerImg} className="fill" alt="" />
 							</div>
 						</div>
 					);

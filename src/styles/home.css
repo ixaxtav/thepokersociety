@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
 
+.home {
+    background-size: contain;
+    background-color: black;
+    background-repeat: no-repeat;
+    height: 100vh;
+  
+}
 
-.fill {
+.lobster{
+   font-family: 'Staatliches', cursive;
+}
 
-  position: fixed;
-  top: 55%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
+.opensans{
+    font-family: 'Open Sans', sans-serif;
 }

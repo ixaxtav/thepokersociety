@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/functional/scrollToTop.jsx";
 
 import { Home } from "./views/home.jsx";
+import { WelcomePage } from "./views/welcomePage.jsx";
 import { Profile } from "./views/profile.jsx";
 import MySchedules from "./views/myschedules.jsx";
 import { YourSchedule } from "./views/yourschedule.jsx";
@@ -28,12 +29,12 @@ class Layout extends React.Component {
 		const SignUpContainer = () => (
 			<Route path="/register" component={SignUp} />
 		);
+		const HomeContainer = () => <Route exact path="/" component={Home} />;
 
 		const DefaultContainer = () => (
 			<div className="m-0 p-0">
 				<Navbar />
 				<Switch>
-					<Route exact path="/" component={Home} />
 					<PrivateRoute exact path="/profile" component={Profile} />
 					<PrivateRoute
 						exact
@@ -72,6 +73,7 @@ class Layout extends React.Component {
 						path="/calendar/:cal_id"
 						component={Calendar}
 					/>
+
 					<Route render={() => <h1>Not found!</h1>} />
 				</Switch>
 			</div>
@@ -81,6 +83,7 @@ class Layout extends React.Component {
 			<BrowserRouter>
 				<ScrollToTop>
 					<Switch>
+						<Route exact path="/" component={HomeContainer} />
 						<Route exact path="/login" component={LoginContainer} />
 						<Route
 							exact
