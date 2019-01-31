@@ -6,6 +6,7 @@ import SearchBar from "../component/searchbar.jsx";
 import Tournament from "../component/Tournament.jsx";
 import TheStore from "../store/store";
 import chrono from "chrono-node";
+import "../../styles/calendar.css";
 
 export default class Calendar extends Flux.View {
 	constructor() {
@@ -322,7 +323,7 @@ export default class Calendar extends Flux.View {
 			);
 		});
 		return (
-			<div className="tournaments" style={{ paddingBotton: "50px" }}>
+			<div className="tournaments">
 				{this.state.error ? (
 					<div className="alert alert-danger text-center">
 						{this.state.error}
@@ -348,64 +349,62 @@ export default class Calendar extends Flux.View {
 						)}
 						<div
 							className="calendar"
-							style={{ overflow: "auto", marginTop: "-55px" }}
 							ref={c => (this.calendar = c)}>
 							<table
 								className={
 									"table-responsive table table-striped " +
 									(this.state.zoom ? "zoomed" : "")
 								}
-								ref={c => (this.tableBody = c)}
-								style={{ marginTop: "39px", fontSize: "6px" }}>
+								ref={c => (this.tableBody = c)}>
 								<thead
 									style={this.state.stickySyles}
 									ref={c => (this.thead = c)}>
 									<tr style={this.state.stickySyles2}>
 										<th
 											id="Date"
-											className="date"
+											className="date "
 											data-type="String">
 											Date
 										</th>
 										<th
 											id="Day"
-											className="day"
+											className="day "
 											data-type="String">
 											Day
 										</th>
 										<th
 											id="Time"
-											className="time"
+											className="time "
 											data-type="String">
 											Time
 										</th>
 										<th
 											id="Where"
-											className="where"
+											className="where "
 											data-type="String">
 											Where
 										</th>
 										<th
 											id="Tournament"
-											className="tournament"
+											className="tournament "
 											data-type="String">
 											Tournament
 										</th>
 										<th
 											id="Buy_in"
-											className="buyin"
+											className="buyin "
 											data-type="String">
 											Buyin
 										</th>
 										<th
 											id="Starting_Stack"
-											className="starting"
+											className="starting "
 											data-type="String">
 											Stack
 										</th>
 										<th
 											id="Blinds"
-											className="blinds"
+											className="blinds "
 											data-type="String">
 											Blinds
 										</th>

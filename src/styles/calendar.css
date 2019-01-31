@@ -1,0 +1,120 @@
+.tournaments .calendar {
+    overflow: auto;
+    margin-top: -55px;
+}
+
+.tournaments .calendar .table {
+    margin-top: 39px;
+    font-size: 6px;
+}
+
+.tournaments .calendar .table thead {
+    font-size: 8px;
+}
+
+.tournaments .calendar .table .date {
+    min-width: 25px;
+}
+
+.tournaments .calendar .table .day {
+    max-width: 18px;
+}
+
+.tournaments .calendar .table .time {
+    min-width: 20px;
+}
+
+.tournaments .calendar .table .where {
+    max-width: 50px;
+}
+
+.tournaments .calendar .table .tournament {
+    width: 100%;
+}
+
+.tournaments .calendar .table .buyin {
+    max-width: 28px;
+    text-align: center;
+}
+
+.tournaments .calendar .table .starting {
+    max-width: 28px;
+    text-align: center;
+}
+
+.tournaments .calendar .table .blinds {
+    max-width: 40px;
+    text-align: center;
+}
+
+@media (min-width: 576px){
+.tournaments .calendar .table {
+    font-size: 10px;
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table thead {
+    font-size: 14px;
+}}
+
+@media (min-width: 576px){
+th#Date {
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table .date {
+    min-width: 100px;
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table .day {
+    min-width: 55px;
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table .time {
+    min-width: 80px;
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table .where {
+    min-width: 175px;
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table .tournament {
+    width: 100%;
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table .buyin {
+    min-width: 55px;
+    text-align: left;
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table .starting {
+    min-width: 55px;
+    text-align: left;
+}}
+
+@media (min-width: 576px){
+.tournaments .calendar .table .blinds {
+    min-width: 55px;
+    text-align: left;
+}}
+
+.tournaments .bottom-bar {
+    border-top: 1px solid #BDBDBD;
+    font-size: 8px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: white;
+    width: 100%;
+}
+
+.bottom-bar .nav-item {
+    padding-top: 10px;
+    cursor: pointer;
+}

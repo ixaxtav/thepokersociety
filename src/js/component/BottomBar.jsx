@@ -41,21 +41,7 @@ class BottomBar extends React.Component {
 				)}
 			</li>
 		));
-		return (
-			<ul
-				className="bottom-bar nav nav-fill"
-				style={{
-					borderTop: "1px solid #BDBDBD",
-					fontSize: "8px",
-					position: "fixed",
-					bottom: "0",
-					left: "0",
-					background: "white",
-					width: "100%"
-				}}>
-				{menuItems}
-			</ul>
-		);
+		return <ul className="bottom-bar nav nav-fill">{menuItems}</ul>;
 	}
 }
 
