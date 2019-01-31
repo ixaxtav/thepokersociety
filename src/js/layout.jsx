@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/functional/scrollToTop.jsx";
 
 import { Home } from "./views/home.jsx";
-import { WelcomePage } from "./views/welcomePage.jsx";
+
 import { Profile } from "./views/profile.jsx";
 import MySchedules from "./views/myschedules.jsx";
 import { YourSchedule } from "./views/yourschedule.jsx";
@@ -17,7 +17,7 @@ import { ScheduleView } from "./views/scheduleview.jsx";
 import { TournamentInfo } from "./views/tournamentinfo.jsx";
 import { SignUp } from "./views/signup.jsx";
 import Calendar from "./views/calendar.jsx";
-import { Navbar } from "./component/navbar.jsx";
+import Navbar from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import Store from "./store/appContext.jsx";
 import { PrivateRoute } from "bc-react-session";

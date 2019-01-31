@@ -1,26 +1,29 @@
 import React from "react";
-import "../../styles/navbar.css";
 import pokerIcon from "../../img/pokericon.png";
 import { Link, NavLink } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import { Session } from "bc-react-session";
 
-export const Navbar = () => (
-	<Context.Consumer>
-		{({ store, actions }) => {
-			const session = Session.get();
+export default class Navbar extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			showNavbar: false
+		};
+	}
 
-			return (
-				<div className=" p-0 m-0">
-					<nav className="navbar navbar-expand-lg navbar-light bg-light">
-						<Link className="navbar-brand" to="/">
-							<span className="mr-2">
-								<img src={pokerIcon} />
-							</span>
-							The Poker Society
-						</Link>
-
-						{store.navbarCollapse != true ? (
+	render() {
+		const collapseClass = this.state.showNavbar ? "show" : "";
+		return (
+			<Context.Consumer>
+				{({ store, actions }) => {
+					const session = Session.get();
+					return (
+						<nav className="main-navbar navbar navbar-light bg-light">
+							<Link className="navbar-brand" to="/">
+								<img className="mr-2" src={pokerIcon} />
+								The Poker Society
+							</Link>
 							<button
 								className="navbar-toggler"
 								type="button"
@@ -29,24 +32,26 @@ export const Navbar = () => (
 								aria-controls="navbarNav"
 								aria-expanded="false"
 								aria-label="Toggle navigation"
-								onClick={() => actions.navbarCollapseItems()}>
+								onClick={() =>
+									this.setState({
+										showNavbar: !this.state.showNavbar
+									})
+								}>
 								<span className="navbar-toggler-icon" />
 							</button>
-						) : (
 							<div
-								className=" navbar-collapse justify-content-right"
+								className={
+									"collapse navbar-collapse " + collapseClass
+								}
 								id="navbarNav">
 								<ul className="navbar-nav">
 									<li className="nav-item">
 										<NavLink className="nav-link" to="/">
 											Home
 										</NavLink>
-									</li>
-									<li className="nav-item">
 										<a
 											className="nav-link"
 											href="mailto:info@thepokersociety.com">
-											{" "}
 											Contact Us
 										</a>
 									</li>
@@ -75,28 +80,12 @@ export const Navbar = () => (
 											</Link>
 										)}
 									</li>
-
-									<li className="nav-item">
-										<button
-											className="navbar-toggler"
-											type="button"
-											data-toggle="collapse"
-											data-target="#navbarNav"
-											aria-controls="navbarNav"
-											aria-expanded="false"
-											aria-label="Toggle navigation"
-											onClick={() =>
-												actions.navbarCollapseItems()
-											}>
-											<span className="fas fa-angle-up" />
-										</button>
-									</li>
 								</ul>
 							</div>
-						)}
-					</nav>
-				</div>
-			);
-		}}
-	</Context.Consumer>
-);
+						</nav>
+					);
+				}}
+			</Context.Consumer>
+		);
+	}
+}
