@@ -22,6 +22,7 @@ const getState = ({ getStore, setStore }) => {
 			// toggles j
 			creatingNewUser: false,
 			navbarCollapse: false,
+			hideHeading: false,
 
 			user: {
 				username: "",
@@ -303,6 +304,14 @@ const getState = ({ getStore, setStore }) => {
 
 				this.setStoreAndSession({
 					creatingNewUser: !store.creatingNewUser
+				});
+			},
+
+			toggleHomeHeading() {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					hideHeading: !store.hideHeading
 				});
 			},
 

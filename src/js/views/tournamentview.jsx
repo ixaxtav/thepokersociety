@@ -57,7 +57,7 @@ export const TournamentView = property => (
 						</div>
 					</div>
 
-					<div className="row text-center pt-2">
+					<div className="row text-center pt-2 justify-content-center">
 						<div className="col">
 							<a
 								href="javascript:history.back()"
@@ -66,7 +66,21 @@ export const TournamentView = property => (
 							</a>
 						</div>
 
-						{tour["structure-sheet"] != null ? (
+						{tour["structure-sheet"] != null &&
+						tour["results-link"] != " " ? (
+							<div className="col ">
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={tour["structure-sheet"]}
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="fas fa-clipboard-list" />
+								</a>
+							</div>
+						) : tour["structure-sheet"] != null ? (
 							<div className="col">
 								<a
 									target="_blank"
@@ -79,10 +93,21 @@ export const TournamentView = property => (
 									<i className="fas fa-clipboard-list" />
 								</a>
 							</div>
-						) : (
-							<div className="col text-danger pt-2">
-								No structure
+						) : tour["results-link"] != " " ? (
+							<div className="col">
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={tour["results-link"]}
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="fas fa-trophy" />
+								</a>
 							</div>
+						) : (
+							<div className="col" />
 						)}
 
 						<div className="col">
@@ -97,8 +122,27 @@ export const TournamentView = property => (
 					<div className="row text-center">
 						<div className="col">Back to Calendar</div>
 
-						{tour["structure-sheet"] != null ? (
-							<div className="col">Structure</div>
+						{tour["structure-sheet"] != null &&
+						tour["results-link"] != " " ? (
+							<div className="col ">
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={tour["results-links"]}
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="fas fa-trophy" />
+								</a>
+							</div>
+						) : tour["results-link"] == " " &&
+						tour["structure-sheet"] == null ? (
+							<div className="col" />
+						) : tour["structure-sheet"] != null ? (
+							<div className="col">Tournament Structure</div>
+						) : tour["results-link"] != " " ? (
+							<div className="col">Tournament Results</div>
 						) : (
 							<div className="col" />
 						)}
