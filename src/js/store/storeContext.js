@@ -194,7 +194,10 @@ const getState = ({ getStore, setStore }) => {
 					schedules: store.schedules.map((s, t) => {
 						if (scheduleId == s.id) {
 							return Object.assign(s, {
-								total: tour["buy-in"],
+								total: parseFloat(
+									tour["buy-in"].replace("$", "")
+								),
+
 								attempts: [
 									{
 										tournamentName: tour.post_title,
@@ -284,7 +287,13 @@ const getState = ({ getStore, setStore }) => {
 							});
 
 							return Object.assign(s, {
-								total: total,
+								total:
+									total *
+									parseFloat(
+										store.currentTournament[
+											"buy-in"
+										].replace("$", "")
+									),
 								attempts: s.attempts.map(a => {
 									if (tournamentId == a.tournamentId) {
 										a.bullets = Math.abs(bulletCount);

@@ -9,6 +9,7 @@ export const ScheduleView = property => (
 			const schedule = store.schedules.find(
 				s => s.id == property.match.params.schedule_id
 			);
+			console.log(store.currentTournament["buy-in"]);
 			return (
 				<div className="container pt-2">
 					<h3>All Schedules</h3>

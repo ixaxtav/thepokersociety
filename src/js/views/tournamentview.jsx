@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.jsx";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 export const TournamentView = property => (
 	<Context.Consumer>
@@ -20,12 +21,53 @@ export const TournamentView = property => (
 
 			const tour = store.currentTournament;
 
+			let todayDate = moment().format("MMMM Do YYYY");
+			let tournamentDate = moment(tour["tournament-date"]).format(
+				"MMMM Do YYYY"
+			);
+			let differenceDate = tournamentDate - todayDate;
+			let duration = moment.duration(
+				differenceDate * 1000,
+				"milliseconds"
+			);
+			let interval = 1000;
+
+			duration = moment.duration(duration - interval, "milliseconds");
+
+			console.log(
+				moment(tour["tournament-date"])
+					.startOf("day")
+					.fromNow()
+			);
 			return (
 				<div>
 					<h4 className="mt-4" style={{ textAlign: "center" }}>
 						{tour ? tour.post_title : "Tournament not found"}
 					</h4>
-
+					<div className="row justify-content-center text-center pt-2 pb-2">
+						<div
+							className="col-9"
+							style={{ verticalAlign: "middle" }}>
+							<div>
+								<h6>
+									{" "}
+									Date :{" "}
+									{tour
+										? tour["tournament-date"]
+										: "Date Not Found"}{" "}
+									@{" "}
+									{tour
+										? tour["tournament-time"]
+										: "Time Not Found"}
+								</h6>
+								<span className="text-danger">
+									{moment(tour["tournament-date"])
+										.startOf("day")
+										.fromNow()}
+								</span>
+							</div>
+						</div>
+					</div>
 					<div
 						className="row"
 						style={{
@@ -128,7 +170,7 @@ export const TournamentView = property => (
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href={tour["results-links"]}
+									href={tour["results-link"]}
 									style={{
 										color: "black",
 										fontSize: "32px"
@@ -150,8 +192,8 @@ export const TournamentView = property => (
 						<div className="col">Add to Schedule</div>
 					</div>
 
-					<div className="row text-center font-italic">
-						<div className="col-11 p-3">{tour.post_content}</div>
+					<div className="row text-center font-italic justify-content-center p-2">
+						<div className="col-10 p-3">{tour.post_content}</div>
 					</div>
 				</div>
 			);
