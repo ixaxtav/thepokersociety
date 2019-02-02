@@ -236,6 +236,7 @@ const getState = ({ getStore, setStore }) => {
 
 			createSchedule(temporalScheduleName) {
 				const store = getStore();
+
 				this.setStoreAndSession({
 					schedules: store.schedules.concat([
 						{

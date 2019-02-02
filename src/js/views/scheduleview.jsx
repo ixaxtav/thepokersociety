@@ -79,6 +79,13 @@ export const ScheduleView = property => (
 						{" "}
 						Save Tournament
 					</button>
+					<button
+						onClick={e => {
+							actions.retrieveUser();
+						}}>
+						retrieve
+					</button>
+					{console.log(store.schedules)}
 				</div>
 			);
 		}}

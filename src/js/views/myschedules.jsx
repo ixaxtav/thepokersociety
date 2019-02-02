@@ -9,9 +9,11 @@ export default class MySchedule extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			temporalScheduleName: ""
+			temporalScheduleName: "",
+			checkedSchedule: false
 		};
 	}
+
 	render() {
 		return (
 			<Context.Consumer>
@@ -30,22 +32,53 @@ export default class MySchedule extends React.Component {
 							</h3>
 							<hr />
 							{store.schedules.map((s, i) => (
-								<ul key={i} style={{ listStyleType: "none" }}>
-									{" "}
-									<li>
+								<ul
+									key={i}
+									style={{
+										listStyleType: "none",
+										paddingLeft: "0"
+									}}>
+									<li style={{ fontSize: "16px" }}>
 										<label className="checkboxes">
-											<input type="checkbox" />{" "}
+											<input
+												type="checkbox"
+												value={s.id}
+												onChange={e =>
+													this.setState({
+														checkedSchedule: !this
+															.state
+															.checkedSchedule
+													})
+												}
+											/>{" "}
 											<span>
 												{" "}
-												{s.name} | Total = {""}
+												<Link to={"/schedule/" + s.id}>
+													{s.name}{" "}
+												</Link>{" "}
+												| Total = {""}
 												{s.total}$
 											</span>
 										</label>
+										<i
+											className="far fa-trash-alt float-right"
+											style={{
+												fontSize: "26px",
+												verticalAlign: "middle"
+											}}
+											onClick={e =>
+												actions.deleteOneSchedule(s.id)
+											}
+										/>
 
 										<Link to={"/schedule/" + s.id}>
 											<i
-												className="fas fa-plus-circle"
-												style={{ marginLeft: "15px" }}
+												className="fas fa-plus-circle float-right"
+												style={{
+													fontSize: "26px",
+													verticalAlign: "middle",
+													marginRight: "25px"
+												}}
 												onClick={e =>
 													actions.addToSchedule(
 														s.id,
@@ -54,17 +87,11 @@ export default class MySchedule extends React.Component {
 												}
 											/>
 										</Link>
-										<i
-											className="far fa-trash-alt"
-											style={{ marginLeft: "15px" }}
-											onClick={e =>
-												actions.deleteOneSchedule(s.id)
-											}
-										/>
 									</li>
 								</ul>
 							))}
-
+							{console.log(store.schedules)}
+							{console.log(this.state.checkedSchedule)}
 							{store.creatingNewUser != true ? (
 								<div className="row justify-content-center pb-2">
 									<div className="col">
