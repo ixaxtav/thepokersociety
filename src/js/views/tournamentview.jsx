@@ -44,7 +44,7 @@ export const TournamentView = property => (
 					<h4 className="mt-4" style={{ textAlign: "center" }}>
 						{tour ? tour.post_title : "Tournament not found"}
 					</h4>
-					<div className="row justify-content-center text-center pt-2 pb-2">
+					<div className="row justify-content-center text-center pt-2">
 						<div
 							className="col-9"
 							style={{ verticalAlign: "middle" }}>
@@ -59,14 +59,18 @@ export const TournamentView = property => (
 									{tour
 										? tour["tournament-time"]
 										: "Time Not Found"}
+									{" - "}
+									<span className="text-danger">
+										{moment(tour["tournament-date"])
+											.startOf("day")
+											.fromNow()}
+									</span>
 								</h6>
-								<span className="text-danger">
-									{moment(tour["tournament-date"])
-										.startOf("day")
-										.fromNow()}
-								</span>
 							</div>
 						</div>
+					</div>
+					<div className="row text-center font-italic justify-content-center p-2">
+						<div className="col-10 pb-3">{tour.post_content}</div>
 					</div>
 					<div
 						className="row"
@@ -190,10 +194,6 @@ export const TournamentView = property => (
 						)}
 
 						<div className="col">Add to Schedule</div>
-					</div>
-
-					<div className="row text-center font-italic justify-content-center p-2">
-						<div className="col-10 p-3">{tour.post_content}</div>
 					</div>
 				</div>
 			);

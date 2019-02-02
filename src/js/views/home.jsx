@@ -14,12 +14,12 @@ const menuChilds = menu =>
 					{item.title}
 				</Link>
 			) : (
-				<div className="submenu">
-					<button className="nav-link submenu-toggle btn btn-block  btn-light dropdown-toggle">
+				<div className="submenu" style={{ position: "relative" }}>
+					<button className="nav-link submenu-toggle btn btn-light dropdown-toggle text-center mx-auto">
 						{item.title}
 					</button>
 					<div
-						className="dropdown-menu btn btn-block  btn-light text-center m-0"
+						className="dropdown-menu btn btn-light text-center mx-auto mt-2 w-100"
 						aria-labelledby="navbarDropdown">
 						{menuChilds(item)}
 					</div>

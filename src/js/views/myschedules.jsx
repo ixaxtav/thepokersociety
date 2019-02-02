@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../../styles/login.css";
 import { Context } from "../store/appContext.jsx";
 import PropTypes from "prop-types";
+import "../../styles/myschedules.css";
 
 export default class MySchedule extends React.Component {
 	constructor() {
@@ -32,8 +33,15 @@ export default class MySchedule extends React.Component {
 								<ul key={i} style={{ listStyleType: "none" }}>
 									{" "}
 									<li>
-										{s.name} | Total = {""}
-										{s.total}$
+										<label className="checkboxes">
+											<input type="checkbox" />{" "}
+											<span>
+												{" "}
+												{s.name} | Total = {""}
+												{s.total}$
+											</span>
+										</label>
+
 										<Link to={"/schedule/" + s.id}>
 											<i
 												className="fas fa-plus-circle"
@@ -71,38 +79,58 @@ export default class MySchedule extends React.Component {
 									</div>
 								</div>
 							) : (
-								<div className="input-group mb-3">
-									<input
-										type="text"
-										key="temporalScheduleName"
-										className="form-control"
-										placeholder="Type the name of the schedule..."
-										aria-label="Recipient's username"
-										aria-describedby="button-addon2"
-										value={this.state.temporalScheduleName}
-										onChange={e =>
-											this.setState({
-												temporalScheduleName:
-													e.target.value
-											})
-										}
-									/>
-									<div className="input-group-append">
-										<button
-											className="btn btn-outline-dark"
-											type="button"
-											id="button-addon2"
-											onClick={() =>
-												actions.createSchedule(
+								<div className="row justify">
+									<div className="col">
+										<div className="input-group mb-3">
+											<input
+												type="text"
+												key="temporalScheduleName"
+												className="form-control"
+												placeholder="Type the name of the schedule..."
+												aria-label="Recipient's username"
+												aria-describedby="button-addon2"
+												value={
 													this.state
 														.temporalScheduleName
-												)
-											}>
-											Accept
-										</button>
-									</div>{" "}
+												}
+												onChange={e =>
+													this.setState({
+														temporalScheduleName:
+															e.target.value
+													})
+												}
+											/>
+											<div className="input-group-append">
+												<button
+													className="btn btn-outline-dark"
+													type="button"
+													id="button-addon2"
+													onClick={() =>
+														actions.createSchedule(
+															this.state
+																.temporalScheduleName
+														)
+													}>
+													Accept
+												</button>
+											</div>{" "}
+										</div>
+									</div>
 								</div>
 							)}
+							<div className="row text-center">
+								<div className="col">
+									<button
+										className="btn btn-light border"
+										onClick={e => {
+											e.preventDefault();
+											actions.saveAllUserSchedules();
+										}}>
+										{" "}
+										Save in All Schedules
+									</button>
+								</div>
+							</div>
 						</div>
 					);
 				}}
