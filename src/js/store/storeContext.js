@@ -214,6 +214,35 @@ const getState = ({ getStore, setStore }) => {
 				});
 			},
 
+			addToAllSchedules(tour, checkedSchedules) {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					schedules: store.schedules.map((s, t) => {
+						checkedSchedules.forEach(function(item) {
+							if (item == s.id) {
+								return Object.assign(s, {
+									total: parseFloat(
+										tour["buy-in"].replace("$", "")
+									),
+
+									attempts: [
+										{
+											tournamentName: tour.post_title,
+											tournamentId: tour.ID,
+											price: tour["buy-in"],
+											bullets: 1
+										}
+									]
+								});
+							} else {
+								return s;
+							}
+						});
+					})
+				});
+			},
+
 			updateAccountInfo(token) {
 				const store = getStore();
 

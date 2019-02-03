@@ -50,11 +50,11 @@ export class Home extends React.Component {
 								<div className="col my-auto">
 									{" "}
 									<div />
-									<nav className="navbar navbar-expand-lg navbar-light bg-light select-tournament opensans">
+									<nav className="navbar navbar-expand-lg navbar-light bg-light select-tournament opensans  ">
 										<div
 											className="collapse navbar-collapse show active"
 											id="navbarTogglerDemo03">
-											<ul className="navbar-nav mr-auto">
+											<ul className="navbar-nav m-auto">
 												{menuChilds(store.menu)}
 											</ul>
 										</div>

@@ -10,7 +10,7 @@ export default class MySchedule extends React.Component {
 		super();
 		this.state = {
 			temporalScheduleName: "",
-			checkedSchedule: false
+			checkedSchedules: []
 		};
 	}
 
@@ -26,7 +26,7 @@ export default class MySchedule extends React.Component {
 
 					return (
 						<div className="container">
-							<h3>
+							<h3 className="mt-4">
 								To what schedule you want to add this tournament
 								to?
 							</h3>
@@ -42,14 +42,26 @@ export default class MySchedule extends React.Component {
 										<label className="checkboxes">
 											<input
 												type="checkbox"
-												value={s.id}
-												onChange={e =>
-													this.setState({
-														checkedSchedule: !this
-															.state
-															.checkedSchedule
-													})
-												}
+												checked={this.state.checkedSchedules.find(
+													item => item.id === s.id
+												)}
+												onChange={e => {
+													if (e.target.checked) {
+														this.setState({
+															checkedSchedules: this.state.checkedSchedules.concat(
+																[s.id]
+															)
+														});
+													} else {
+														this.setState({
+															checkedSchedules: this.state.checkedSchedules.filter(
+																item =>
+																	item.id ===
+																	s.id
+															)
+														});
+													}
+												}}
 											/>{" "}
 											<span>
 												{" "}
@@ -91,7 +103,9 @@ export default class MySchedule extends React.Component {
 								</ul>
 							))}
 							{console.log(store.schedules)}
-							{console.log(this.state.checkedSchedule)}
+							{console.log(tour)}
+
+							{console.log(this.state.checkedSchedules)}
 							{store.creatingNewUser != true ? (
 								<div className="row justify-content-center pb-2">
 									<div className="col">
@@ -150,13 +164,24 @@ export default class MySchedule extends React.Component {
 									<button
 										className="btn btn-light border"
 										onClick={e => {
+											actions.addToAllSchedules();
+										}}>
+										{" "}
+										Add to All
+									</button>
+									<button
+										className="btn btn-light border"
+										onClick={e => {
 											e.preventDefault();
-											actions.saveAllUserSchedules();
+											actions.saveAllUserSchedules(
+												this.state.checkedSchedules
+											);
 										}}>
 										{" "}
 										Save in All Schedules
 									</button>
 								</div>
+								{console.log()}
 							</div>
 						</div>
 					);
