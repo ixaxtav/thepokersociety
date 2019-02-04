@@ -32,21 +32,7 @@ const getState = ({ getStore, setStore }) => {
 				lastName: ""
 			},
 
-			schedules: [
-				{
-					id: 1,
-					name: "Schedule Name",
-					total: 9000,
-					attempts: [
-						{
-							tournamentName: "Tournament Name",
-							tournamentId: 123,
-							price: 9000,
-							bullets: 2
-						}
-					]
-				}
-			]
+			schedules: []
 		},
 		actions: {
 			setStoreAndSession(payload) {
@@ -219,26 +205,24 @@ const getState = ({ getStore, setStore }) => {
 
 				this.setStoreAndSession({
 					schedules: store.schedules.map((s, t) => {
-						checkedSchedules.forEach(function(item) {
-							if (item == s.id) {
-								return Object.assign(s, {
-									total: parseFloat(
-										tour["buy-in"].replace("$", "")
-									),
+						if (checkedSchedules.includes(s.id)) {
+							return Object.assign(s, {
+								total: parseFloat(
+									tour["buy-in"].replace("$", "")
+								),
 
-									attempts: [
-										{
-											tournamentName: tour.post_title,
-											tournamentId: tour.ID,
-											price: tour["buy-in"],
-											bullets: 1
-										}
-									]
-								});
-							} else {
-								return s;
-							}
-						});
+								attempts: [
+									{
+										tournamentName: tour.post_title,
+										tournamentId: tour.ID,
+										price: tour["buy-in"],
+										bullets: 1
+									}
+								]
+							});
+						} else {
+							return s;
+						}
 					})
 				});
 			},

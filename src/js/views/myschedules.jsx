@@ -23,7 +23,9 @@ export default class MySchedule extends React.Component {
 					);
 
 					const tour = store.currentTournament;
-
+					{
+						console.log(this.state.checkedSchedules);
+					}
 					return (
 						<div className="container">
 							<h3 className="mt-4">
@@ -43,7 +45,7 @@ export default class MySchedule extends React.Component {
 											<input
 												type="checkbox"
 												checked={this.state.checkedSchedules.find(
-													item => item.id === s.id
+													item => item === s.id
 												)}
 												onChange={e => {
 													if (e.target.checked) {
@@ -56,8 +58,7 @@ export default class MySchedule extends React.Component {
 														this.setState({
 															checkedSchedules: this.state.checkedSchedules.filter(
 																item =>
-																	item.id ===
-																	s.id
+																	item != s.id
 															)
 														});
 													}
@@ -102,10 +103,7 @@ export default class MySchedule extends React.Component {
 									</li>
 								</ul>
 							))}
-							{console.log(store.schedules)}
-							{console.log(tour)}
 
-							{console.log(this.state.checkedSchedules)}
 							{store.creatingNewUser != true ? (
 								<div className="row justify-content-center pb-2">
 									<div className="col">
@@ -164,7 +162,10 @@ export default class MySchedule extends React.Component {
 									<button
 										className="btn btn-light border"
 										onClick={e => {
-											actions.addToAllSchedules();
+											actions.addToAllSchedules(
+												tour,
+												this.state.checkedSchedules
+											);
 										}}>
 										{" "}
 										Add to All
@@ -173,9 +174,7 @@ export default class MySchedule extends React.Component {
 										className="btn btn-light border"
 										onClick={e => {
 											e.preventDefault();
-											actions.saveAllUserSchedules(
-												this.state.checkedSchedules
-											);
+											actions.saveAllUserSchedules();
 										}}>
 										{" "}
 										Save in All Schedules
