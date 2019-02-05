@@ -32,7 +32,7 @@ class Layout extends React.Component {
 		const HomeContainer = () => <Route exact path="/" component={Home} />;
 
 		const DefaultContainer = () => (
-			<div className="m-0 p-0">
+			<div>
 				<Navbar />
 				<Switch>
 					<PrivateRoute exact path="/profile" component={Profile} />

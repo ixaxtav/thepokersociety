@@ -19,7 +19,7 @@ const menuChilds = menu =>
 						{item.title}
 					</button>
 					<div
-						className="dropdown-menu btn btn-light text-center mx-auto mt-2 w-100"
+						className="dropdown-menu btn text-center mx-auto pt-2 w-100"
 						aria-labelledby="navbarDropdown">
 						{menuChilds(item)}
 					</div>
@@ -43,27 +43,29 @@ export class Home extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					return (
-						<div
-							className="home text-center"
-							style={{ backgroundImage: `url(${pokerImg})` }}>
-							<div className="lobster row h-100 text-white">
-								<div className="col my-auto">
-									{" "}
-									<div />
-									<nav className="navbar navbar-expand-lg navbar-light bg-light select-tournament opensans  ">
-										<div
-											className="collapse navbar-collapse show active"
-											id="navbarTogglerDemo03">
-											<ul className="navbar-nav m-auto">
-												{menuChilds(store.menu)}
-											</ul>
+						<div>
+							<div
+								className="home text-center"
+								style={{ backgroundImage: `url(${pokerImg})` }}>
+								<div className="lobster row h-100 text-white m-0 p-0">
+									<div className="col my-auto">
+										{" "}
+										<div />
+										<nav className="navbar navbar-expand-lg navbar-light bg-light select-tournament opensans  ">
+											<div
+												className="collapse navbar-collapse show active"
+												id="navbarTogglerDemo03">
+												<ul className="navbar-nav m-auto">
+													{menuChilds(store.menu)}
+												</ul>
+											</div>
+										</nav>
+										<div>
+											<h2 style={{ fontSize: "36px" }}>
+												{" "}
+												Select a calendar
+											</h2>
 										</div>
-									</nav>
-									<div>
-										<h2 style={{ fontSize: "36px" }}>
-											{" "}
-											Select a calendar
-										</h2>
 									</div>
 								</div>
 							</div>
