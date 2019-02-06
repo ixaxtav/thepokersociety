@@ -136,6 +136,15 @@ export default class MySchedule extends React.Component {
 															e.target.value
 													})
 												}
+												onKeyDown={e => {
+													if (e.keyCode === 13) {
+														e.preventDefault();
+														actions.createSchedule(
+															this.state
+																.temporalScheduleName
+														);
+													}
+												}}
 											/>
 											<div className="input-group-append">
 												<button
