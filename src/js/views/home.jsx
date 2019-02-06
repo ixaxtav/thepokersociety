@@ -19,7 +19,7 @@ const menuChilds = menu =>
 						{item.title}
 					</button>
 					<div
-						className="dropdown-menu btn text-center mx-auto pt-2 w-100"
+						className="dropdown-menu btn text-center mx-auto mt-2 w-100"
 						aria-labelledby="navbarDropdown">
 						{menuChilds(item)}
 					</div>

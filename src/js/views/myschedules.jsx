@@ -23,9 +23,7 @@ export default class MySchedule extends React.Component {
 					);
 
 					const tour = store.currentTournament;
-					{
-						console.log(this.state.checkedSchedules);
-					}
+
 					return (
 						<div className="container">
 							<h3 className="mt-4">
@@ -170,17 +168,7 @@ export default class MySchedule extends React.Component {
 										{" "}
 										Add to All
 									</button>
-									<button
-										className="btn btn-light border"
-										onClick={e => {
-											e.preventDefault();
-											actions.saveAllUserSchedules();
-										}}>
-										{" "}
-										Save in All Schedules
-									</button>
 								</div>
-								{console.log()}
 							</div>
 						</div>
 					);

@@ -59,16 +59,24 @@ export const TournamentView = property => (
 									{tour
 										? tour["tournament-time"]
 										: "Time Not Found"}
-									{" - "}
-									<span className="text-danger">
-										{moment(tour["tournament-date"])
-											.startOf("day")
-											.fromNow()}
-									</span>
 								</h6>
 							</div>
 						</div>
 					</div>
+					<div className="row justify-content-center text-center pt-2">
+						<div
+							className="col-9"
+							style={{ verticalAlign: "middle" }}>
+							<div>
+								<h6 className="text-danger">
+									{moment(tour["tournament-date"])
+										.startOf("day")
+										.fromNow()}
+								</h6>
+							</div>
+						</div>
+					</div>
+
 					<div className="row text-center font-italic justify-content-center p-2">
 						<div className="col-10 pb-3">{tour.post_content}</div>
 					</div>

@@ -32,6 +32,24 @@ export class Login extends React.Component {
 								onChange={e =>
 									this.setState({ username: e.target.value })
 								}
+								onKeyDown={e => {
+									if (e.keyCode === 13) {
+										e.preventDefault();
+										{
+											actions.login(
+												this.state.username,
+												this.state.password,
+												error => {
+													if (!error)
+														this.props.history.push(
+															"/profile"
+														);
+													else alert(error.message);
+												}
+											);
+										}
+									}
+								}}
 							/>
 						</div>
 
@@ -45,6 +63,24 @@ export class Login extends React.Component {
 								onChange={e =>
 									this.setState({ password: e.target.value })
 								}
+								onKeyDown={e => {
+									if (e.keyCode === 13) {
+										e.preventDefault();
+										{
+											actions.login(
+												this.state.username,
+												this.state.password,
+												error => {
+													if (!error)
+														this.props.history.push(
+															"/profile"
+														);
+													else alert(error.message);
+												}
+											);
+										}
+									}
+								}}
 							/>
 						</div>
 						<div className="text-center pt-2 pb-2">
@@ -86,6 +122,24 @@ export class Login extends React.Component {
 												else alert(error.message);
 											}
 										);
+									}
+								}}
+								onKeyPress={e => {
+									if (e.keyCode === 13) {
+										e.preventDefault();
+										{
+											actions.login(
+												this.state.username,
+												this.state.password,
+												error => {
+													if (!error)
+														this.props.history.push(
+															"/profile"
+														);
+													else alert(error.message);
+												}
+											);
+										}
 									}
 								}}>
 								Log In{" "}
