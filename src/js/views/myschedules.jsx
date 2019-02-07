@@ -134,12 +134,13 @@ export default class MySchedule extends React.Component {
 													className="btn btn-outline-dark"
 													type="button"
 													id="button-addon2"
-													onClick={() =>
+													onClick={() => {
 														actions.createSchedule(
 															this.state
 																.temporalScheduleName
-														)
-													}>
+														),
+															actions.toggleNewScheduleButton();
+													}}>
 													Accept
 												</button>
 											</div>{" "}
