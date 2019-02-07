@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import { Session } from "bc-react-session";
 import "../../styles/home.css";
+import PropTypes from "prop-types";
 
 export default class Navbar extends React.Component {
 	constructor() {
@@ -20,7 +21,9 @@ export default class Navbar extends React.Component {
 				{({ store, actions }) => {
 					const session = Session.get();
 					return (
-						<nav className="lobster main-navbar navbar navbar-light bg-light">
+						<nav
+							className="lobster main-navbar navbar navbar-light bg-light"
+							style={this.props.navBarStyle}>
 							<Link className="navbar-brand" to="/">
 								<img className="mr-2" src={pokerIcon} />
 								The Poker Society
@@ -50,6 +53,8 @@ export default class Navbar extends React.Component {
 										<NavLink className="nav-link" to="/">
 											Home
 										</NavLink>
+									</li>
+									<li>
 										<a
 											className="nav-link"
 											href="mailto:info@thepokersociety.com">
@@ -90,3 +95,7 @@ export default class Navbar extends React.Component {
 		);
 	}
 }
+
+Navbar.propTypes = {
+	navBarStyle: PropTypes.string
+};

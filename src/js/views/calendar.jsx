@@ -2,6 +2,7 @@
 import React from "react";
 import Flux from "@4geeksacademy/react-flux-dash";
 import BottomBar from "../component/BottomBar.jsx";
+import Navbar from "../component/navbar.jsx";
 import SearchBar from "../component/searchbar.jsx";
 import Tournament from "../component/Tournament.jsx";
 import TheStore from "../store/store";
@@ -19,7 +20,8 @@ export default class Calendar extends Flux.View {
 			error: null, //if there is any errors
 			stick: false, //the sticky bar on the top
 			stickySyles: {}, //styles of the stick bar
-			stickySyles2: {} //styles of the stick bar
+			stickySyles2: {}, //styles of the stick bar
+			stickySyles3: {} //styles of the stick bar
 		};
 
 		// this will contain the <TR> that contains todays tournament.
@@ -86,7 +88,7 @@ export default class Calendar extends Flux.View {
 					stickySyles: {
 						position: "fixed",
 						background: "white",
-						top: "38px",
+						top: "93px",
 						left: 0,
 						width: "100%",
 						overflowY: "hidden"
@@ -94,11 +96,25 @@ export default class Calendar extends Flux.View {
 					stickySyles2: {
 						//width: this.tableBody.offsetWidth,
 						width: "100%"
+					},
+					stickySyles3: {
+						position: "fixed",
+						background: "white",
+						top: 0,
+						left: 0,
+						width: "100%",
+						overflowY: "hidden",
+						zIndex: 3000
 					}
 				});
 			}
 		} else if (!this.state.loading)
-			this.setState({ stickySyles: {}, stickySyles2: {}, sticky: false });
+			this.setState({
+				stickySyles: {},
+				stickySyles2: {},
+				stickySyles3: {},
+				sticky: false
+			});
 	}
 
 	// I use this function every time I need to sync the tournaments from PokerSociertyAPI with this calendar.
@@ -330,6 +346,8 @@ export default class Calendar extends Flux.View {
 					</div>
 				) : (
 					<div>
+						<Navbar navBarStyle={this.state.stickySyles3} />
+
 						<SearchBar
 							className={this.state.sticky ? "sticky" : ""}
 							onChange={(token, type) =>

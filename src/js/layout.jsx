@@ -29,7 +29,9 @@ class Layout extends React.Component {
 		const SignUpContainer = () => (
 			<Route path="/register" component={SignUp} />
 		);
-
+		const calendarContainer = () => (
+			<Route path="/calendar/:cal_id" component={Calendar} />
+		);
 		const DefaultContainer = () => (
 			<div>
 				<Navbar />
@@ -68,11 +70,6 @@ class Layout extends React.Component {
 						path="/tournament/:tournament_id"
 						component={TournamentView}
 					/>
-					<Route
-						exact
-						path="/calendar/:cal_id"
-						component={Calendar}
-					/>
 
 					<Route render={() => <h1>Not found!</h1>} />
 				</Switch>
@@ -88,6 +85,11 @@ class Layout extends React.Component {
 							exact
 							path="/register"
 							component={SignUpContainer}
+						/>
+						<Route
+							exact
+							path="/calendar/:cal_id"
+							component={Calendar}
 						/>
 						<Route component={DefaultContainer} />
 					</Switch>

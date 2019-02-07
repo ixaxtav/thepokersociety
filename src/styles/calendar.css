@@ -118,3 +118,25 @@ th#Date {
     padding-top: 10px;
     cursor: pointer;
 }
+
+
+
+.searchbar.sticky {
+    position: fixed;
+    top: 55px;
+    left: 0;
+    width: 100%;
+        overflow-y: hidden;
+    z-index: 2000;
+}
+
+
+.sticky1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+        overflow-y: hidden;
+    z-index: 2000;
+}
+
