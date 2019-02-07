@@ -81,23 +81,6 @@ export default class MySchedule extends React.Component {
 												actions.deleteOneSchedule(s.id)
 											}
 										/>
-
-										<Link to={"/schedule/" + s.id}>
-											<i
-												className="fas fa-plus-circle float-right"
-												style={{
-													fontSize: "26px",
-													verticalAlign: "middle",
-													marginRight: "25px"
-												}}
-												onClick={e =>
-													actions.addToSchedule(
-														s.id,
-														tour
-													)
-												}
-											/>
-										</Link>
 									</li>
 								</ul>
 							))}
@@ -164,21 +147,6 @@ export default class MySchedule extends React.Component {
 									</div>
 								</div>
 							)}
-							<div className="row text-center">
-								<div className="col">
-									<button
-										className="btn btn-light border"
-										onClick={e => {
-											actions.addToAllSchedules(
-												tour,
-												this.state.checkedSchedules
-											);
-										}}>
-										{" "}
-										Add to All
-									</button>
-								</div>
-							</div>
 						</div>
 					);
 				}}
