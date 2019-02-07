@@ -5,17 +5,30 @@
     background-color: black;
     background-repeat: no-repeat;
     height: 100vh;
-        background-position: center top;
-  
+        background-position: top;
+ 
 }
 
 .lobster{
    font-family: 'Staatliches', cursive;
+   color: black;
 }
 
 .opensans{
     font-family: 'Open Sans', sans-serif;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 
-
+@media only screen and (min-width: 640) and (max-width: 813px) {
+    /* styles go here */
+    .home {
+            background-size: auto;
+    background-color: black;
+    background-repeat: no-repeat;
+    height: 100vh;
+        background-position: top;
+    background-image: none;
+ 
+    }
+}

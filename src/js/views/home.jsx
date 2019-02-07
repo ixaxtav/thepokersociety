@@ -43,29 +43,41 @@ export class Home extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					return (
-						<div>
+						<div
+							className="container-fluid"
+							style={{
+								height: "100vh",
+								backgroundColor: "black"
+							}}>
 							<div
-								className="home text-center"
-								style={{ backgroundImage: `url(${pokerImg})` }}>
-								<div className="lobster row h-100 text-white m-0 p-0">
-									<div className="col my-auto">
-										{" "}
-										<div />
+								className="text-white"
+								style={{
+									backgroundImage: `url(${pokerImg})`,
+									height: "100%",
+									backgroundSize: "auto",
+									backgroundRepeat: "no-repeat",
+									backgroundPosition: "center"
+								}}>
+								<div className="row">
+									<div className="col p-0">
+										<h5 className=" bg-light lobster text-center pt-2 m-0">
+											Select A Calendar
+										</h5>
+									</div>
+								</div>
+
+								<div className="row">
+									<div className="col p-0">
 										<nav className="navbar navbar-expand-lg navbar-light bg-light select-tournament opensans  ">
 											<div
 												className="collapse navbar-collapse show active"
 												id="navbarTogglerDemo03">
+												{" "}
 												<ul className="navbar-nav m-auto">
 													{menuChilds(store.menu)}
 												</ul>
 											</div>
 										</nav>
-										<div>
-											<h2 style={{ fontSize: "36px" }}>
-												{" "}
-												Select a calendar
-											</h2>
-										</div>
 									</div>
 								</div>
 							</div>

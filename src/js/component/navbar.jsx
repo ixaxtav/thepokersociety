@@ -3,6 +3,7 @@ import pokerIcon from "../../img/pokericon.png";
 import { Link, NavLink } from "react-router-dom";
 import { Context } from "../store/appContext.jsx";
 import { Session } from "bc-react-session";
+import "../../styles/home.css";
 
 export default class Navbar extends React.Component {
 	constructor() {
@@ -19,7 +20,7 @@ export default class Navbar extends React.Component {
 				{({ store, actions }) => {
 					const session = Session.get();
 					return (
-						<nav className="main-navbar navbar navbar-light bg-light">
+						<nav className="lobster main-navbar navbar navbar-light bg-light">
 							<Link className="navbar-brand" to="/">
 								<img className="mr-2" src={pokerIcon} />
 								The Poker Society

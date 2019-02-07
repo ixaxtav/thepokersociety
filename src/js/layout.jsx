@@ -29,12 +29,12 @@ class Layout extends React.Component {
 		const SignUpContainer = () => (
 			<Route path="/register" component={SignUp} />
 		);
-		const HomeContainer = () => <Route exact path="/" component={Home} />;
 
 		const DefaultContainer = () => (
 			<div>
 				<Navbar />
 				<Switch>
+					<PrivateRoute exact path="/" component={Home} />
 					<PrivateRoute exact path="/profile" component={Profile} />
 					<PrivateRoute
 						exact
@@ -83,7 +83,6 @@ class Layout extends React.Component {
 			<BrowserRouter>
 				<ScrollToTop>
 					<Switch>
-						<Route exact path="/" component={HomeContainer} />
 						<Route exact path="/login" component={LoginContainer} />
 						<Route
 							exact
