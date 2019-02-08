@@ -87,26 +87,40 @@ export default class MySchedule extends React.Component {
 
 							{store.creatingNewUser != true ? (
 								<div className="row justify-content-center pb-2">
-									<div className="col">
+									<div className="col-xs">
 										<button
 											type="button"
-											className="btn btn-light form-control border"
+											className="btn btn-outline-dark"
 											onClick={() =>
 												actions.toggleNewScheduleButton()
 											}>
 											Add New Schedule
 										</button>
 									</div>
+
+									<div className="col-xs">
+										<button
+											type="button"
+											className="btn btn-outline-dark"
+											onClick={e => {
+												actions.addToAllSchedules(
+													tour,
+													this.state.checkedSchedules
+												);
+											}}>
+											All To Selected Schedule
+										</button>
+									</div>
 								</div>
 							) : (
-								<div className="row justify">
-									<div className="col">
+								<div className="row">
+									<div className="col-sm-8 mx-auto">
 										<div className="input-group mb-3">
 											<input
 												type="text"
 												key="temporalScheduleName"
 												className="form-control"
-												placeholder="Type the name of the schedule..."
+												placeholder="Type here..."
 												aria-label="Recipient's username"
 												aria-describedby="button-addon2"
 												value={
@@ -146,8 +160,32 @@ export default class MySchedule extends React.Component {
 											</div>{" "}
 										</div>
 									</div>
+									<div className="col-sm-4 mx-auto text-center pb-2">
+										<button
+											type="button"
+											className="btn btn-outline-dark"
+											onClick={e => {
+												actions.addToAllSchedules(
+													tour,
+													this.state.checkedSchedules
+												);
+											}}>
+											Add To Selected
+										</button>
+									</div>
 								</div>
 							)}
+							<div className="row text-center">
+								<div className="col">
+									<button
+										className="btn btn-outline-dark"
+										type="button"
+										id="button-addon2"
+										onClick={() => history.back()}>
+										Back To Tournament
+									</button>
+								</div>
+							</div>
 						</div>
 					);
 				}}
