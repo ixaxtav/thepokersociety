@@ -94,6 +94,7 @@ class SearchBar extends React.Component {
 									"dropdown-menu " +
 									(this.state.showFilters ? "show" : "")
 								}
+								style={{ position: "fixed", top: "auto" }}
 								aria-labelledby="dropdownMenuButton">
 								{filters}
 							</div>

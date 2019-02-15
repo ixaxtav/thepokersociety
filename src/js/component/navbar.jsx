@@ -97,5 +97,5 @@ export default class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-	navBarStyle: PropTypes.string
+	navBarStyle: PropTypes.object
 };
