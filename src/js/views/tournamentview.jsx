@@ -21,24 +21,20 @@ export const TournamentView = property => (
 
 			const tour = store.currentTournament;
 
-			let todayDate = moment().format("MMMM Do YYYY");
-			let tournamentDate = moment(tour["tournament-date"]).format(
-				"MMMM Do YYYY"
-			);
-			let differenceDate = tournamentDate - todayDate;
-			let duration = moment.duration(
-				differenceDate * 1000,
-				"milliseconds"
-			);
-			let interval = 1000;
+			let tournamentMoment = moment(tour["tournament-date"])
+				.startOf("day")
+				.fromNow();
 
-			duration = moment.duration(duration - interval, "milliseconds");
+			function confirmation() {
+				var answer = confirm("Leave tizag.com?");
+				if (answer) {
+					alert("Bye bye!");
+					window.location = "http://www.google.com/";
+				} else {
+					alert("Thanks for sticking around!");
+				}
+			}
 
-			console.log(
-				moment(tour["tournament-date"])
-					.startOf("day")
-					.fromNow()
-			);
 			return (
 				<div>
 					<h4 className="mt-4" style={{ textAlign: "center" }}>
@@ -69,9 +65,7 @@ export const TournamentView = property => (
 							style={{ verticalAlign: "middle" }}>
 							<div>
 								<h6 className="text-danger">
-									{moment(tour["tournament-date"])
-										.startOf("day")
-										.fromNow()}
+									{tournamentMoment}
 								</h6>
 							</div>
 						</div>
@@ -170,13 +164,40 @@ export const TournamentView = property => (
 							<div className="col" />
 						)}
 
-						<div className="col">
-							<Link
-								to="/myschedule"
-								style={{ color: "black", fontSize: "32px" }}>
-								<i className="fas fa-plus-circle" />
-							</Link>
-						</div>
+						{tournamentMoment.includes("ago") ? (
+							<div className="col">
+								<button
+									onClick={e => {
+										let respond = window.confirm(
+											"Are you sure you want to add this past tournament?"
+										);
+										if (respond) {
+											window.location = "/myschedule";
+										} else null;
+									}}
+									href="/myschedule"
+									style={{
+										color: "black",
+										fontSize: "32px",
+										border: "none",
+										background: "none",
+										cursor: "pointer"
+									}}>
+									<i className="fas fa-plus-circle" />
+								</button>
+							</div>
+						) : (
+							<div className="col">
+								<Link
+									to="/myschedule"
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="fas fa-plus-circle" />
+								</Link>
+							</div>
+						)}
 					</div>
 
 					<div className="row text-center">
