@@ -42,6 +42,10 @@ export default class MySchedule extends React.Component {
 										<label className="checkboxes">
 											<input
 												type="checkbox"
+												style={{
+													width: "20px",
+													height: "20px"
+												}}
 												checked={this.state.checkedSchedules.find(
 													item => item === s.id
 												)}
@@ -62,8 +66,8 @@ export default class MySchedule extends React.Component {
 													}
 												}}
 											/>{" "}
-											<span>
-												{" "}
+											<span className="pl-2">
+												{"    "}
 												<Link to={"/schedule/" + s.id}>
 													{s.name}{" "}
 												</Link>{" "}

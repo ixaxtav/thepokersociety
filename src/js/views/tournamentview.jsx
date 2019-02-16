@@ -129,6 +129,20 @@ export const TournamentView = property => (
 								</a>
 							</div>
 						) : tour["structure-sheet"] == null &&
+						tour["results-link"] != " " ? (
+							<div className="col">
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={tour["results-link"]}
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="fas fa-trophy" />
+								</a>
+							</div>
+						) : tour["structure-sheet"] == null &&
 						tour["results-links"] == " " ? (
 							<div className="col" />
 						) : tour["structure-sheet"] == null &&
