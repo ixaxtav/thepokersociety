@@ -11,7 +11,7 @@ export const ScheduleView = property => (
 			);
 			return (
 				<div className="container pt-2">
-					<h3>All Schedules</h3>
+					<h3> {schedule.name}</h3>
 					<table className="table textCenter">
 						<thead>
 							<tr>

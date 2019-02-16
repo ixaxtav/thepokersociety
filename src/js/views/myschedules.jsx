@@ -178,6 +178,7 @@ export default class MySchedule extends React.Component {
 										Back To Tournament
 									</button>
 								</div>
+								{console.log(store.schedules)}
 							</div>
 						</div>
 					);
