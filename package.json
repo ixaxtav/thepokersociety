@@ -54,6 +54,7 @@
 	},
 	"dependencies": {
 		"@4geeksacademy/react-flux-dash": "^3.0.2",
+		"bc-react-notifier": "^1.1.6",
 		"bc-react-session": "^1.5.1",
 		"bootstrap": "^4.1.3",
 		"chrono-node": "^1.3.5",

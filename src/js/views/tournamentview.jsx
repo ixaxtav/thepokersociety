@@ -116,20 +116,6 @@ export const TournamentView = property => (
 
 						{tour["structure-sheet"] != null &&
 						tour["results-link"] != " " ? (
-							<div className="col ">
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={tour["structure-sheet"]}
-									style={{
-										color: "black",
-										fontSize: "32px"
-									}}>
-									<i className="fas fa-clipboard-list" />
-								</a>
-							</div>
-						) : tour["structure-sheet"] == null &&
-						tour["results-link"] != " " ? (
 							<div className="col">
 								<a
 									target="_blank"
@@ -148,6 +134,20 @@ export const TournamentView = property => (
 						) : tour["structure-sheet"] == null &&
 						tour["results-links"] == null ? (
 							<div className="col" />
+						) : tour["structure-sheet"] == null &&
+						tour["results-link"] != " " ? (
+							<div className="col">
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={tour["results-link"]}
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="fas fa-trophy" />
+								</a>
+							</div>
 						) : tour["structure-sheet"] != null ? (
 							<div className="col">
 								<a
@@ -219,18 +219,7 @@ export const TournamentView = property => (
 
 						{tour["structure-sheet"] != null &&
 						tour["results-link"] != " " ? (
-							<div className="col ">
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={tour["results-link"]}
-									style={{
-										color: "black",
-										fontSize: "32px"
-									}}>
-									<i className="fas fa-trophy" />
-								</a>
-							</div>
+							<div className="col ">Tournament Results</div>
 						) : tour["results-link"] == " " &&
 						tour["structure-sheet"] == null ? (
 							<div className="col" />

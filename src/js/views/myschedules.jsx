@@ -43,8 +43,9 @@ export default class MySchedule extends React.Component {
 											<input
 												type="checkbox"
 												style={{
-													width: "20px",
-													height: "20px"
+													width: "30px",
+													height: "30px",
+													marginRight: "15px"
 												}}
 												checked={this.state.checkedSchedules.find(
 													item => item === s.id
@@ -178,7 +179,6 @@ export default class MySchedule extends React.Component {
 										Back To Tournament
 									</button>
 								</div>
-								{console.log(store.schedules)}
 							</div>
 						</div>
 					);

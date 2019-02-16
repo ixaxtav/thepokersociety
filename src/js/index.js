@@ -10,6 +10,13 @@ import "../styles/index.css";
 
 //import your own components
 import Layout from "./layout.jsx";
+import { Notifier } from "bc-react-notifier";
 
 //render your react application
-ReactDOM.render(<Layout />, document.querySelector("#app"));
+ReactDOM.render(
+	<div>
+		<Notifier />
+		<Layout />
+	</div>,
+	document.querySelector("#app")
+);

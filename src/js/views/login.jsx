@@ -115,11 +115,19 @@ export class Login extends React.Component {
 											this.state.username,
 											this.state.password,
 											error => {
-												if (!error)
-													this.props.history.push(
-														"/profile"
-													);
-												else alert(error.message);
+												if (!error) {
+													if (
+														store.currentTournament !=
+														null
+													) {
+														this.props.history.push(
+															"/myschedule"
+														);
+													} else
+														this.props.history.push(
+															"/profile"
+														);
+												} else alert(error.message);
 											}
 										);
 									}

@@ -1,4 +1,5 @@
 import { Session } from "bc-react-session";
+import { Notify } from "bc-react-notifier";
 
 const HOST = "http://admin.thepokersociety.com/wp-json/ps/v1";
 const getState = ({ getStore, setStore }) => {
@@ -225,6 +226,9 @@ const getState = ({ getStore, setStore }) => {
 						}
 					})
 				});
+				Notify.success(
+					"Tournament has been successfully added to your schedules"
+				);
 			},
 
 			updateAccountInfo(token) {

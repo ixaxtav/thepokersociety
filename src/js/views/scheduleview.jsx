@@ -9,6 +9,9 @@ export const ScheduleView = property => (
 			const schedule = store.schedules.find(
 				s => s.id == property.match.params.schedule_id
 			);
+			if (typeof schedule == "undefined") {
+				return <h2>Loading...</h2>;
+			}
 			return (
 				<div className="container pt-2">
 					<h3> {schedule.name}</h3>

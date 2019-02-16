@@ -21,6 +21,7 @@ import Navbar from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 import Store from "./store/appContext.jsx";
 import { PrivateRoute } from "bc-react-session";
+import { Notifier } from "bc-react-notifier";
 
 //create your first component
 class Layout extends React.Component {
@@ -36,7 +37,7 @@ class Layout extends React.Component {
 			<div>
 				<Navbar />
 				<Switch>
-					<PrivateRoute exact path="/" component={Home} />
+					<Route exact path="/" component={Home} />
 					<PrivateRoute exact path="/profile" component={Profile} />
 					<PrivateRoute
 						exact
