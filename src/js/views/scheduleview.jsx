@@ -9,7 +9,6 @@ export const ScheduleView = property => (
 			const schedule = store.schedules.find(
 				s => s.id == property.match.params.schedule_id
 			);
-			console.log(store.currentTournament["buy-in"]);
 			return (
 				<div className="container pt-2">
 					<h3>All Schedules</h3>
@@ -71,7 +70,7 @@ export const ScheduleView = property => (
 						</tbody>
 					</table>
 					<button
-						className="btn btn-light form-control border"
+						className="btn btn-outline-dark btn-block pb-2"
 						onClick={e => {
 							e.preventDefault();
 							actions.saveAllUserSchedules();
@@ -79,6 +78,17 @@ export const ScheduleView = property => (
 						{" "}
 						Save Tournament
 					</button>
+					<div className="row text-center pt-2">
+						<div className="col">
+							<button
+								className="btn btn-outline-dark btn-block"
+								type="button"
+								id="button-addon2"
+								onClick={() => history.back()}>
+								Back To Tournament
+							</button>
+						</div>
+					</div>
 				</div>
 			);
 		}}
