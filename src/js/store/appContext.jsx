@@ -33,7 +33,12 @@ const Store = PassedComponent => {
 					// do something with the returned posts
 					this.setState({
 						store: Object.assign(this.state.store, {
-							menu: { children: data.items }
+							menu: {
+								children: data.items.map(item => {
+									item.opened = false;
+									return item;
+								})
+							}
 						})
 					});
 				})

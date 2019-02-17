@@ -22,7 +22,7 @@ export default class Navbar extends React.Component {
 					const session = Session.get();
 					return (
 						<nav
-							className="lobster main-navbar navbar navbar-light bg-light"
+							className="lobster main-navbar navbar navbar-light bg-light pb-2"
 							style={this.props.navBarStyle}>
 							<Link className="navbar-brand" to="/">
 								<img className="mr-2" src={pokerIcon} />

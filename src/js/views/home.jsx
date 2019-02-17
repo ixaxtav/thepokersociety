@@ -5,7 +5,7 @@ import pokerImg from "../../img/poker-society.jpg";
 import "../../styles/home.css";
 import { Context } from "../store/appContext.jsx";
 
-const menuChilds = menu =>
+const menuChilds = (menu, onClick) =>
 	menu.children.map((item, i) => (
 		<div key={i}>
 			{typeof item.children == "undefined" ||
@@ -15,13 +15,21 @@ const menuChilds = menu =>
 				</Link>
 			) : (
 				<div className="submenu" style={{ position: "relative" }}>
-					<button className="nav-link submenu-toggle btn btn-light dropdown-toggle text-center mx-auto">
+					<button
+						className={
+							"nav-link submenu-toggle btn btn-light dropdown-toggle text-center mx-auto " +
+							(item.opened ? "open" : "")
+						}
+						onClick={() => onClick(item.id)}>
 						{item.title}
 					</button>
 					<div
-						className="dropdown-menu btn text-center mx-auto mt-2 w-100"
+						className={
+							"dropdown-menu btn text-center mx-auto mt-2 w-100 " +
+							(item.opened ? "show" : "")
+						}
 						aria-labelledby="navbarDropdown">
-						{menuChilds(item)}
+						{menuChilds(item, onClick)}
 					</div>
 				</div>
 			)}
@@ -74,7 +82,13 @@ export class Home extends React.Component {
 												id="navbarTogglerDemo03">
 												{" "}
 												<ul className="navbar-nav m-auto">
-													{menuChilds(store.menu)}
+													{menuChilds(
+														store.menu,
+														itemId =>
+															actions.openMenuItem(
+																itemId
+															)
+													)}
 												</ul>
 											</div>
 										</nav>

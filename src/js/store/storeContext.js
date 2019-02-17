@@ -376,9 +376,28 @@ const getState = ({ getStore, setStore }) => {
 						}
 					})
 				});
+			},
+
+			openMenuItem(itemId) {
+				const store = getStore();
+
+				setStore({
+					menu: Object.assign(store.menu, {
+						children: store.menu.children.map(item =>
+							openItem(itemId, item)
+						)
+					})
+				});
 			}
 		}
 	};
+};
+
+const openItem = (id, item) => {
+	if (item.id == id) item.opened = !item.opened;
+	else if (typeof item.children != "undefined")
+		item.children = item.children.map(subItem => openItem(id, subItem));
+	return item;
 };
 
 export default getState;
