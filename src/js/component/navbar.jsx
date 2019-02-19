@@ -1,3 +1,4 @@
+/* global $ */
 import React from "react";
 import pokerIcon from "../../img/pokericon.png";
 import { Link, NavLink } from "react-router-dom";
@@ -6,12 +7,51 @@ import { Session } from "bc-react-session";
 import "../../styles/home.css";
 import PropTypes from "prop-types";
 
+const menuChilds = (menu, onClick) =>
+	menu.children.map((item, i) => (
+		<div key={i}>
+			{typeof item.children == "undefined" ||
+			item.children.length == 0 ? (
+				<Link className="dropdown-item" to={item.url}>
+					{item.title}
+				</Link>
+			) : (
+				<div className="submenu" style={{ position: "relative" }}>
+					<button
+						className={
+							"nav-link submenu-toggle btn btn-light dropdown-toggle text-center mx-auto m-1 " +
+							(item.opened ? "open" : "")
+						}
+						onClick={() => onClick(item.id)}>
+						{item.title}
+					</button>
+					<div
+						className={
+							"dropdown-menu btn text-center mx-auto mt-2 w-100 " +
+							(item.opened ? "show" : "")
+						}
+						aria-labelledby="navbarDropdown">
+						{menuChilds(item, onClick)}
+					</div>
+				</div>
+			)}
+		</div>
+	));
+
 export default class Navbar extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			showNavbar: false
 		};
+	}
+	componentDidMount() {
+		$(".dropdown-toggle, .submenu-toggle").click(function(e) {
+			$(this).toggleClass("open");
+			$(this)
+				.siblings(".dropdown-menu")
+				.toggleClass("show");
+		});
 	}
 
 	render() {
@@ -68,6 +108,7 @@ export default class Navbar extends React.Component {
 											Profile
 										</NavLink>
 									</li>
+
 									<li className="nav-item">
 										{session.isValid ? (
 											<a
@@ -84,6 +125,13 @@ export default class Navbar extends React.Component {
 												className="nav-link">
 												Log In
 											</Link>
+										)}
+									</li>
+								</ul>
+								<ul className="navbar-nav">
+									<li className="nav-item">
+										{menuChilds(store.menu, itemId =>
+											actions.openMenuItem(itemId)
 										)}
 									</li>
 								</ul>
