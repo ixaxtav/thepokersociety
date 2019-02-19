@@ -428,7 +428,16 @@ export default class Calendar extends Flux.View {
 										</th>
 									</tr>
 								</thead>
-								<tbody>{tournaments}</tbody>
+								{tournaments != false ? (
+									<tbody>{tournaments}</tbody>
+								) : (
+									<div
+										className="alert alert-danger text-center"
+										style={{ fontSize: "12px" }}>
+										No tournaments matching your search
+										criteria were found!
+									</div>
+								)}
 							</table>
 						</div>
 						<BottomBar
