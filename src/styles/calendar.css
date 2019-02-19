@@ -140,3 +140,6 @@ th#Date {
     z-index: 2000;
 }
 
+.searchbar input[type=text]:focus{
+    background: #ffdbda;
+}
