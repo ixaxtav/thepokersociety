@@ -139,6 +139,7 @@ const getState = ({ getStore, setStore }) => {
 						console.error("Error!!");
 						callback(error);
 					});
+				Notify.success("Hey! You have been logged in");
 			},
 
 			logout() {
