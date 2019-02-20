@@ -144,6 +144,7 @@ const getState = ({ getStore, setStore }) => {
 			logout() {
 				//const store = getStore();
 				Session.destroy();
+				Notify.error("Hey! You have been logged out");
 			},
 
 			saveAllUserSchedules() {
