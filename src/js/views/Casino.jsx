@@ -33,11 +33,12 @@ export const Casino = property => (
 							{store.currentCasino.location.address}
 						</div>
 					</div>
-					<div className="text-center p-3">
+					<div className="text-center p-4">
 						<p>{store.currentCasino.post_content}</p>
 					</div>
+
 					<div
-						className="btn-group w-100 text-center"
+						className="btn-group w-100 text-center p-4"
 						role="group"
 						aria-label="Basic example">
 						<a
