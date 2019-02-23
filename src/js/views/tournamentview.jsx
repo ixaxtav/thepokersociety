@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.jsx";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import "../../styles/tournamentview.css";
 
 export const TournamentView = property => (
 	<Context.Consumer>
@@ -25,17 +26,26 @@ export const TournamentView = property => (
 				.startOf("day")
 				.fromNow();
 
+			const reducer = (accumulator, str, i) => {
+				return accumulator + `<h${i}>${str}</h>`;
+			};
+			const titles = [""]
+				.concat(tour.post_title.split("-").filter(str => str !== "-"))
+				.reduce(reducer);
 			return (
 				<div>
-					<h4 className="mt-4" style={{ textAlign: "center" }}>
-						{tour ? tour.post_title : "Tournament not found"}
-					</h4>
-					<div className="row justify-content-center text-center pt-2">
+					<div className="row">
+						<div
+							className="col-11 mx-auto p-3 text-center tournament-heading"
+							dangerouslySetInnerHTML={{ __html: titles }}
+						/>
+					</div>
+					<div className="row justify-content-center text-center">
 						<div
 							className="col-9"
 							style={{ verticalAlign: "middle" }}>
 							<div>
-								<h6>
+								<h6 style={{ fontSize: "18px" }}>
 									{" "}
 									Date :{" "}
 									{tour
