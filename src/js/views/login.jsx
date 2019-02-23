@@ -20,7 +20,7 @@ export class Login extends React.Component {
 		return (
 			<Context.Consumer>
 				{({ store, actions }) => (
-					<div style={{ backgroundColor: "black" }}>
+					<div style={{ backgroundColor: "black", height: "100vh" }}>
 						<img src={pokerLogo} className="logo" />
 						<div className="text-center pt-2 pb-2">
 							<input
@@ -153,7 +153,6 @@ export class Login extends React.Component {
 								Log In{" "}
 							</button>
 						</div>
-
 						<div className="pt-5 text-center">
 							<span className="text-white">
 								Dont have an account?
