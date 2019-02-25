@@ -169,6 +169,7 @@ export default class MySchedule extends React.Component {
 									</button>
 								</div>
 							</div>
+							{console.log(store.schedules)}
 							<div className="row text-center">
 								<div className="col">
 									<button

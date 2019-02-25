@@ -213,7 +213,6 @@ const getState = ({ getStore, setStore }) => {
 								total: parseFloat(
 									tour["buy-in"].replace("$", "")
 								),
-
 								attempts: [
 									{
 										tournamentName: tour.post_title,
@@ -229,7 +228,7 @@ const getState = ({ getStore, setStore }) => {
 					})
 				});
 				Notify.success(
-					"Tournament has been successfully added to your schedules"
+					"Tournament has been successfully added to your schedules!"
 				);
 			},
 
