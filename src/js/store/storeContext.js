@@ -232,6 +232,35 @@ const getState = ({ getStore, setStore }) => {
 				);
 			},
 
+			experimentalAdd(tour, checkedSchedules) {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					schedules: store.schedules.map((s, t) => {
+						if (checkedSchedules.includes(s.id)) {
+							return Object.assign(s, {
+								total: parseFloat(
+									tour["buy-in"].replace("$", "")
+								),
+								attempts: [
+									{
+										tournamentName: tour.post_title,
+										tournamentId: tour.ID,
+										price: tour["buy-in"],
+										bullets: 1
+									}
+								]
+							});
+						} else {
+							return s;
+						}
+					})
+				});
+				Notify.success(
+					"Tournament has been successfully added to your schedules!"
+				);
+			},
+
 			updateAccountInfo(token) {
 				const store = getStore();
 
