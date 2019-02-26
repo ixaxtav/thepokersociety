@@ -167,17 +167,6 @@ export default class MySchedule extends React.Component {
 										}}>
 										Add To Selected Schedule
 									</button>
-
-									<button
-										type="button"
-										onClick={e => {
-											actions.experimentalAdd(
-												tour,
-												this.state.checkedSchedules
-											);
-										}}>
-										Add To Selected Schedule
-									</button>
 								</div>
 							</div>
 							<div className="row text-center">
