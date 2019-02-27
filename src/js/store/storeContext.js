@@ -22,6 +22,7 @@ const getState = ({ getStore, setStore }) => {
 			currentCasino: null,
 			// toggles j
 			creatingNewUser: false,
+			buttonShow: false,
 			navbarCollapse: false,
 			hideHeading: false,
 

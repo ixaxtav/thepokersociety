@@ -11,7 +11,8 @@ import { TournamentView } from "./views/tournamentview.jsx";
 import { MyAccount } from "./views/myaccount.jsx";
 import { Casino } from "./views/Casino.jsx";
 import { Login } from "./views/login.jsx";
-import { ScheduleView } from "./views/scheduleview.jsx";
+import ScheduleView from "./views/scheduleview.jsx";
+import Schedule from "./views/schedule.jsx";
 import { SignUp } from "./views/signup.jsx";
 import Calendar from "./views/calendar.jsx";
 import Navbar from "./component/navbar.jsx";
@@ -52,6 +53,12 @@ class Layout extends React.Component {
 						path="/schedule/:schedule_id"
 						component={ScheduleView}
 					/>
+					<PrivateRoute
+						exact
+						path="/schedulebreh"
+						component={Schedule}
+					/>
+
 					<Route
 						exact
 						path="/tournament/:tournament_id"
