@@ -28,7 +28,7 @@ export const ScheduleView = property => (
 						<tbody className="textCenter">
 							{schedule.attempts.map((s, i) => (
 								<tr key={i}>
-									<td>{s.tournamentName}</td>
+									<td>{s.tournamentName.split(" - ", 1)}</td>
 									<td>{s.price}</td>
 									<td>
 										{s.bullets}{" "}
