@@ -166,6 +166,7 @@ const getState = ({ getStore, setStore }) => {
 						//this.setStoreAndSession({ userID: data.user_id });
 					})
 					.catch(error => console.error("Error!!"));
+				Notify.success("Schedule has been successfully saved!");
 			},
 
 			retrieveUser(userID) {

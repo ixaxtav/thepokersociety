@@ -12,6 +12,7 @@ export const ScheduleView = property => (
 			if (typeof schedule == "undefined") {
 				return <h2>Loading...</h2>;
 			}
+
 			return (
 				<div className="container pt-2">
 					<h1 className="pt-1"> {schedule.name}</h1>
