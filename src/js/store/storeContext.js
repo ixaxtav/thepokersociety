@@ -271,16 +271,7 @@ const getState = ({ getStore, setStore }) => {
 							id: Math.floor(Math.random() * 100),
 							name: temporalScheduleName,
 							total: 0,
-							attempts: [
-								{
-									tournamentName: "Placeholder Tournament",
-									tournamentId: Math.floor(
-										Math.random() * 100
-									),
-									price: "100$",
-									bullets: 1
-								}
-							]
+							attempts: []
 						}
 					])
 				});
