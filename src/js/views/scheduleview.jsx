@@ -14,7 +14,7 @@ export const ScheduleView = property => (
 			}
 			return (
 				<div className="container pt-2">
-					<h3> {schedule.name}</h3>
+					<h1 className="pt-1"> {schedule.name}</h1>
 					<table className="table textCenter">
 						<thead>
 							<tr>
@@ -80,15 +80,7 @@ export const ScheduleView = property => (
 							))}
 						</tbody>
 					</table>
-					<button
-						className="btn btn-outline-dark btn-block pb-2"
-						onClick={e => {
-							e.preventDefault();
-							actions.saveAllUserSchedules();
-						}}>
-						{" "}
-						Save Tournament
-					</button>
+
 					<div className="row text-center pt-2">
 						<div className="col">
 							<button
@@ -97,6 +89,34 @@ export const ScheduleView = property => (
 								id="button-addon2"
 								onClick={() => history.back()}>
 								Back To Tournament
+							</button>
+						</div>
+					</div>
+					<div className="row border-top w-100 fixed-bottom text-center p-2 m-0">
+						<div className="col-6">
+							<h3>Spending: ${schedule.total} </h3>
+							<span>
+								{" "}
+								in {schedule.attempts.length} tournaments
+							</span>
+						</div>
+						<div className="col-6">
+							<button
+								className="btn btn-large btn-outline-dark pb-2"
+								style={{ padding: "10px" }}
+								onClick={e => {
+									e.preventDefault();
+									actions.saveAllUserSchedules();
+								}}>
+								{" "}
+								<i
+									className="far fa-save"
+									style={{
+										fontSize: "30px",
+										verticalAlign: "middle"
+									}}
+								/>
+								<span> Save Schedule </span>
 							</button>
 						</div>
 					</div>
