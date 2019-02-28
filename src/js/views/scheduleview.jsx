@@ -33,7 +33,22 @@ export default class ScheduleView extends React.Component {
 
 					return (
 						<div className="container">
-							<h1 className="pt-1"> {schedule.name}</h1>
+							<div className="row">
+								<div className="col-2">
+									<a
+										href="javascript:history.back()"
+										style={{
+											color: "black",
+											fontSize: "32px"
+										}}>
+										<i className="fas fa-arrow-circle-left" />
+									</a>
+								</div>
+
+								<div className="col-10 pl-2">
+									<h1 className="pt-1"> {schedule.name}</h1>
+								</div>
+							</div>
 							<div
 								className="row text-center border-top p-2"
 								style={{
@@ -49,7 +64,7 @@ export default class ScheduleView extends React.Component {
 							{schedule.attempts.map((s, i) => (
 								<div key={i}>
 									<div
-										className="row text-center border-top p-2"
+										className="row text-center border-top border-bottom p-2"
 										style={{
 											fontSize: "12px",
 											cursor: "pointer"
@@ -163,17 +178,6 @@ export default class ScheduleView extends React.Component {
 								</div>
 							))}
 
-							<div className="row text-center pt-2">
-								<div className="col">
-									<button
-										className="btn btn-outline-dark btn-block"
-										type="button"
-										id="button-addon2"
-										onClick={() => history.back()}>
-										Back To Tournament
-									</button>
-								</div>
-							</div>
 							<div className="row border-top w-100 fixed-bottom text-center p-2 m-0">
 								<div className="col-6">
 									<h3>Spending: ${schedule.total} </h3>
