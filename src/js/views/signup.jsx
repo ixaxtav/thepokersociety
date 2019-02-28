@@ -21,7 +21,7 @@ export class SignUp extends React.Component {
 		return (
 			<Context.Consumer>
 				{({ store, actions }) => (
-					<div className="container blackbg">
+					<div style={{ backgroundColor: "black", height: "100vh" }}>
 						<img src={pokerLogo} className="logo" />
 						<h3 className="text-white text-center">Sign up to</h3>
 						<h3 className="text-white text-center pb-4">
@@ -117,7 +117,7 @@ export class SignUp extends React.Component {
 
 						<div className="text-center">
 							<Link
-								className="navbar-brand text-center"
+								className="navbar-brand text-center pt-4"
 								to="/login"
 								style={{
 									color: "#990000",
