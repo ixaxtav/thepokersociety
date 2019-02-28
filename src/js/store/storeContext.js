@@ -138,7 +138,6 @@ const getState = ({ getStore, setStore }) => {
 					})
 					.catch(error => {
 						console.error("Error!!");
-						callback(error);
 					});
 				Notify.success("Hey! You have been logged in");
 			},

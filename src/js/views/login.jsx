@@ -144,7 +144,6 @@ export class Login extends React.Component {
 														this.props.history.push(
 															"/profile"
 														);
-													else alert(error.message);
 												}
 											);
 										}
