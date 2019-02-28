@@ -354,6 +354,21 @@ const getState = ({ getStore, setStore }) => {
 				});
 			},
 
+			papaya() {
+				const store = getStore();
+
+				let tournamentsTotal = store["schedules"][0]["attempts"].reduce(
+					function(prev, cur) {
+						return (
+							prev +
+							parseInt(cur.price.replace("$", "")) * cur.bullets
+						);
+					},
+					0
+				);
+				console.log("total price: ", tournamentsTotal);
+			},
+
 			deleteAttempt(scheduleId, tournamentId) {
 				const store = getStore();
 

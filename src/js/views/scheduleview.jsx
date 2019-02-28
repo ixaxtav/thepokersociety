@@ -8,8 +8,14 @@ export default class ScheduleView extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			showButtons: false
+			showButtons: false,
+			clickedTournament: false
 		};
+	}
+
+	handleClick(e) {
+		this.setState({ showButtons: !this.state.showButtons });
+		console.log("the tournament id is " + e);
 	}
 
 	render() {
@@ -48,12 +54,9 @@ export default class ScheduleView extends React.Component {
 											fontSize: "12px",
 											cursor: "pointer"
 										}}
-										onClick={e =>
-											this.setState({
-												showButtons: !this.state
-													.showButtons
-											})
-										}>
+										onClick={e => {
+											this.handleClick(s.tournamentId);
+										}}>
 										<div className="col-6">
 											<Link
 												to={
@@ -160,6 +163,10 @@ export default class ScheduleView extends React.Component {
 								</div>
 							))}
 
+							<button onClick={e => actions.papaya()}>
+								{" "}
+								get total{" "}
+							</button>
 							<div className="row text-center pt-2">
 								<div className="col">
 									<button
