@@ -163,10 +163,6 @@ export default class ScheduleView extends React.Component {
 								</div>
 							))}
 
-							<button onClick={e => actions.papaya()}>
-								{" "}
-								get total{" "}
-							</button>
 							<div className="row text-center pt-2">
 								<div className="col">
 									<button

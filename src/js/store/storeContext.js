@@ -185,9 +185,7 @@ const getState = ({ getStore, setStore }) => {
 					schedules: store.schedules.map((s, t) => {
 						if (scheduleId == s.id) {
 							return Object.assign(s, {
-								total: parseFloat(
-									tour["buy-in"].replace("$", "")
-								),
+								total: parsePrice(tour["buy-in"]),
 
 								attempts: [
 									{
@@ -217,14 +215,7 @@ const getState = ({ getStore, setStore }) => {
 								) == "undefined"
 							)
 								return Object.assign(s, {
-									total:
-										s.total +
-										parseFloat(
-											tour["buy-in"]
-												.replace("$", "")
-												.replace("+", "")
-												.replace(" ", "")
-										),
+									total: s.total + parsePrice(tour["buy-in"]),
 									attempts: s.attempts.concat([
 										{
 											tournamentName: tour.post_title,
@@ -301,21 +292,14 @@ const getState = ({ getStore, setStore }) => {
 						if (scheduleId == s.id) {
 							let total = 0;
 							s.attempts.forEach(a => {
-								total +=
-									parseFloat(a.price.replace("$", "")) *
-									(a.tournamentId == tournamentId)
+								const bullets =
+									a.tournamentId == tournamentId
 										? bulletCount
 										: a.bullets;
+								total += parsePrice(a.price) * bullets;
 							});
-
 							return Object.assign(s, {
-								total:
-									total *
-									parseFloat(
-										store.currentTournament[
-											"buy-in"
-										].replace("$", "")
-									),
+								total: total,
 								attempts: s.attempts.map(a => {
 									if (tournamentId == a.tournamentId) {
 										a.bullets = Math.abs(bulletCount);
@@ -378,7 +362,7 @@ const getState = ({ getStore, setStore }) => {
 							let total = 0;
 							s.attempts.forEach(a => {
 								total +=
-									parseFloat(a.price.replace("$", "")) *
+									parsePrice(a.price) *
 									(a.tournamentId == tournamentId)
 										? 0
 										: a.bullets;
@@ -417,6 +401,13 @@ const openItem = (id, item) => {
 	else if (typeof item.children != "undefined")
 		item.children = item.children.map(subItem => openItem(id, subItem));
 	return item;
+};
+
+const parsePrice = incomingPrice => {
+	return incomingPrice
+		.replace("$", "")
+		.replace("+", "")
+		.replace(" ", "");
 };
 
 export default getState;
