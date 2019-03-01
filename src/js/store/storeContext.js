@@ -214,7 +214,7 @@ const getState = ({ getStore, setStore }) => {
 								) == "undefined"
 							)
 								return Object.assign(s, {
-									total: s.total + parsePrice(tour["buy-in"]),
+									total: parsePrice(tour["buy-in"]),
 									attempts: s.attempts.concat([
 										{
 											tournamentName: tour.post_title,
