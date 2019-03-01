@@ -99,7 +99,7 @@ export default class MySchedule extends React.Component {
 											onClick={() =>
 												actions.toggleNewScheduleButton()
 											}>
-											Add New Schedule
+											Create New Schedule
 										</button>
 									</div>
 								</div>
@@ -111,7 +111,7 @@ export default class MySchedule extends React.Component {
 												type="text"
 												key="temporalScheduleName"
 												className="form-control"
-												placeholder="Type here..."
+												placeholder="Create name here..."
 												aria-label="Recipient's username"
 												aria-describedby="button-addon2"
 												value={
@@ -153,22 +153,24 @@ export default class MySchedule extends React.Component {
 									</div>
 								</div>
 							)}
-
-							<div className="row pb-2">
-								<div className="col">
-									<button
-										type="button"
-										className="btn btn-outline-dark btn-block"
-										onClick={e => {
-											actions.addToAllSchedules(
-												tour,
-												this.state.checkedSchedules
-											);
-										}}>
-										Add To Selected Schedule
-									</button>
+							{console.log(store.schedules)}
+							{store.schedules.length === 0 ? null : (
+								<div className="row pb-2">
+									<div className="col">
+										<button
+											type="button"
+											className="btn btn-outline-dark btn-block"
+											onClick={e => {
+												actions.addToAllSchedules(
+													tour,
+													this.state.checkedSchedules
+												);
+											}}>
+											Add To My Schedule
+										</button>
+									</div>
 								</div>
-							</div>
+							)}
 							<div className="row text-center">
 								<div className="col">
 									<button
