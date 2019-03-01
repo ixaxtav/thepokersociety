@@ -29,7 +29,10 @@ export const TournamentView = property => (
 				"MMMM Do YYYY, h:mm a"
 			);
 
-			console.log(tournamentDate);
+			let currentDate = moment().format("MMMM Do YYYY, h:mm a");
+
+			let diff = moment(tournamentDate, "MMMM Do YYYY, h:mm a").fromNow();
+			console.log(diff);
 
 			const reducer = (accumulator, str, i) => {
 				return accumulator + `<h${i}>${str}</h>`;
@@ -65,9 +68,7 @@ export const TournamentView = property => (
 							className="col-9"
 							style={{ verticalAlign: "middle" }}>
 							<div>
-								<h6 className="text-danger">
-									{tournamentDate}
-								</h6>
+								<h6 className="text-danger">{diff}</h6>
 							</div>
 						</div>
 					</div>
@@ -179,7 +180,7 @@ export const TournamentView = property => (
 							<div className="col" />
 						)}
 
-						{tournamentDate.includes("ago") ? (
+						{diff.includes("ago") ? (
 							<div className="col">
 								<button
 									onClick={e => {
