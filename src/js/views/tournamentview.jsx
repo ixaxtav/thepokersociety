@@ -22,9 +22,14 @@ export const TournamentView = property => (
 
 			const tour = store.currentTournament;
 
-			let tournamentMoment = moment(tour["tournament-date"])
-				.startOf("day")
-				.fromNow();
+			let tournamentDate =
+				tour["tournament-date"] + " " + tour["tournament-time"];
+
+			tournamentDate = moment(tournamentDate).format(
+				"MMMM Do YYYY, h:mm a"
+			);
+
+			console.log(tournamentDate);
 
 			const reducer = (accumulator, str, i) => {
 				return accumulator + `<h${i}>${str}</h>`;
@@ -48,13 +53,9 @@ export const TournamentView = property => (
 								<h6 style={{ fontSize: "18px" }}>
 									{" "}
 									Date :{" "}
-									{tour
-										? tour["tournament-date"]
+									{tournamentDate
+										? tournamentDate
 										: "Date Not Found"}{" "}
-									@{" "}
-									{tour
-										? tour["tournament-time"]
-										: "Time Not Found"}
 								</h6>
 							</div>
 						</div>
@@ -65,7 +66,7 @@ export const TournamentView = property => (
 							style={{ verticalAlign: "middle" }}>
 							<div>
 								<h6 className="text-danger">
-									{tournamentMoment}
+									{tournamentDate}
 								</h6>
 							</div>
 						</div>
@@ -178,7 +179,7 @@ export const TournamentView = property => (
 							<div className="col" />
 						)}
 
-						{tournamentMoment.includes("ago") ? (
+						{tournamentDate.includes("ago") ? (
 							<div className="col">
 								<button
 									onClick={e => {
