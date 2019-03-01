@@ -177,31 +177,6 @@ const getState = ({ getStore, setStore }) => {
 					.catch(error => console.error("Error!!"));
 			},
 
-			addToSchedule(scheduleId, tour) {
-				const store = getStore();
-
-				this.setStoreAndSession({
-					schedules: store.schedules.map((s, t) => {
-						if (scheduleId == s.id) {
-							return Object.assign(s, {
-								total: parsePrice(tour["buy-in"]),
-
-								attempts: [
-									{
-										tournamentName: tour.post_title,
-										tournamentId: tour.ID,
-										price: tour["buy-in"],
-										bullets: 1
-									}
-								]
-							});
-						} else {
-							return s;
-						}
-					})
-				});
-			},
-
 			addToAllSchedules(tour, checkedSchedules) {
 				const store = getStore();
 
@@ -212,18 +187,25 @@ const getState = ({ getStore, setStore }) => {
 								typeof s.attempts.find(
 									a => a.tournamentId == tour.ID
 								) == "undefined"
-							)
-								return Object.assign(s, {
-									total: parsePrice(tour["buy-in"]),
-									attempts: s.attempts.concat([
-										{
-											tournamentName: tour.post_title,
-											tournamentId: tour.ID,
-											price: tour["buy-in"],
-											bullets: 1
-										}
-									])
-								});
+							) {
+								console.log(s.total);
+							}
+							{
+								console.log(parsePrice(tour["buy-in"]));
+							}
+							return Object.assign(s, {
+								total:
+									s.total +
+									parseFloat(parsePrice(tour["buy-in"])),
+								attempts: s.attempts.concat([
+									{
+										tournamentName: tour.post_title,
+										tournamentId: tour.ID,
+										price: tour["buy-in"],
+										bullets: 1
+									}
+								])
+							});
 						} else {
 							return s;
 						}
@@ -295,10 +277,12 @@ const getState = ({ getStore, setStore }) => {
 									a.tournamentId == tournamentId
 										? bulletCount
 										: a.bullets;
-								total += parsePrice(a.price) * bullets;
+								total += parseFloat(
+									parsePrice(a.price) * bullets
+								);
 							});
 							return Object.assign(s, {
-								total: total,
+								total: Math.abs(total),
 								attempts: s.attempts.map(a => {
 									if (tournamentId == a.tournamentId) {
 										a.bullets = Math.abs(bulletCount);
@@ -337,21 +321,6 @@ const getState = ({ getStore, setStore }) => {
 				});
 			},
 
-			papaya() {
-				const store = getStore();
-
-				let tournamentsTotal = store["schedules"][0]["attempts"].reduce(
-					function(prev, cur) {
-						return (
-							prev +
-							parseInt(cur.price.replace("$", "")) * cur.bullets
-						);
-					},
-					0
-				);
-				console.log("total price: ", tournamentsTotal);
-			},
-
 			deleteAttempt(scheduleId, tournamentId) {
 				const store = getStore();
 
@@ -360,11 +329,12 @@ const getState = ({ getStore, setStore }) => {
 						if (scheduleId == s.id) {
 							let total = 0;
 							s.attempts.forEach(a => {
-								total +=
+								total += parseFloat(
 									parsePrice(a.price) *
 									(a.tournamentId == tournamentId)
 										? 0
-										: a.bullets;
+										: a.bullets
+								);
 							});
 
 							return Object.assign(s, {

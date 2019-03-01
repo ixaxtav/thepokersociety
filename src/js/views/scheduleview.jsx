@@ -33,7 +33,7 @@ export default class ScheduleView extends React.Component {
 
 					return (
 						<div className="container">
-							<div className="row">
+							<div className="row pt-2">
 								<div className="col-2">
 									<a
 										href="javascript:history.back()"
@@ -97,84 +97,79 @@ export default class ScheduleView extends React.Component {
 										</div>
 									</div>
 
-									{showButtons ? (
-										<div className="row text-center border-top p-2">
-											<div className="col-4">
-												<button
-													className="btn btn-light"
-													onClick={e =>
-														actions.updateBullet(
-															schedule.id,
-															s.tournamentId,
-															s.bullets + 1
-														)
-													}>
-													<i
-														className="fas fa-plus-circle"
-														style={{
-															fontSize: "20px",
-															verticalAlign:
-																"middle"
-														}}
-													/>
-													<span
-														style={{
-															fontSize: "12px"
-														}}>
-														{" "}
-														Add bullets
-													</span>
-												</button>
-											</div>
-											<div className="col-4">
-												<button
-													className="btn btn-light"
-													onClick={e =>
-														actions.updateBullet(
-															schedule.id,
-															s.tournamentId,
-															s.bullets - 1
-														)
-													}>
-													<i
-														className="fas fa-minus-circle"
-														style={{
-															fontSize: "20px",
-															verticalAlign:
-																"middle"
-														}}
-													/>
-													<span
-														style={{
-															fontSize: "12px"
-														}}>
-														{" "}
-														Remove bullets
-													</span>
-												</button>
-											</div>
-											<div className="col-2" />
-											<div className="col-2">
-												<button
-													className="btn btn-light"
-													onClick={e =>
-														actions.deleteAttempt(
-															schedule.id,
-															s.tournamentId
-														)
-													}>
-													<i
-														className="far fa-trash-alt"
-														style={{
-															fontSize: "20px",
-															verticalAlign:
-																"middle"
-														}}
-													/>
-												</button>
-											</div>
+									<div className="row text-center border-top p-2">
+										<div className="col-4">
+											<button
+												className="btn btn-light"
+												onClick={e =>
+													actions.updateBullet(
+														schedule.id,
+														s.tournamentId,
+														s.bullets + 1
+													)
+												}>
+												<i
+													className="fas fa-plus-circle"
+													style={{
+														fontSize: "20px",
+														verticalAlign: "middle"
+													}}
+												/>
+												<span
+													style={{
+														fontSize: "12px"
+													}}>
+													{" "}
+													Add bullets
+												</span>
+											</button>
 										</div>
-									) : null}
+										<div className="col-4">
+											<button
+												className="btn btn-light"
+												onClick={e =>
+													actions.updateBullet(
+														schedule.id,
+														s.tournamentId,
+														s.bullets - 1
+													)
+												}>
+												<i
+													className="fas fa-minus-circle"
+													style={{
+														fontSize: "20px",
+														verticalAlign: "middle"
+													}}
+												/>
+												<span
+													style={{
+														fontSize: "12px"
+													}}>
+													{" "}
+													Remove bullets
+												</span>
+											</button>
+										</div>
+										<div className="col-2" />
+										<div className="col-2">
+											<button
+												className="btn btn-light"
+												onClick={e =>
+													actions.deleteAttempt(
+														schedule.id,
+														s.tournamentId
+													)
+												}>
+												<i
+													className="far fa-trash-alt"
+													style={{
+														fontSize: "20px",
+														verticalAlign: "middle"
+													}}
+												/>
+											</button>
+										</div>
+									</div>
 								</div>
 							))}
 
