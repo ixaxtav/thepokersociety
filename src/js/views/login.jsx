@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RedButton from "../component/RedButton.jsx";
 import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
 import PropTypes from "prop-types";
@@ -12,7 +11,8 @@ export class Login extends React.Component {
 		super();
 		this.state = {
 			username: "",
-			password: ""
+			password: "",
+			loading: false
 		};
 	}
 
@@ -97,40 +97,35 @@ export class Login extends React.Component {
 								width: "250px"
 							}}>
 							<button
-								style={{
-									backgroundColor: "#62010C",
-									border: "none",
-									color: "white",
-									textAlign: "center",
-									textDecoration: "none",
-									display: "inline-block",
-									fontSize: "26px",
-									width: "250px"
-								}}
+								disabled={this.state.loading}
 								label="Login"
 								onClick={e => {
 									e.preventDefault();
-									{
-										actions.login(
-											this.state.username,
-											this.state.password,
-											error => {
-												if (!error) {
-													if (
-														store.currentTournament !=
-														null
-													) {
-														this.props.history.push(
-															"/myschedule"
-														);
-													} else
-														this.props.history.push(
-															"/profile"
-														);
-												} else alert(error.message);
+									this.setState({ loading: true });
+									actions.login(
+										this.state.username,
+										this.state.password,
+										error => {
+											if (!error) {
+												if (
+													store.currentTournament !=
+													null
+												) {
+													this.props.history.push(
+														"/myschedule"
+													);
+												} else
+													this.props.history.push(
+														"/profile"
+													);
+											} else {
+												alert(error.message);
+												this.setState({
+													loading: false
+												});
 											}
-										);
-									}
+										}
+									);
 								}}
 								onKeyPress={e => {
 									if (e.keyCode === 13) {
@@ -150,8 +145,11 @@ export class Login extends React.Component {
 										}
 									}
 								}}>
-								Log In{" "}
+								{this.state.loading == false
+									? "Log In"
+									: "Loading"}
 							</button>
+							{console.log(this.state.loading)}
 						</div>
 						<div className="pt-5 text-center">
 							<span className="text-white">

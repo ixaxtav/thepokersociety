@@ -1,12 +1,28 @@
 
+button {
+  border: 1px solid #8B0000;
+  background-color: #62010C;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  width: 250px;
+  padding: 5px 10px;
+}
 
-.blackbg { 
-    background-color: black;
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      min-width: 100%;
-      min-height: 100%;
+button:hover {
+  border: 1px solid #8B0000;
+  background-color: red;
+  color: #ffffff;
+  padding: 5px 10px;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 
 
