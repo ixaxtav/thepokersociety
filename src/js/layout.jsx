@@ -21,14 +21,10 @@ import { PrivateRoute } from "bc-react-session";
 
 class Layout extends React.Component {
 	render() {
-		const calendarContainer = () => (
-			<Route path="/calendar/:cal_id" component={Calendar} />
-		);
 		const DefaultContainer = () => (
 			<div>
 				<Navbar />
 				<Switch>
-					<Route exact path="/" component={Home} />
 					<Route exact path="/login" component={Login} />
 					<Route exact path="/register" component={SignUp} />
 					<PrivateRoute exact path="/profile" component={Profile} />
@@ -74,6 +70,7 @@ class Layout extends React.Component {
 			<BrowserRouter>
 				<ScrollToTop>
 					<Switch>
+						<Route exact path="/" component={Home} />
 						<Route
 							exact
 							path="/calendar/:cal_id"

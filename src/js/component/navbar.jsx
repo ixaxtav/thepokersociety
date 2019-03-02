@@ -2,8 +2,8 @@
 import React from "react";
 import pokerIcon from "../../img/pokericon.png";
 import { Link, NavLink } from "react-router-dom";
-import { Context } from "../store/appContext.jsx";
 import { Session } from "bc-react-session";
+import { Context } from "../store/appContext.jsx";
 import "../../styles/home.css";
 import PropTypes from "prop-types";
 
