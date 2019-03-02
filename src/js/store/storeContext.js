@@ -297,30 +297,6 @@ const getState = ({ getStore, setStore }) => {
 				});
 			},
 
-			toggleNewScheduleButton() {
-				const store = getStore();
-
-				this.setStoreAndSession({
-					creatingNewUser: !store.creatingNewUser
-				});
-			},
-
-			toggleHomeHeading() {
-				const store = getStore();
-
-				this.setStoreAndSession({
-					hideHeading: !store.hideHeading
-				});
-			},
-
-			navbarCollapseItems() {
-				const store = getStore();
-
-				this.setStoreAndSession({
-					navbarCollapse: !store.navbarCollapse
-				});
-			},
-
 			deleteAttempt(scheduleId, tournamentId) {
 				const store = getStore();
 
@@ -347,6 +323,29 @@ const getState = ({ getStore, setStore }) => {
 							return s;
 						}
 					})
+				});
+			},
+			toggleNewScheduleButton() {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					creatingNewUser: !store.creatingNewUser
+				});
+			},
+
+			toggleHomeHeading() {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					hideHeading: !store.hideHeading
+				});
+			},
+
+			navbarCollapseItems() {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					navbarCollapse: !store.navbarCollapse
 				});
 			},
 

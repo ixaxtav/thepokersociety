@@ -68,7 +68,15 @@ export const TournamentView = property => (
 							className="col-9"
 							style={{ verticalAlign: "middle" }}>
 							<div>
-								<h6 className="text-danger">{diff}</h6>
+								{diff.includes("in") ? (
+									<h6 className="text-danger">
+										Registration ends - {diff}
+									</h6>
+								) : (
+									<h6 className="text-danger">
+										Registration ended - {diff}
+									</h6>
+								)}
 							</div>
 						</div>
 					</div>

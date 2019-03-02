@@ -175,7 +175,7 @@ export default class ScheduleView extends React.Component {
 
 							<div className="row border-top w-100 fixed-bottom text-center p-2 m-0">
 								<div className="col-6">
-									<h3>Spending: ${schedule.total} </h3>
+									<h3>Budget: ${schedule.total} </h3>
 									<span>
 										{" "}
 										in {schedule.attempts.length}{" "}
