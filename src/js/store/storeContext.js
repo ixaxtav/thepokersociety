@@ -282,10 +282,10 @@ const getState = ({ getStore, setStore }) => {
 								);
 							});
 							return Object.assign(s, {
-								total: Math.abs(total),
+								total: total,
 								attempts: s.attempts.map(a => {
 									if (tournamentId == a.tournamentId) {
-										a.bullets = Math.abs(bulletCount);
+										a.bullets = bulletCount;
 									}
 									return a;
 								})
