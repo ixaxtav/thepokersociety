@@ -28,9 +28,9 @@ export class Login extends React.Component {
 								backgroundColor: "black",
 								height: "100vh"
 							}}>
+							{console.log(tour)}
 							<img src={pokerLogo} className="logo" />
 							<div className="text-center pt-2 pb-2">
-								{console.log(tour)}
 								<input
 									className="inputStyle"
 									type="text"
@@ -53,11 +53,7 @@ export class Login extends React.Component {
 													this.state.password,
 													error => {
 														if (!error) {
-															if (
-																typeof tour !=
-																	"undefined" ||
-																tour != null
-															) {
+															if (tour != null) {
 																this.props.history.push(
 																	"/tournament/" +
 																		tour.ID

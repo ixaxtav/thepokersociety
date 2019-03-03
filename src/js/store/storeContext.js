@@ -122,7 +122,6 @@ const getState = ({ getStore, setStore }) => {
 								"Invalid username and password"
 							);
 							callback(err);
-							throw err;
 						}
 					})
 					.then(data => {
