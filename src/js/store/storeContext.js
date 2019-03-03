@@ -100,7 +100,7 @@ const getState = ({ getStore, setStore }) => {
 					.catch(error => console.error("Error!!"));
 			},
 
-			login(username, password, callback, loading) {
+			login(username, password, callback) {
 				const store = getStore();
 				fetch(
 					`http://admin.thepokersociety.com/wp-json/jwt-auth/v1/token`,
@@ -126,7 +126,7 @@ const getState = ({ getStore, setStore }) => {
 						}
 					})
 					.then(data => {
-						Notify.success("Hey! You have been logged in");
+						Notify.success("Hey! You have been logged in.");
 						Session.start({
 							payload: Object.assign(store, {
 								user: {

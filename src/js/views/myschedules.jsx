@@ -153,7 +153,6 @@ export default class MySchedule extends React.Component {
 									</div>
 								</div>
 							)}
-							{console.log(store.schedules)}
 							{store.schedules.length === 0 ? null : (
 								<div className="row pb-2">
 									<div className="col">

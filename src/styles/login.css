@@ -1,6 +1,6 @@
 
-button {
-  border: 1px solid #8B0000;
+.loginButton {
+  border: none;
   background-color: #62010C;
   color: white;
   text-align: center;
@@ -11,15 +11,15 @@ button {
   padding: 5px 10px;
 }
 
-button:hover {
-  border: 1px solid #8B0000;
-  background-color: red;
+.loginButton:hover {
+
+  background-color: #DD1F29;
   color: #ffffff;
   padding: 5px 10px;
 }
 
-button:disabled,
-button[disabled]{
+.loginButton:disabled,
+.loginButton[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;

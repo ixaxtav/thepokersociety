@@ -2,6 +2,30 @@
     General Styles
 */
 
+.loginButton {
+  border: none;
+  background-color: #62010C;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  width: 250px;
+  padding: 5px 10px;
+}
+
+.loginButton:hover {
+  background-color: #DD1F29;
+  color: #ffffff;
+  padding: 5px 10px;
+}
+
+.loginButton:disabled,
+.loginButton[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 
 .bcnotifier{
     list-style-type: none;

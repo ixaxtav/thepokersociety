@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RedButton from "../component/RedButton.jsx";
-import BackButton from "../component/BackButton.jsx";
+import PropTypes from "prop-types";
 import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
 import { Context } from "../store/appContext.jsx";
+import validator from "validator";
 
 export class SignUp extends React.Component {
 	constructor() {
@@ -13,11 +14,18 @@ export class SignUp extends React.Component {
 			username: "",
 			email: "",
 			password: "",
-			repeat_password: ""
+			repeat_password: "",
+			loading: false
 		};
 	}
 
 	render() {
+		let validateUsernameEmpty = validator.isEmpty(this.state.username);
+		let validateEmail = validator.isEmail(this.state.email);
+		let validateEmailEmpty = validator.isEmpty(this.state.email);
+		let validatePassword = validator.isEmpty(this.state.password);
+		let validatePassword2 = validator.isEmpty(this.state.repeat_password);
+
 		return (
 			<Context.Consumer>
 				{({ store, actions }) => (
@@ -31,6 +39,8 @@ export class SignUp extends React.Component {
 							<input
 								className="inputStyle"
 								type="username"
+								autoCapitalize="off"
+								autoCorrect="off"
 								id="username"
 								placeholder="Username"
 								onChange={e =>
@@ -44,6 +54,8 @@ export class SignUp extends React.Component {
 							<input
 								className="inputStyle"
 								type="email"
+								autoCapitalize="off"
+								autoCorrect="off"
 								id="email"
 								placeholder="Email"
 								onChange={e =>
@@ -56,6 +68,8 @@ export class SignUp extends React.Component {
 						<div className="text-center pt-2 pb-2">
 							<input
 								className="inputStyle"
+								autoCapitalize="off"
+								autoCorrect="off"
 								type="password"
 								id="Password"
 								placeholder="Password"
@@ -68,6 +82,8 @@ export class SignUp extends React.Component {
 						<div className="text-center pt-2 pb-4">
 							<input
 								className="inputStyle"
+								autoCapitalize="off"
+								autoCorrect="off"
 								type="password"
 								placeholder="Repeat Password"
 								onChange={e =>
@@ -85,33 +101,52 @@ export class SignUp extends React.Component {
 								width: "250px"
 							}}>
 							<button
-								style={{
-									backgroundColor: "#62010C",
-									border: "none",
-									color: "white",
-									textAlign: "center",
-									textDecoration: "none",
-									display: "inline-block",
-									fontSize: "26px",
-									width: "250px"
-								}}
+								className="loginButton"
+								disabled={this.state.loading}
 								label="Sign up"
 								onClick={e => {
 									e.preventDefault();
+									this.setState({ loading: true });
+
 									if (
-										this.state.password ==
-										this.state.repeat_password
+										validateUsernameEmpty == false &&
+										validateEmail == true &&
+										validateEmailEmpty == false &&
+										validatePassword == false &&
+										validatePassword2 == false
 									) {
-										actions.signUp(
-											this.state.username,
-											this.state.email,
-											this.state.password
-										);
+										if (
+											this.state.password ==
+											this.state.repeat_password
+										) {
+											{
+												actions.signUp(
+													this.state.username,
+													this.state.email,
+													this.state.password
+												),
+													this.props.history.push(
+														"/login"
+													);
+											}
+										} else {
+											alert("Password don't match !");
+											this.setState({
+												loading: false
+											});
+										}
 									} else {
-										alert("Password don't match !");
+										alert(
+											"Please fill the required fields."
+										);
+										this.setState({
+											loading: false
+										});
 									}
 								}}>
-								Sign Up{" "}
+								{this.state.loading == false
+									? "Sign Up"
+									: "Loading"}
 							</button>
 						</div>
 
@@ -132,3 +167,6 @@ export class SignUp extends React.Component {
 		);
 	}
 }
+SignUp.propTypes = {
+	history: PropTypes.object
+};
