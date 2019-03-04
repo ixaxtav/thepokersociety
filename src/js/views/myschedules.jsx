@@ -23,13 +23,26 @@ export default class MySchedule extends React.Component {
 					);
 
 					const tour = store.currentTournament;
+					if (tour == null) {
+						return <h2>Loading...</h2>;
+					}
 
 					return (
 						<div className="container">
+							{console.log(tour)}
 							<h3 className="mt-4">
 								To what schedule you want to add this tournament
 								to?
 							</h3>
+							<span
+								style={{
+									fontSize: "10px",
+									fontStyle: "italic"
+								}}>
+								*Adding :{tour.post_title.split(" - ", 2)},{" "}
+								Buy-in:
+								{tour["buy-in"]}*
+							</span>
 							<hr />
 							{store.schedules.map((s, i) => (
 								<ul

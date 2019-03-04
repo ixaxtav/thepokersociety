@@ -136,7 +136,9 @@ const getState = ({ getStore, setStore }) => {
 							}),
 							expiration: 86400000
 						});
-						this.setStoreAndSession({});
+						this.setStoreAndSession({
+							currentTournament: (store.currentTournament = null)
+						});
 						callback();
 					})
 					.catch(error => {
@@ -144,8 +146,21 @@ const getState = ({ getStore, setStore }) => {
 					});
 			},
 
+			resetTournament() {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					currentTournament: (store.currentTournament = null)
+				});
+			},
+
 			logout() {
-				//const store = getStore();
+				const store = getStore();
+
+				this.setStoreAndSession({
+					currentTournament: (store.currentTournament = null)
+				});
+
 				Session.destroy();
 				Notify.error("Hey! You have been logged out");
 			},

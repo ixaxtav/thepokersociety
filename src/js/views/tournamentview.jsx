@@ -32,7 +32,6 @@ export const TournamentView = property => (
 			let currentDate = moment().format("MMMM Do YYYY, h:mm a");
 
 			let diff = moment(tournamentDate, "MMMM Do YYYY, h:mm a").fromNow();
-			console.log(diff);
 
 			const reducer = (accumulator, str, i) => {
 				return accumulator + `<h${i}>${str}</h>`;
@@ -118,7 +117,7 @@ export const TournamentView = property => (
 					<div className="row text-center pt-2 justify-content-center">
 						<div className="col">
 							<a
-								href="javascript:history.back()"
+								href="/"
 								style={{ color: "black", fontSize: "32px" }}>
 								<i className="fas fa-arrow-circle-left" />
 							</a>
