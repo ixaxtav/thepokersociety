@@ -8,6 +8,7 @@ import Tournament from "../component/Tournament.jsx";
 import TheStore from "../store/store";
 import chrono from "chrono-node";
 import "../../styles/calendar.css";
+import { Context } from "../store/appContext.jsx";
 
 export default class Calendar extends Flux.View {
 	constructor() {
@@ -207,6 +208,7 @@ export default class Calendar extends Flux.View {
 
 	render() {
 		let filteredTournaments = this.state.tournaments;
+
 		if (this.state.searchString.length > 1)
 			filteredTournaments = this.state.tournaments.filter(t => {
 				if (
@@ -339,121 +341,142 @@ export default class Calendar extends Flux.View {
 			);
 		});
 		return (
-			<div className="tournaments">
-				{this.state.error ? (
-					<div className="alert alert-danger text-center">
-						{this.state.error}
-					</div>
-				) : (
-					<div>
-						<Navbar navBarStyle={this.state.stickySyles3} />
+			<Context.Consumer>
+				{({ store, actions }) => {
+					const calID = this.props.match.params.cal_id;
 
-						<SearchBar
-							className={this.state.sticky ? "sticky" : ""}
-							onChange={(token, type) =>
-								this.setState({
-									searchString: token,
-									searchType: type
-								})
-							}
-						/>
-						{!this.state.tournaments ||
-						this.state.tournaments.length == 0 ? (
-							<div className="alert alert-info text-center">
-								Loading tournaments...
-							</div>
-						) : (
-							""
-						)}
-						<div
-							className="calendar"
-							ref={c => (this.calendar = c)}>
-							<table
-								className={
-									"table-responsive table table-striped " +
-									(this.state.zoom ? "zoomed" : "")
-								}
-								ref={c => (this.tableBody = c)}>
-								<thead
-									style={this.state.stickySyles}
-									ref={c => (this.thead = c)}>
-									<tr style={this.state.stickySyles2}>
-										<th
-											id="Date"
-											className="date "
-											data-type="String">
-											Date
-										</th>
-										<th
-											id="Day"
-											className="day "
-											data-type="String">
-											Day
-										</th>
-										<th
-											id="Time"
-											className="time "
-											data-type="String">
-											Time
-										</th>
-										<th
-											id="Where"
-											className="where "
-											data-type="String">
-											Where
-										</th>
-										<th
-											id="Tournament"
-											className="tournament "
-											data-type="String">
-											Tournament
-										</th>
-										<th
-											id="Buy_in"
-											className="buyin "
-											data-type="String">
-											Buyin
-										</th>
-										<th
-											id="Starting_Stack"
-											className="starting "
-											data-type="String">
-											Stack
-										</th>
-										<th
-											id="Blinds"
-											className="blinds "
-											data-type="String">
-											Blinds
-										</th>
-									</tr>
-								</thead>
-								{tournaments != false ? (
-									<tbody>{tournaments}</tbody>
-								) : (
+					return (
+						<div className="tournaments">
+							{this.state.error ? (
+								<div className="alert alert-danger text-center">
+									{this.state.error}
+								</div>
+							) : (
+								<div>
+									<Navbar
+										navBarStyle={this.state.stickySyles3}
+									/>
+
+									<SearchBar
+										className={
+											this.state.sticky ? "sticky" : ""
+										}
+										onChange={(token, type) =>
+											this.setState({
+												searchString: token,
+												searchType: type
+											})
+										}
+									/>
+									{!this.state.tournaments ||
+									this.state.tournaments.length == 0 ? (
+										<div className="alert alert-info text-center">
+											Loading tournaments...
+										</div>
+									) : (
+										""
+									)}
 									<div
-										className="alert alert-danger text-center"
-										style={{ fontSize: "12px" }}>
-										No tournaments matching your search
-										criteria were found!
+										className="calendar"
+										ref={c => (this.calendar = c)}>
+										<table
+											className={
+												"table-responsive table table-striped " +
+												(this.state.zoom
+													? "zoomed"
+													: "")
+											}
+											ref={c => (this.tableBody = c)}>
+											<thead
+												style={this.state.stickySyles}
+												ref={c => (this.thead = c)}>
+												<tr
+													style={
+														this.state.stickySyles2
+													}>
+													<th
+														id="Date"
+														className="date "
+														data-type="String">
+														Date
+													</th>
+													<th
+														id="Day"
+														className="day "
+														data-type="String">
+														Day
+													</th>
+													<th
+														id="Time"
+														className="time "
+														data-type="String">
+														Time
+													</th>
+													<th
+														id="Where"
+														className="where "
+														data-type="String">
+														Where
+													</th>
+													<th
+														id="Tournament"
+														className="tournament "
+														data-type="String">
+														Tournament
+													</th>
+													<th
+														id="Buy_in"
+														className="buyin "
+														data-type="String">
+														Buyin
+													</th>
+													<th
+														id="Starting_Stack"
+														className="starting "
+														data-type="String">
+														Stack
+													</th>
+													<th
+														id="Blinds"
+														className="blinds "
+														data-type="String">
+														Blinds
+													</th>
+												</tr>
+											</thead>
+											{tournaments != false ? (
+												<tbody>{tournaments}</tbody>
+											) : (
+												<div
+													className="alert alert-danger text-center"
+													style={{
+														fontSize: "12px"
+													}}>
+													No tournaments matching your
+													search criteria were found!
+												</div>
+											)}
+										</table>
 									</div>
-								)}
-							</table>
+									<BottomBar
+										menuItems={[
+											//                 { label: 'Zoom', slug: 'zoom', icon: 'fas fa-search' },
+											{
+												label: "Scroll Top",
+												slug: "scroll-top",
+												icon: "fas fa-arrow-up"
+											}
+										]}
+										onClick={item =>
+											this.bottomBarClick(item)
+										}
+									/>
+								</div>
+							)}
 						</div>
-						<BottomBar
-							menuItems={[
-								//                 { label: 'Zoom', slug: 'zoom', icon: 'fas fa-search' },
-								{
-									label: "Scroll Top",
-									slug: "scroll-top",
-									icon: "fas fa-arrow-up"
-								}
-							]}
-							onClick={item => this.bottomBarClick(item)}
-						/>
-					</div>
-				)}
-			</div>
+					);
+				}}
+			</Context.Consumer>
 		);
 	}
 }

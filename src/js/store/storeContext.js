@@ -18,6 +18,7 @@ const getState = ({ getStore, setStore }) => {
 			},
 
 			// this variable is used to render a single tournament on the /tournament/:tournament_id view
+			calendar: null,
 			currentTournament: null,
 			currentCasino: null,
 			// toggles j
@@ -146,11 +147,11 @@ const getState = ({ getStore, setStore }) => {
 					});
 			},
 
-			resetTournament() {
+			setCalendarID(calendarID) {
 				const store = getStore();
 
 				this.setStoreAndSession({
-					currentTournament: (store.currentTournament = null)
+					calendar: (store.calendar = calendarID)
 				});
 			},
 
@@ -376,6 +377,7 @@ const getState = ({ getStore, setStore }) => {
 						)
 					})
 				});
+				console.log(store.menu.children);
 			}
 		}
 	};
@@ -385,6 +387,7 @@ const openItem = (id, item) => {
 	if (item.id == id) item.opened = !item.opened;
 	else if (typeof item.children != "undefined")
 		item.children = item.children.map(subItem => openItem(id, subItem));
+
 	return item;
 };
 

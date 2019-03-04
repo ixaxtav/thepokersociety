@@ -32,13 +32,14 @@ export const TournamentView = property => (
 			let currentDate = moment().format("MMMM Do YYYY, h:mm a");
 
 			let diff = moment(tournamentDate, "MMMM Do YYYY, h:mm a").fromNow();
-
+			console.log(diff);
 			const reducer = (accumulator, str, i) => {
 				return accumulator + `<h${i}>${str}</h>`;
 			};
 			const titles = [""]
 				.concat(tour.post_title.split("-").filter(str => str !== "-"))
 				.reduce(reducer);
+
 			return (
 				<div>
 					<div className="row">
@@ -123,8 +124,10 @@ export const TournamentView = property => (
 							</a>
 						</div>
 
-						{tour["results-link"] != " " &&
-						tour["structure-sheet"] == null ? (
+						{tour["results-link"] == null ? null : tour[
+							"structure-sheet"
+						] == null ? null : tour["results-link"].charAt(0) ==
+						"h" ? (
 							<div className="col">
 								<a
 									target="_blank"
@@ -137,41 +140,8 @@ export const TournamentView = property => (
 									<i className="fas fa-trophy" />
 								</a>
 							</div>
-						) : tour["structure-sheet"] != null &&
-						tour["results-link"] != " " ? (
-							<div className="col">
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={tour["results-link"]}
-									style={{
-										color: "black",
-										fontSize: "32px"
-									}}>
-									<i className="fas fa-trophy" />
-								</a>
-							</div>
-						) : tour["structure-sheet"] == null &&
-						tour["results-links"] == " " ? (
-							<div className="col" />
-						) : tour["structure-sheet"] == null &&
-						tour["results-links"] == null ? (
-							<div className="col" />
-						) : tour["structure-sheet"] == null &&
-						tour["results-link"] != " " ? (
-							<div className="col">
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={tour["results-link"]}
-									style={{
-										color: "black",
-										fontSize: "32px"
-									}}>
-									<i className="fas fa-trophy" />
-								</a>
-							</div>
-						) : tour["structure-sheet"] != null ? (
+						) : tour["structure-sheet"].charAt(0) == "h" &&
+						diff.includes("in") ? (
 							<div className="col">
 								<a
 									target="_blank"
@@ -184,22 +154,7 @@ export const TournamentView = property => (
 									<i className="fas fa-clipboard-list" />
 								</a>
 							</div>
-						) : tour["results-link"] != " " ? (
-							<div className="col">
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={tour["results-link"]}
-									style={{
-										color: "black",
-										fontSize: "32px"
-									}}>
-									<i className="fas fa-trophy" />
-								</a>
-							</div>
-						) : (
-							<div className="col" />
-						)}
+						) : null}
 
 						{diff.includes("ago") ? (
 							<div className="col">
@@ -210,7 +165,7 @@ export const TournamentView = property => (
 										);
 										if (respond) {
 											window.location = "/myschedule";
-										} else null;
+										}
 									}}
 									href="/myschedule"
 									style={{
@@ -237,25 +192,20 @@ export const TournamentView = property => (
 						)}
 					</div>
 
-					<div className="row text-center">
+					<div
+						className="row text-center pt-2"
+						style={{ bottom: "0" }}>
 						<div className="col">Back to Calendar</div>
 
-						{tour["structure-sheet"] != null &&
-						tour["results-link"] != " " ? (
-							<div className="col ">Tournament Results</div>
-						) : tour["results-link"] == " " &&
-						tour["structure-sheet"] == null ? (
-							<div className="col" />
-						) : tour["results-link"] == null &&
-						tour["structure-sheet"] == null ? (
-							<div className="col" />
-						) : tour["structure-sheet"] != null ? (
-							<div className="col">Tournament Structure</div>
-						) : tour["results-link"] != " " ? (
+						{tour["results-link"] == null ? null : tour[
+							"structure-sheet"
+						] == null ? null : tour["results-link"].charAt(0) ==
+						"h" ? (
 							<div className="col">Tournament Results</div>
-						) : (
-							<div className="col" />
-						)}
+						) : tour["structure-sheet"].charAt(0) == "h" &&
+						diff.includes("in") ? (
+							<div className="col">Tournament Structure</div>
+						) : null}
 
 						<div className="col">Add to Schedule</div>
 					</div>

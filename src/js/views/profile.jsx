@@ -33,6 +33,16 @@ export class Profile extends React.Component {
 								</div>
 								<div className="col">
 									<Link
+										to="/myschedule"
+										style={{
+											color: "black",
+											fontSize: "32px"
+										}}>
+										<i className="far fa-list-alt" />
+									</Link>
+								</div>
+								<div className="col">
+									<Link
 										to="/myaccount"
 										style={{
 											color: "black",
@@ -44,6 +54,7 @@ export class Profile extends React.Component {
 							</div>
 							<div className="row text-center">
 								<div className="col">Calendar</div>
+								<div className="col">My Schedule</div>
 								<div className="col">My Account</div>
 							</div>
 						</div>
