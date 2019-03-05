@@ -343,8 +343,13 @@ export default class Calendar extends Flux.View {
 		return (
 			<Context.Consumer>
 				{({ store, actions }) => {
-					const calID = this.props.match.params.cal_id;
+					const calendarID = this.props.match.params.cal_id;
 
+					if (store.calendar == null) {
+						actions.setCalendarID(calendarID);
+					}
+
+					console.log(store.calendar);
 					return (
 						<div className="tournaments">
 							{this.state.error ? (

@@ -155,6 +155,14 @@ const getState = ({ getStore, setStore }) => {
 				});
 			},
 
+			resetCalendarID() {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					calendar: (store.calendar = null)
+				});
+			},
+
 			logout() {
 				const store = getStore();
 

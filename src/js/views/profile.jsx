@@ -16,49 +16,46 @@ export class Profile extends React.Component {
 		return (
 			<Context.Consumer>
 				{({ store, actions }) => (
-					console.log(store.user),
-					(
-						<div className="container pt-2">
-							<h3>Hello {store.user.email} !</h3>
-							<div className="row text-center pt-2">
-								<div className="col">
-									<Link
-										to="/"
-										style={{
-											color: "black",
-											fontSize: "32px"
-										}}>
-										<i className="far fa-calendar-alt" />
-									</Link>
-								</div>
-								<div className="col">
-									<Link
-										to="/myschedule"
-										style={{
-											color: "black",
-											fontSize: "32px"
-										}}>
-										<i className="far fa-list-alt" />
-									</Link>
-								</div>
-								<div className="col">
-									<Link
-										to="/myaccount"
-										style={{
-											color: "black",
-											fontSize: "32px"
-										}}>
-										<i className="fas fa-cog" />
-									</Link>
-								</div>
+					<div className="container pt-2">
+						<h3>Hello {store.user.email} !</h3>
+						<div className="row text-center pt-2">
+							<div className="col">
+								<Link
+									to="/"
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="far fa-calendar-alt" />
+								</Link>
 							</div>
-							<div className="row text-center">
-								<div className="col">Calendar</div>
-								<div className="col">My Schedule</div>
-								<div className="col">My Account</div>
+							<div className="col">
+								<Link
+									to="/myschedule"
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="far fa-list-alt" />
+								</Link>
+							</div>
+							<div className="col">
+								<Link
+									to="/myaccount"
+									style={{
+										color: "black",
+										fontSize: "32px"
+									}}>
+									<i className="fas fa-cog" />
+								</Link>
 							</div>
 						</div>
-					)
+						<div className="row text-center">
+							<div className="col">Calendar</div>
+							<div className="col">My Schedule</div>
+							<div className="col">My Account</div>
+						</div>
+					</div>
 				)}
 			</Context.Consumer>
 		);

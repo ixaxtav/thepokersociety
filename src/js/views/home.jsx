@@ -12,9 +12,9 @@ const menuChilds = (menu, onClick) =>
 		<div key={i}>
 			{typeof item.children == "undefined" ||
 			item.children.length == 0 ? (
-				<Link className="dropdown-item" to={item.url}>
+				<a className="dropdown-item" href={item.url}>
 					{item.title}
-				</Link>
+				</a>
 			) : (
 				<div className="submenu" style={{ position: "relative" }}>
 					<button
@@ -161,14 +161,17 @@ export class Home extends React.Component {
 												className="collapse navbar-collapse show active"
 												id="navbarTogglerDemo03">
 												{" "}
-												<ul className="navbar-nav m-auto">
-													{menuChilds(
-														store.menu,
-														itemId =>
-															actions.openMenuItem(
-																itemId
-															)
-													)}
+												<ul className="navbar-nav">
+													<li className="nav-item">
+														{menuChilds(
+															store.menu,
+															itemId =>
+																actions.openMenuItem(
+																	itemId
+																),
+															actions.resetCalendarID
+														)}
+													</li>
 												</ul>
 											</div>
 										</nav>

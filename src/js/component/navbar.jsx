@@ -60,6 +60,7 @@ export default class Navbar extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					const session = Session.get();
+
 					return (
 						<nav
 							className="lobster main-navbar navbar navbar-light bg-light pb-2"
@@ -130,8 +131,11 @@ export default class Navbar extends React.Component {
 								</ul>
 								<ul className="navbar-nav">
 									<li className="nav-item">
-										{menuChilds(store.menu, itemId =>
-											actions.openMenuItem(itemId)
+										{menuChilds(
+											store.menu,
+											itemId =>
+												actions.openMenuItem(itemId),
+											actions.resetCalendarID
 										)}
 									</li>
 								</ul>
