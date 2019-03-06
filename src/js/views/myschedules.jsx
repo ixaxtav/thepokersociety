@@ -21,7 +21,7 @@ export default class MySchedule extends React.Component {
 					const schedule = store.schedules.find(
 						s => s.id == this.props.match.params.schedule_id
 					);
-					console.log(schedule);
+
 					const tour = store.currentTournament;
 					if (tour == null) {
 						return <h2>Loading...</h2>;

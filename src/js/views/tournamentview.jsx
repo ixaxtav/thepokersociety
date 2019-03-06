@@ -166,9 +166,8 @@ export const TournamentView = property => (
 										);
 										if (respond) {
 											window.location = "/myschedule";
-										}
+										} else null;
 									}}
-									href="/myschedule"
 									style={{
 										color: "black",
 										fontSize: "32px",
