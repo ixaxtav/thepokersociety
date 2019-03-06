@@ -334,13 +334,24 @@ const getState = ({ getStore, setStore }) => {
 					schedules: store.schedules.map(s => {
 						if (scheduleId == s.id) {
 							let total = 0;
+
 							s.attempts.forEach(a => {
-								total += parseFloat(
-									parsePrice(a.price) *
-									(a.tournamentId == tournamentId)
+								const bullets =
+									a.tournamentId == tournamentId
 										? 0
-										: a.bullets
+										: a.bullets;
+
+								console.log(
+									"this price--" +
+										parseFloat(parsePrice(a.price))
 								);
+								console.log("this bullet--" + bullets);
+								total += parseFloat(
+									parsePrice(a.price) * bullets
+								);
+
+								console.log("this total--" + total);
+								console.log(s.total);
 							});
 
 							return Object.assign(s, {
