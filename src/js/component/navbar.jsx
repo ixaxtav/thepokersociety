@@ -12,9 +12,9 @@ const menuChilds = (menu, onClick) =>
 		<div key={i}>
 			{typeof item.children == "undefined" ||
 			item.children.length == 0 ? (
-				<a className="dropdown-item" href={item.url}>
+				<Link className="dropdown-item" to={item.url}>
 					{item.title}
-				</a>
+				</Link>
 			) : (
 				<div className="submenu" style={{ position: "relative" }}>
 					<button

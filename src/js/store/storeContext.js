@@ -213,30 +213,29 @@ const getState = ({ getStore, setStore }) => {
 								typeof s.attempts.find(
 									a => a.tournamentId == tour.ID
 								) == "undefined"
-							) {
-								console.log(s.total);
-							}
-							{
-								console.log(parsePrice(tour["buy-in"]));
-							}
-							return Object.assign(s, {
-								total:
-									s.total +
-									parseFloat(parsePrice(tour["buy-in"])),
-								attempts: s.attempts.concat([
-									{
-										tournamentName: tour.post_title,
-										tournamentId: tour.ID,
-										price: tour["buy-in"],
-										bullets: 1
-									}
-								])
-							});
+							)
+								return Object.assign(s, {
+									total:
+										s.total +
+										parseFloat(parsePrice(tour["buy-in"])),
+									attempts: s.attempts.concat([
+										{
+											tournamentName: tour.post_title,
+											tournamentId: tour.ID,
+											price: tour["buy-in"],
+											bullets: 1
+										}
+									])
+								});
 						} else {
 							return s;
 						}
 					})
 				});
+
+				{
+					console.log(store.schedules);
+				}
 				Notify.success(
 					"Tournament has been successfully added to your schedules!"
 				);
@@ -385,7 +384,6 @@ const getState = ({ getStore, setStore }) => {
 						)
 					})
 				});
-				console.log(store.menu.children);
 			}
 		}
 	};

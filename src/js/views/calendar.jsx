@@ -207,139 +207,6 @@ export default class Calendar extends Flux.View {
 	}
 
 	render() {
-		let filteredTournaments = this.state.tournaments;
-
-		if (this.state.searchString.length > 1)
-			filteredTournaments = this.state.tournaments.filter(t => {
-				if (
-					this.state.searchType &&
-					this.state.searchType !== "filter"
-				) {
-					if (this.state.searchType == "date") {
-						const searchDate = chrono.parseDate(
-							this.state.searchString
-						);
-						if (!searchDate) return false;
-						else {
-							return t[0].getTime() <= searchDate.getTime();
-						}
-					} else if (this.state.searchType == "where") {
-						if (
-							t[3]
-								.toLowerCase()
-								.indexOf(this.state.searchString) != -1
-						)
-							return true;
-					} else if (this.state.searchType == "tournament") {
-						if (
-							t[4]
-								.toLowerCase()
-								.indexOf(this.state.searchString) != -1
-						)
-							return true;
-					} else if (this.state.searchType == "buyin") {
-						if (
-							t[5]
-								.toLowerCase()
-								.indexOf(this.state.searchString) != -1
-						)
-							return true;
-					} else if (this.state.searchType == "time") {
-						if (
-							t[3]
-								.toLowerCase()
-								.indexOf(this.state.searchString) != -1
-						)
-							return true;
-					} else if (this.state.searchType == "starting") {
-						if (
-							t[6]
-								.toLowerCase()
-								.indexOf(this.state.searchString) != -1
-						)
-							return true;
-					} else if (this.state.searchType == "blinds") {
-						if (
-							t[7]
-								.toLowerCase()
-								.indexOf(this.state.searchString) != -1
-						)
-							return true;
-					}
-				} else {
-					if (
-						t[0]
-							.toString()
-							.toLowerCase()
-							.indexOf(this.state.searchString) != -1
-					)
-						return true;
-					else if (
-						t[1].toLowerCase().indexOf(this.state.searchString) !=
-						-1
-					)
-						return true;
-					else if (
-						t[2].toLowerCase().indexOf(this.state.searchString) !=
-						-1
-					)
-						return true;
-					else if (
-						t[3].toLowerCase().indexOf(this.state.searchString) !=
-						-1
-					)
-						return true;
-					else if (
-						t[4].toLowerCase().indexOf(this.state.searchString) !=
-						-1
-					)
-						return true;
-					else if (
-						t[5].toLowerCase().indexOf(this.state.searchString) !=
-						-1
-					)
-						return true;
-					else if (
-						t[6].toLowerCase().indexOf(this.state.searchString) !=
-						-1
-					)
-						return true;
-				}
-
-				return false;
-			});
-		const tournaments = filteredTournaments.map((tour, i) => {
-			return (
-				<Tournament
-					ref={c => {
-						if (!this.todayTournament && c) {
-							let today = new Date().setHours(0, 0, 0, 0);
-							let current = tour[0].getTime();
-							if (current >= today) {
-								this.todayTournament = c;
-								this.todayPosition = c.tableRow.offsetTop;
-								window.scrollTo(0, c.tableRow.offsetTop);
-								c.tableRow.classList.add("today");
-								//this.setState({ todayPositionY: c.tableRow.offsetTop });
-							}
-						}
-					}}
-					key={i}
-					data={{
-						date: tour[0],
-						day: tour[1],
-						time: tour[2],
-						venueName: tour[3],
-						venueId: tour[9],
-						tournament: tour[4],
-						tournamentId: tour[10],
-						buyin: tour[5],
-						starting: tour[6],
-						blinds: tour[7]
-					}}
-				/>
-			);
-		});
 		return (
 			<Context.Consumer>
 				{({ store, actions }) => {
@@ -349,7 +216,192 @@ export default class Calendar extends Flux.View {
 						actions.setCalendarID(calendarID);
 					}
 
-					console.log(store.calendar);
+					console.log(store);
+					let filteredTournaments = this.state.tournaments;
+
+					if (this.state.searchString.length > 1)
+						filteredTournaments = this.state.tournaments.filter(
+							t => {
+								if (
+									this.state.searchType &&
+									this.state.searchType !== "filter"
+								) {
+									if (this.state.searchType == "date") {
+										const searchDate = chrono.parseDate(
+											this.state.searchString
+										);
+										if (!searchDate) return false;
+										else {
+											return (
+												t[0].getTime() <=
+												searchDate.getTime()
+											);
+										}
+									} else if (
+										this.state.searchType == "where"
+									) {
+										if (
+											t[3]
+												.toLowerCase()
+												.indexOf(
+													this.state.searchString
+												) != -1
+										)
+											return true;
+									} else if (
+										this.state.searchType == "tournament"
+									) {
+										if (
+											t[4]
+												.toLowerCase()
+												.indexOf(
+													this.state.searchString
+												) != -1
+										)
+											return true;
+									} else if (
+										this.state.searchType == "buyin"
+									) {
+										if (
+											t[5]
+												.toLowerCase()
+												.indexOf(
+													this.state.searchString
+												) != -1
+										)
+											return true;
+									} else if (
+										this.state.searchType == "time"
+									) {
+										if (
+											t[3]
+												.toLowerCase()
+												.indexOf(
+													this.state.searchString
+												) != -1
+										)
+											return true;
+									} else if (
+										this.state.searchType == "starting"
+									) {
+										if (
+											t[6]
+												.toLowerCase()
+												.indexOf(
+													this.state.searchString
+												) != -1
+										)
+											return true;
+									} else if (
+										this.state.searchType == "blinds"
+									) {
+										if (
+											t[7]
+												.toLowerCase()
+												.indexOf(
+													this.state.searchString
+												) != -1
+										)
+											return true;
+									}
+								} else {
+									if (
+										t[0]
+											.toString()
+											.toLowerCase()
+											.indexOf(this.state.searchString) !=
+										-1
+									)
+										return true;
+									else if (
+										t[1]
+											.toLowerCase()
+											.indexOf(this.state.searchString) !=
+										-1
+									)
+										return true;
+									else if (
+										t[2]
+											.toLowerCase()
+											.indexOf(this.state.searchString) !=
+										-1
+									)
+										return true;
+									else if (
+										t[3]
+											.toLowerCase()
+											.indexOf(this.state.searchString) !=
+										-1
+									)
+										return true;
+									else if (
+										t[4]
+											.toLowerCase()
+											.indexOf(this.state.searchString) !=
+										-1
+									)
+										return true;
+									else if (
+										t[5]
+											.toLowerCase()
+											.indexOf(this.state.searchString) !=
+										-1
+									)
+										return true;
+									else if (
+										t[6]
+											.toLowerCase()
+											.indexOf(this.state.searchString) !=
+										-1
+									)
+										return true;
+								}
+
+								return false;
+							}
+						);
+					const tournaments = filteredTournaments.map((tour, i) => {
+						return (
+							<Tournament
+								ref={c => {
+									if (!this.todayTournament && c) {
+										let today = new Date().setHours(
+											0,
+											0,
+											0,
+											0
+										);
+										let current = tour[0].getTime();
+										if (current >= today) {
+											this.todayTournament = c;
+											this.todayPosition =
+												c.tableRow.offsetTop;
+											window.scrollTo(
+												0,
+												c.tableRow.offsetTop
+											);
+											c.tableRow.classList.add("today");
+											//this.setState({ todayPositionY: c.tableRow.offsetTop });
+										}
+									}
+								}}
+								key={i}
+								data={{
+									date: tour[0],
+									day: tour[1],
+									time: tour[2],
+									venueName: tour[3],
+									venueId: tour[9],
+									tournament: tour[4],
+									tournamentId: tour[10],
+									buyin: tour[5],
+									starting: tour[6],
+									blinds: tour[7]
+								}}
+							/>
+						);
+					});
+
 					return (
 						<div className="tournaments">
 							{this.state.error ? (

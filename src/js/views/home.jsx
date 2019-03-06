@@ -12,9 +12,9 @@ const menuChilds = (menu, onClick) =>
 		<div key={i}>
 			{typeof item.children == "undefined" ||
 			item.children.length == 0 ? (
-				<a className="dropdown-item" href={item.url}>
+				<Link className="dropdown-item" to={item.url}>
 					{item.title}
-				</a>
+				</Link>
 			) : (
 				<div className="submenu" style={{ position: "relative" }}>
 					<button
@@ -60,7 +60,7 @@ export class Home extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					const session = Session.get();
-
+					console.log(store.schedules);
 					return (
 						<div
 							style={{
