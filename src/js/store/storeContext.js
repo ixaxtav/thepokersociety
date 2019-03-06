@@ -212,8 +212,12 @@ const getState = ({ getStore, setStore }) => {
 							if (
 								typeof s.attempts.find(
 									a => a.tournamentId == tour.ID
-								) == "undefined"
-							)
+								) != "undefined"
+							) {
+								return alert(
+									"Cannot add the same tournment twice!"
+								);
+							} else {
 								return Object.assign(s, {
 									total:
 										s.total +
@@ -227,6 +231,7 @@ const getState = ({ getStore, setStore }) => {
 										}
 									])
 								});
+							}
 						} else {
 							return s;
 						}

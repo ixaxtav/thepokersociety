@@ -162,16 +162,14 @@ export class Home extends React.Component {
 												id="navbarTogglerDemo03">
 												{" "}
 												<ul className="navbar-nav m-auto">
-													<li className="nav-item">
-														{menuChilds(
-															store.menu,
-															itemId =>
-																actions.openMenuItem(
-																	itemId
-																),
-															actions.resetCalendarID
-														)}
-													</li>
+													{menuChilds(
+														store.menu,
+														itemId =>
+															actions.openMenuItem(
+																itemId
+															),
+														actions.resetCalendarID
+													)}
 												</ul>
 											</div>
 										</nav>
