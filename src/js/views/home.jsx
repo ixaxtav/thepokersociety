@@ -161,7 +161,7 @@ export class Home extends React.Component {
 												className="collapse navbar-collapse show active"
 												id="navbarTogglerDemo03">
 												{" "}
-												<ul className="navbar-nav">
+												<ul className="navbar-nav m-auto">
 													<li className="nav-item">
 														{menuChilds(
 															store.menu,

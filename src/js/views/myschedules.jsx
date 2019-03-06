@@ -29,7 +29,6 @@ export default class MySchedule extends React.Component {
 
 					return (
 						<div className="container">
-							{console.log(tour)}
 							<h3 className="mt-4">
 								To what schedule you want to add this tournament
 								to?

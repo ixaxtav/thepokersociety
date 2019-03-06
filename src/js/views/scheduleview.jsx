@@ -86,14 +86,20 @@ export default class ScheduleView extends React.Component {
 										</div>
 										<div className="col-2">{s.price}</div>
 
-										<div className="col-2">{s.bullets}</div>
+										<div className="col-2">
+											{parseFloat(s.bullets)}
+										</div>
 
 										<div className="col-2">
 											{" "}
 											$
 											{parseFloat(
-												s.price.replace("$", "")
-											) * s.bullets}
+												s.price
+													.replace("$", "")
+													.replace(",", "")
+													.replace("+", "") *
+													s.bullets
+											)}
 										</div>
 									</div>
 

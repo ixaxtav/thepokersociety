@@ -96,11 +96,17 @@ export class Login extends React.Component {
 													this.state.username,
 													this.state.password,
 													error => {
-														if (!error)
-															this.props.history.push(
-																"/profile"
-															);
-														else
+														if (!error) {
+															if (tour != null) {
+																this.props.history.push(
+																	"/tournament/" +
+																		tour.ID
+																);
+															} else
+																this.props.history.push(
+																	"/profile"
+																);
+														} else
 															alert(
 																error.message
 															);
@@ -129,32 +135,31 @@ export class Login extends React.Component {
 									disabled={this.state.loading}
 									label="Login"
 									onClick={e => {
-										e.preventDefault();
-										this.setState({ loading: true });
-										actions.login(
-											this.state.username,
-											this.state.password,
-											error => {
-												if (!error) {
-													if (
-														store.currentTournament !=
-														null
-													) {
-														this.props.history.push(
-															"/myschedule"
-														);
-													} else
-														this.props.history.push(
-															"/profile"
-														);
-												} else {
-													alert(error.message);
-													this.setState({
-														loading: false
-													});
-												}
+										if (e.keyCode === 13) {
+											e.preventDefault();
+											{
+												actions.login(
+													this.state.username,
+													this.state.password,
+													error => {
+														if (!error) {
+															if (tour != null) {
+																this.props.history.push(
+																	"/tournament/" +
+																		tour.ID
+																);
+															} else
+																this.props.history.push(
+																	"/profile"
+																);
+														} else
+															alert(
+																error.message
+															);
+													}
+												);
 											}
-										);
+										}
 									}}
 									onKeyPress={e => {
 										if (e.keyCode === 13) {
@@ -164,11 +169,17 @@ export class Login extends React.Component {
 													this.state.username,
 													this.state.password,
 													error => {
-														if (!error)
-															this.props.history.push(
-																"/profile"
-															);
-														else
+														if (!error) {
+															if (tour != null) {
+																this.props.history.push(
+																	"/tournament/" +
+																		tour.ID
+																);
+															} else
+																this.props.history.push(
+																	"/profile"
+																);
+														} else
 															alert(
 																error.message
 															);
