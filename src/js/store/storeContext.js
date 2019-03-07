@@ -214,8 +214,25 @@ const getState = ({ getStore, setStore }) => {
 									a => a.tournamentId == tour.ID
 								) != "undefined"
 							) {
-								return alert(
-									"Cannot add the same tournment twice!"
+								return (
+									alert(
+										"You are adding a repeated tournament to this schedule"
+									),
+									Object.assign(s, {
+										total:
+											s.total +
+											parseFloat(
+												parsePrice(tour["buy-in"])
+											),
+										attempts: s.attempts.concat([
+											{
+												tournamentName: tour.post_title,
+												tournamentId: tour.ID,
+												price: tour["buy-in"],
+												bullets: 1
+											}
+										])
+									})
 								);
 							} else {
 								return Object.assign(s, {
@@ -409,7 +426,6 @@ const openItem = (id, item) => {
 	if (item.id == id) item.opened = !item.opened;
 	else if (typeof item.children != "undefined")
 		item.children = item.children.map(subItem => openItem(id, subItem));
-
 	return item;
 };
 

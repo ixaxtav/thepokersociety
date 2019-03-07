@@ -23,6 +23,7 @@ export default class MySchedule extends React.Component {
 					);
 
 					const tour = store.currentTournament;
+
 					if (tour == null) {
 						return <h2>Loading...</h2>;
 					}

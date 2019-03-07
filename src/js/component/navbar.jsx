@@ -60,7 +60,6 @@ export default class Navbar extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					const session = Session.get();
-
 					return (
 						<nav
 							className="lobster main-navbar navbar navbar-light bg-light pb-2"

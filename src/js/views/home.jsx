@@ -60,7 +60,6 @@ export class Home extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					const session = Session.get();
-					console.log(store.schedules);
 					return (
 						<div
 							style={{
