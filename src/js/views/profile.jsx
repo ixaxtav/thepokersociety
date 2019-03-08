@@ -17,6 +17,7 @@ export class Profile extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => (
 					<div className="container pt-2">
+						{console.log(store.schedules)}
 						<h3>Hello {store.user.email} !</h3>
 						<div className="row text-center pt-2">
 							<div className="col">
@@ -29,16 +30,29 @@ export class Profile extends React.Component {
 									<i className="far fa-calendar-alt" />
 								</Link>
 							</div>
-							<div className="col">
-								<Link
-									to="/myschedule"
+							{store.schedules != [] ? (
+								<div className="col">
+									<Link
+										to="/myschedule"
+										style={{
+											color: "black",
+											fontSize: "32px"
+										}}>
+										<i className="far fa-list-alt" />
+									</Link>
+								</div>
+							) : (
+								<div
+									className="col"
 									style={{
-										color: "black",
-										fontSize: "32px"
+										color: "#cccccc",
+										fontSize: "32px",
+										verticalAlign: "middle"
 									}}>
 									<i className="far fa-list-alt" />
-								</Link>
-							</div>
+								</div>
+							)}
+
 							<div className="col">
 								<Link
 									to="/myaccount"
@@ -52,7 +66,15 @@ export class Profile extends React.Component {
 						</div>
 						<div className="row text-center">
 							<div className="col">Calendar</div>
-							<div className="col">My Schedule</div>
+							{store.schedules != [] ? (
+								<div className="col">My Schedule</div>
+							) : (
+								<div
+									className="col"
+									style={{ color: "#cccccc" }}>
+									My Schedule{" "}
+								</div>
+							)}
 							<div className="col">My Account</div>
 						</div>
 					</div>
