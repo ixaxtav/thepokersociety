@@ -20,7 +20,9 @@ const getState = ({ getStore, setStore }) => {
 			// this variable is used to render a single tournament on the /tournament/:tournament_id view
 			calendar: null,
 			currentTournament: null,
+
 			currentCasino: null,
+
 			// toggles j
 			creatingNewUser: false,
 			buttonShow: false,
@@ -152,6 +154,22 @@ const getState = ({ getStore, setStore }) => {
 
 				this.setStoreAndSession({
 					calendar: (store.calendar = calendarID)
+				});
+			},
+
+			setPlaceholderTournament() {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					currentTournament: (store.currentTournament = { ID: 0 })
+				});
+			},
+
+			setPlaceholderTournament2(tour) {
+				const store = getStore();
+
+				this.setStoreAndSession({
+					currentTournament: (store.currentTournament = tour)
 				});
 			},
 

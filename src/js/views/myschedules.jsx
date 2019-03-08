@@ -34,15 +34,26 @@ export default class MySchedule extends React.Component {
 								To what schedule you want to add this tournament
 								to?
 							</h3>
-							<span
-								style={{
-									fontSize: "10px",
-									fontStyle: "italic"
-								}}>
-								*Adding :{tour.post_title.split(" - ", 2)},{" "}
-								Buy-in:
-								{tour["buy-in"]}*
-							</span>
+							{tour.ID == 0 || tour == {} ? (
+								<span
+									style={{
+										fontSize: "10px",
+										fontStyle: "italic",
+										color: "red"
+									}}>
+									*You currently have no tournament to add*
+								</span>
+							) : (
+								<span
+									style={{
+										fontSize: "10px",
+										fontStyle: "italic"
+									}}>
+									*Adding :{tour.post_title.split(" - ", 2)},{" "}
+									Buy-in:
+									{tour["buy-in"]}*
+								</span>
+							)}
 							<hr />
 							{store.schedules.map((s, i) => (
 								<ul
@@ -53,33 +64,37 @@ export default class MySchedule extends React.Component {
 									}}>
 									<li style={{ fontSize: "16px" }}>
 										<label className="checkboxes">
-											<input
-												type="checkbox"
-												style={{
-													width: "30px",
-													height: "30px",
-													marginRight: "15px"
-												}}
-												checked={this.state.checkedSchedules.find(
-													item => item === s.id
-												)}
-												onChange={e => {
-													if (e.target.checked) {
-														this.setState({
-															checkedSchedules: this.state.checkedSchedules.concat(
-																[s.id]
-															)
-														});
-													} else {
-														this.setState({
-															checkedSchedules: this.state.checkedSchedules.filter(
-																item =>
-																	item != s.id
-															)
-														});
-													}
-												}}
-											/>{" "}
+											{tour.ID == 0 ? null : (
+												<input
+													type="checkbox"
+													style={{
+														width: "30px",
+														height: "30px",
+														marginRight: "15px"
+													}}
+													checked={this.state.checkedSchedules.find(
+														item => item === s.id
+													)}
+													onChange={e => {
+														if (e.target.checked) {
+															this.setState({
+																checkedSchedules: this.state.checkedSchedules.concat(
+																	[s.id]
+																)
+															});
+														} else {
+															this.setState({
+																checkedSchedules: this.state.checkedSchedules.filter(
+																	item =>
+																		item !=
+																		s.id
+																)
+															});
+														}
+													}}
+												/>
+											)}
+
 											<span className="pl-2">
 												{"    "}
 												<Link to={"/schedule/" + s.id}>
@@ -166,7 +181,8 @@ export default class MySchedule extends React.Component {
 									</div>
 								</div>
 							)}
-							{store.schedules.length === 0 ? null : (
+							{store.schedules.length === 0 ||
+							tour.ID == 0 ? null : (
 								<div className="row pb-2">
 									<div className="col">
 										<button
