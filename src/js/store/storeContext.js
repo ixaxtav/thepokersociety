@@ -142,6 +142,7 @@ const getState = ({ getStore, setStore }) => {
 						this.setStoreAndSession({
 							currentTournament: (store.currentTournament = null)
 						});
+
 						callback();
 					})
 					.catch(error => {

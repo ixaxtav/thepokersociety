@@ -9,6 +9,10 @@ import { Session } from "bc-react-session";
 export class Profile extends React.Component {
 	constructor() {
 		super();
+		this.state = {
+			email: "",
+			username: ""
+		};
 	}
 
 	render() {
@@ -16,7 +20,7 @@ export class Profile extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					const tour = store.currentTournament;
-					console.log(store.users);
+					console.log(store.user);
 					if (tour === null) {
 						actions.setPlaceholderTournament();
 					} else {
@@ -32,6 +36,7 @@ export class Profile extends React.Component {
 
 						tour => actions.setPlaceholderTournament2(tour);
 					}
+
 					return (
 						<div className="container pt-2">
 							<h3>Hello {store.user.email} !</h3>

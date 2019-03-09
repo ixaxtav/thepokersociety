@@ -216,7 +216,6 @@ export default class Calendar extends Flux.View {
 						actions.setCalendarID(calendarID);
 					}
 
-					console.log(store);
 					let filteredTournaments = this.state.tournaments;
 
 					if (this.state.searchString.length > 1)

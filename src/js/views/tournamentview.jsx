@@ -165,8 +165,13 @@ export const TournamentView = property => (
 											"Are you sure you want to add this past tournament?"
 										);
 										if (respond) {
-											window.location = "/myschedule";
-										} else null;
+											property.history.push(
+												"/myschedule"
+											);
+										} else
+											property.history.push(
+												"/tournament/" + tour.ID
+											);
 									}}
 									style={{
 										color: "black",
