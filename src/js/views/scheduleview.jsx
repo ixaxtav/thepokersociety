@@ -46,7 +46,15 @@ export default class ScheduleView extends React.Component {
 								</div>
 
 								<div className="col-10 pl-2">
-									<h1 className="pt-1"> {schedule.name}</h1>
+									<h1
+										className="pt-1"
+										style={{
+											fontFamily: "Staatliches",
+											color: "black"
+										}}>
+										{" "}
+										{schedule.name}
+									</h1>
 								</div>
 							</div>
 							<div

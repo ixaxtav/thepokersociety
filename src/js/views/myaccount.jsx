@@ -20,8 +20,16 @@ export class MyAccount extends React.Component {
 				{({ store, actions }) => (
 					console.log(store.user),
 					(
-						<div className="container ">
-							<h3 className="text-center"> My Account </h3>
+						<div>
+							<h1
+								className="text-center pt-4"
+								style={{
+									fontFamily: "Staatliches",
+									color: "black"
+								}}>
+								{" "}
+								My Account{" "}
+							</h1>
 
 							<div className="text-center pt-2 pb-2">
 								<input
@@ -90,10 +98,15 @@ export class MyAccount extends React.Component {
 									change my password
 								</div>
 							</div>
-							<RedButton
-								to="/profile"
-								label="Update Information"
-							/>
+							<div className="row text-center">
+								<div className="col">
+									<button
+										type="button"
+										className="btn btn-dark">
+										Update Information
+									</button>
+								</div>
+							</div>
 						</div>
 					)
 				)}

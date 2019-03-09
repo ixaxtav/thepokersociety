@@ -30,31 +30,39 @@ export default class MySchedule extends React.Component {
 
 					return (
 						<div className="container">
-							<h3 className="mt-4">
-								To what schedule you want to add this tournament
-								to?
-							</h3>
 							{tour.ID == 0 || tour == {} ? (
-								<span
+								<h1
+									className="pt-4 pb-4"
 									style={{
-										fontSize: "10px",
-										fontStyle: "italic",
-										color: "red"
+										fontFamily: "Staatliches",
+										color: "black"
 									}}>
-									*You currently have no tournament to add*
-								</span>
+									My Schedules
+								</h1>
 							) : (
-								<span
-									style={{
-										fontSize: "10px",
-										fontStyle: "italic"
-									}}>
-									*Adding :{tour.post_title.split(" - ", 2)},{" "}
-									Buy-in:
-									{tour["buy-in"]}*
-								</span>
+								<div>
+									<h3
+										className="pt-4"
+										style={{
+											fontFamily: "Staatliches",
+											color: "black"
+										}}>
+										To what schedule you want to add this
+										tournament to?
+									</h3>
+									<span
+										style={{
+											fontSize: "10px",
+											fontStyle: "italic"
+										}}>
+										*Adding :
+										{tour.post_title.split(" - ", 2)},{" "}
+										Buy-in:
+										{tour["buy-in"]}*
+									</span>
+									<hr />
+								</div>
 							)}
-							<hr />
 							{store.schedules.map((s, i) => (
 								<ul
 									key={i}
