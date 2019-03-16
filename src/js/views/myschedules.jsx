@@ -127,8 +127,8 @@ export default class MySchedule extends React.Component {
 							))}
 
 							{store.creatingNewUser != true ? (
-								<div className="row justify-content-center pb-2">
-									<div className="col">
+								<div className="row justify-content-center  text-center pb-2">
+									<div className="col-4">
 										<button
 											type="button"
 											className="btn btn-outline-dark btn-block"
@@ -141,7 +141,7 @@ export default class MySchedule extends React.Component {
 								</div>
 							) : (
 								<div className="row">
-									<div className="col-sm-8 mx-auto">
+									<div className="col-sm-6 mx-auto">
 										<div className="input-group mb-3">
 											<input
 												type="text"
@@ -167,6 +167,7 @@ export default class MySchedule extends React.Component {
 															this.state
 																.temporalScheduleName
 														);
+														actions.toggleNewScheduleButton();
 													}
 												}}
 											/>
@@ -191,8 +192,8 @@ export default class MySchedule extends React.Component {
 							)}
 							{store.schedules.length === 0 ||
 							tour.ID == 0 ? null : (
-								<div className="row pb-2">
-									<div className="col">
+								<div className="row  text-center justify-content-center pb-2">
+									<div className="col-4">
 										<button
 											type="button"
 											className="btn btn-outline-dark btn-block"
@@ -207,8 +208,8 @@ export default class MySchedule extends React.Component {
 									</div>
 								</div>
 							)}
-							<div className="row text-center">
-								<div className="col">
+							<div className="row text-center justify-content-center">
+								<div className="col-4">
 									<button
 										className="btn btn-outline-dark btn-block"
 										type="button"
