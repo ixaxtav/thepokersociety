@@ -15,7 +15,7 @@ export const Casino = property => (
 			return (
 				<div>
 					<h4
-						className="text-center mt-4"
+						className="text-center p-3 mt-4"
 						onClick={() =>
 							actions.addToSchedule(store.currentCasino)
 						}>

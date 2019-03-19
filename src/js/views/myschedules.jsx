@@ -192,7 +192,7 @@ export default class MySchedule extends React.Component {
 							)}
 							{store.schedules.length === 0 ||
 							tour.ID == 0 ? null : (
-								<div className="row  text-center justify-content-center pb-2">
+								<div className="row  text-center justify-content-center pb-2 pt-2">
 									<div className="col-7">
 										<button
 											type="button"
@@ -208,7 +208,7 @@ export default class MySchedule extends React.Component {
 									</div>
 								</div>
 							)}
-							<div className="row text-center justify-content-center">
+							<div className="row text-center justify-content-center pt-2">
 								<div className="col-7">
 									<button
 										className="btn btn-outline-dark btn-block"
