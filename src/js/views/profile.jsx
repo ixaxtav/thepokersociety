@@ -20,7 +20,6 @@ export class Profile extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => {
 					const tour = store.currentTournament;
-					console.log(store.user);
 					if (tour === null) {
 						actions.setPlaceholderTournament();
 					} else {
@@ -40,6 +39,7 @@ export class Profile extends React.Component {
 					return (
 						<div className="container pt-2">
 							<h3>Hello {store.user.email} !</h3>
+							{console.log(store.user)}
 							<div className="row text-center pt-2">
 								<div className="col">
 									<Link

@@ -12,6 +12,7 @@ const getState = ({ getStore, setStore }) => {
 			tournaments: [],
 
 			users: [],
+			userID: null,
 
 			menu: {
 				children: []
@@ -193,6 +194,72 @@ const getState = ({ getStore, setStore }) => {
 				Notify.error("Hey! You have been logged out");
 			},
 
+			retrieveUserID(token) {
+				const store = getStore();
+				fetch(
+					`http://admin.thepokersociety.com/wp-json/test/v1/test/`,
+					{
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer" + " " + token
+						}
+					}
+				)
+					.then(resp => resp.json())
+					.then(data => this.setStoreAndSession({ userID: data.ID }))
+					.catch(error => console.error("Error!!"));
+			},
+
+			updateAccountInfo(id, token, email, password, callback) {
+				const store = getStore();
+
+				fetch(
+					`http://admin.thepokersociety.com/wp-json/wp/v2/users/${
+						store.userID
+					}`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token
+						},
+						body: JSON.stringify({
+							email: email,
+							password: password
+						})
+					}
+				)
+					.then(resp => {
+						if (resp.status == 200) return resp.json();
+						else {
+							const err = new Error(
+								"Account was not updated successfully"
+							);
+							callback(err);
+						}
+					})
+
+					.then(data => {
+						Notify.success("Account Updated!");
+						Session.start({
+							payload: Object.assign(store, {
+								user: {
+									email: data.user_email,
+									username: data.user_nicename
+								}
+							}),
+							expiration: 86400000
+						});
+
+						callback();
+					})
+
+					.catch(error => {
+						console.error("Error!!");
+					});
+			},
+
 			saveAllUserSchedules() {
 				const store = getStore();
 
@@ -280,26 +347,6 @@ const getState = ({ getStore, setStore }) => {
 				Notify.success(
 					"Tournament has been successfully added to your schedules!"
 				);
-			},
-
-			updateAccountInfo(token) {
-				const store = getStore();
-
-				this.setStoreAndSession({
-					users: store.user.map(u => {
-						if (u == store.user.token) {
-							return Object.assign(u, {
-								username: store.user.username,
-								email: "",
-								token: store.user.token,
-								firstName: "",
-								lastName: ""
-							});
-						} else {
-							return u;
-						}
-					})
-				});
 			},
 
 			createSchedule(temporalScheduleName) {
