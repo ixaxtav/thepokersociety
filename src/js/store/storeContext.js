@@ -202,7 +202,7 @@ const getState = ({ getStore, setStore }) => {
 						method: "GET",
 						headers: {
 							"Content-Type": "application/json",
-							Authorization: "Bearer" + " " + token
+							Authorization: "Bearer " + token
 						}
 					}
 				)
@@ -211,13 +211,19 @@ const getState = ({ getStore, setStore }) => {
 					.catch(error => console.error("Error!!"));
 			},
 
-			updateAccountInfo(id, token, email, password, callback) {
+			updateAccountInfo(
+				id,
+				token,
+				first_name,
+				last_name,
+				email,
+				password,
+				callback
+			) {
 				const store = getStore();
 
 				fetch(
-					`http://admin.thepokersociety.com/wp-json/wp/v2/users/${
-						store.userID
-					}`,
+					`http://admin.thepokersociety.com/wp-json/wp/v2/users/${id}`,
 					{
 						method: "POST",
 						headers: {
@@ -225,8 +231,8 @@ const getState = ({ getStore, setStore }) => {
 							Authorization: "Bearer " + token
 						},
 						body: JSON.stringify({
-							email: email,
-							password: password
+							first_name: first_name,
+							last_name: last_name
 						})
 					}
 				)
@@ -245,8 +251,8 @@ const getState = ({ getStore, setStore }) => {
 						Session.start({
 							payload: Object.assign(store, {
 								user: {
-									email: data.user_email,
-									username: data.user_nicename
+									firstName: data.first_name,
+									lastName: data.last_name
 								}
 							}),
 							expiration: 86400000

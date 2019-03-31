@@ -19,121 +19,130 @@ export class MyAccount extends React.Component {
 	render() {
 		return (
 			<Context.Consumer>
-				{({ store, actions }) => (
+				{({ store, actions }) => {
+					if (store.user.token === null) {
+						return <h2>Loading...</h2>;
+					}
 
-	<div>
-	
-						<h1
-							className="text-center pt-4"
-							style={{
-								fontFamily: "Staatliches",
-								color: "black"
-							}}>
-							{" "}
-							My Account{" "}
-						</h1>
-
-						<div className="text-center pt-2 pb-2">
-							<input
-								className="inputStyle"
-								type="text"
-								placeholder="Name"
-								onChange={e =>
-									this.setState({
-										firstName: e.target.value
-									})
-								}
-								value={this.state.firstName}
-								name="firstName"
-							/>
-						</div>
-
-						<div className="text-center pt-2 pb-2">
-							<input
-								className="inputStyle"
-								type="text"
-								placeholder="Last Name"
-								onChange={e =>
-									this.setState({
-										lastName: e.target.value
-									})
-								}
-								value={this.state.lastName}
-								name="lastName"
-							/>
-						</div>
-
-						<div className="text-center pt-2 pb-2">
-							<input
-								className="inputStyle"
-								type="email"
-								placeholder="Email"
-								onChange={e =>
-									this.setState({ email: e.target.value })
-								}
-								value={this.state.email}
-								name="email"
-							/>
-						</div>
-
-						<div className="text-center pt-2">
-							<input
-								className="inputStyle"
-								type="password"
-								placeholder="*****"
-								onChange={e =>
-									this.setState({
-										password: e.target.value
-									})
-								}
-								value={this.state.password}
-								name="password"
-							/>
-						</div>
-						<div className="row text-center">
-							<div
-								className="col pb-4"
+					return (
+						<div>
+							<h1
+								className="text-center pt-4"
 								style={{
-									color: "#990000",
-									fontSize: "14px"
+									fontFamily: "Staatliches",
+									color: "black"
 								}}>
-								change my password
+								{" "}
+								My Account{" "}
+							</h1>
+
+							{console.log(store.user)}
+
+							<div className="text-center pt-2 pb-2">
+								<input
+									className="inputStyle"
+									type="text"
+									placeholder="Name"
+									onChange={e =>
+										this.setState({
+											firstName: e.target.value
+										})
+									}
+									value={this.state.firstName}
+									name="firstName"
+								/>
 							</div>
-						</div>
-						<div className="row text-center">
-							<div className="col">
-								<button
-									type="button"
-									className="btn btn-dark"
-									onClick={e => {
-										e.preventDefault();
-										this.setState({ loading: true });
-										actions.updateAccountInfo(
-											store.user,
-											store.token,
-											this.state.email,
-											this.state.password,
-											error => {
-												if (!error) {
-													this.props.history.push(
-														"/login"
-													);
-												} else {
-													alert(error.message);
-													this.setState({
-														loading: false
-													});
-												}
-											}
-										);
+
+							<div className="text-center pt-2 pb-2">
+								<input
+									className="inputStyle"
+									type="text"
+									placeholder="Last Name"
+									onChange={e =>
+										this.setState({
+											lastName: e.target.value
+										})
+									}
+									value={this.state.lastName}
+									name="lastName"
+								/>
+							</div>
+
+							<div className="text-center pt-2 pb-2">
+								<input
+									className="inputStyle"
+									type="email"
+									placeholder="Email"
+									onChange={e =>
+										this.setState({ email: e.target.value })
+									}
+									value={this.state.email}
+									name="email"
+								/>
+							</div>
+
+							<div className="text-center pt-2">
+								<input
+									className="inputStyle"
+									type="password"
+									placeholder="*****"
+									onChange={e =>
+										this.setState({
+											password: e.target.value
+										})
+									}
+									value={this.state.password}
+									name="password"
+								/>
+							</div>
+							<div className="row text-center">
+								<div
+									className="col pb-4"
+									style={{
+										color: "#990000",
+										fontSize: "14px"
 									}}>
-									Update Information
-								</button>
-								{console.log(store.userID)}
+									change my password
+								</div>
+							</div>
+
+							<div className="row text-center">
+								<div className="col">
+									<button
+										type="button"
+										className="btn btn-dark"
+										onClick={e => {
+											e.preventDefault();
+											this.setState({ loading: true });
+
+											actions.updateAccountInfo(
+												store.userID,
+												store.user.token,
+												this.state.firstName,
+												this.state.lastName,
+												this.state.email,
+												this.state.password,
+												error => {
+													if (!error) {
+														this.props.history.push(
+															"/profile"
+														);
+													} else {
+														alert(error.message);
+														this.setState({
+															loading: false
+														});
+													}
+												}
+											);
+										}}>
+										Update Information
+									</button>
+								</div>
 							</div>
 						</div>
-					</div>
-				)}
+					);
+				}}
 			</Context.Consumer>
 		);
 	}

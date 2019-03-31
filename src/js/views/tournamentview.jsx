@@ -126,9 +126,9 @@ export const TournamentView = property => (
 						</div>
 
 						{tour["results-link"] == null ? null : tour[
-							"structure-sheet"
-						] == null ? null : tour["results-link"].charAt(0) ==
-						"h" ? (
+								"structure-sheet"
+						  ] == null ? null : tour["results-link"].charAt(0) ==
+						  "h" ? (
 							<div className="col">
 								<a
 									target="_blank"
@@ -142,7 +142,7 @@ export const TournamentView = property => (
 								</a>
 							</div>
 						) : tour["structure-sheet"].charAt(0) == "h" &&
-						diff.includes("in") ? (
+						  diff.includes("in") ? (
 							<div className="col">
 								<a
 									target="_blank"
@@ -203,12 +203,12 @@ export const TournamentView = property => (
 						<div className="col">Back to Calendar</div>
 
 						{tour["results-link"] == null ? null : tour[
-							"structure-sheet"
-						] == null ? null : tour["results-link"].charAt(0) ==
-						"h" ? (
+								"structure-sheet"
+						  ] == null ? null : tour["results-link"].charAt(0) ==
+						  "h" ? (
 							<div className="col">Tournament Results</div>
 						) : tour["structure-sheet"].charAt(0) == "h" &&
-						diff.includes("in") ? (
+						  diff.includes("in") ? (
 							<div className="col">Tournament Structure</div>
 						) : null}
 

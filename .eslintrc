@@ -12,6 +12,7 @@
     "no-console": 1,
     "semi": ["error", "always"],
     "allowImportExportEverywhere": false,
+    "no-mixed-spaces-and-tabs": 0,
     "comma-dangle": [1, { //when to use the last comma
         "arrays": "never",
         "objects": "never",

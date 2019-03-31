@@ -38,7 +38,16 @@ export class Profile extends React.Component {
 
 					return (
 						<div className="container pt-2">
-							<h3>Hello {store.user.email} !</h3>
+							<h3>
+								Hello{" "}
+								{store.user.firstName != undefined &&
+								store.user.lastName != undefined
+									? store.user.firstName +
+									  " " +
+									  store.user.lastName
+									: store.user.email}
+								!
+							</h3>
 							{console.log(store.user)}
 							<div className="row text-center pt-2">
 								<div className="col">
