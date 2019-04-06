@@ -5,7 +5,7 @@ A web app designed for poker players in Miami, FL. The user are able to see an u
 # Live Demo 
 ![Alt Text](https://media.giphy.com/media/cdflGOrSCDY3Hjqehq/giphy.gif)
 
-# Live Demo 
+# Link 
 No link available at the moment.
 
 ### Run the Project from Cloud 9 IDE
