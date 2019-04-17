@@ -1,7 +1,7 @@
 import { Session } from "bc-react-session";
 import { Notify } from "bc-react-notifier";
 
-const HOST = "http://admin.thepokersociety.com/wp-json/ps/v1";
+const HOST = "https://admin.thepokersociety.com/wp-json/ps/v1";
 const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
@@ -107,7 +107,7 @@ const getState = ({ getStore, setStore }) => {
 			login(username, password, callback) {
 				const store = getStore();
 				fetch(
-					`http://admin.thepokersociety.com/wp-json/jwt-auth/v1/token`,
+					`https://admin.thepokersociety.com/wp-json/jwt-auth/v1/token`,
 					{
 						method: "POST",
 						headers: {
@@ -197,7 +197,7 @@ const getState = ({ getStore, setStore }) => {
 			retrieveUserID(token) {
 				const store = getStore();
 				fetch(
-					`http://admin.thepokersociety.com/wp-json/test/v1/test/`,
+					`https://admin.thepokersociety.com/wp-json/test/v1/test/`,
 					{
 						method: "GET",
 						headers: {
@@ -223,7 +223,7 @@ const getState = ({ getStore, setStore }) => {
 				const store = getStore();
 
 				fetch(
-					`http://admin.thepokersociety.com/wp-json/wp/v2/users/${id}`,
+					`https://admin.thepokersociety.com/wp-json/wp/v2/users/${id}`,
 					{
 						method: "POST",
 						headers: {

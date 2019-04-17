@@ -26,7 +26,7 @@ const Store = PassedComponent => {
 				this.setState({ store: payload });
 			}
 			fetch(
-				"http://admin.thepokersociety.com/wp-json/wp-api-menus/v2/menus/2"
+				"https://admin.thepokersociety.com/wp-json/wp-api-menus/v2/menus/2"
 			)
 				.then(resp => resp.json())
 				.then(data => {

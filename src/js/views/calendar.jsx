@@ -34,7 +34,7 @@ export default class Calendar extends Flux.View {
 	}
 
 	componentDidMount() {
-		const HOST = "http://admin.thepokersociety.com/wp-json" + "/ps/v1";
+		const HOST = "https://admin.thepokersociety.com/wp-json" + "/ps/v1";
 
 		//the first thing to do is get the tournmanets of a particular calendar from the store.
 		const tournaments = TheStore.getTournaments(
