@@ -68,7 +68,10 @@ export class Home extends React.Component {
 							}}>
 							<nav className="lobster main-navbar navbar navbar-light bg-light pb-2">
 								<Link className="navbar-brand" to="/">
-									<img className="mr-2" src={pokerIcon} />
+									<img
+										className="mr-2"
+										src="https://i.imgur.com/p9g2p4n.png"
+									/>
 									The Poker Society
 								</Link>
 								<button
@@ -139,7 +142,7 @@ export class Home extends React.Component {
 							<div
 								className="text-white"
 								style={{
-									backgroundImage: `url(${pokerImg})`,
+									backgroundImage: `url(${"https://i.imgur.com/s610eT7.jpg"})`,
 									height: "100%",
 									backgroundSize: "auto",
 									backgroundRepeat: "no-repeat",

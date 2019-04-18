@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.jsx";
@@ -29,7 +28,10 @@ export class Login extends React.Component {
 								height: "100vh"
 							}}>
 							{console.log(tour)}
-							<img src={pokerLogo} className="logo" />
+							<img
+								src="https://i.imgur.com/Z25EJFx.jpg"
+								className="logo"
+							/>
 							<div className="text-center pt-2 pb-2">
 								<input
 									className="inputStyle"

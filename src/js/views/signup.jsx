@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RedButton from "../component/RedButton.jsx";
 import PropTypes from "prop-types";
-import pokerLogo from "../../img/thepokersocietylogo.jpg";
 import "../../styles/login.css";
 import { Context } from "../store/appContext.jsx";
 import validator from "validator";
@@ -30,7 +29,10 @@ export class SignUp extends React.Component {
 			<Context.Consumer>
 				{({ store, actions }) => (
 					<div style={{ backgroundColor: "black", height: "100vh" }}>
-						<img src={pokerLogo} className="logo" />
+						<img
+							src="https://i.imgur.com/Z25EJFx.jpg"
+							className="logo"
+						/>
 						<h3 className="text-white text-center">Sign up to</h3>
 						<h3 className="text-white text-center pb-4">
 							ThePokerSociety.com

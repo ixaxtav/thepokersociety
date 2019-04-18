@@ -67,7 +67,10 @@ export default class Navbar extends React.Component {
 							className="lobster main-navbar navbar navbar-light bg-light pb-2"
 							style={this.props.navBarStyle}>
 							<Link className="navbar-brand" to="/">
-								<img className="mr-2" src={pokerIcon} />
+								<img
+									className="mr-2"
+									src="https://i.imgur.com/p9g2p4n.png"
+								/>
 								The Poker Society
 							</Link>
 							<button

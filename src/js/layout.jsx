@@ -71,6 +71,7 @@ class Layout extends React.Component {
 				<ScrollToTop>
 					<Switch>
 						<Route exact path="/" component={Home} />
+						<Route exact path="/thepokersociety/" component={Home} />
 						<Route
 							exact
 							path="/calendar/:cal_id"
