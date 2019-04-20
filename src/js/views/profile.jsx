@@ -48,7 +48,6 @@ export class Profile extends React.Component {
 									: store.user.email}
 								!
 							</h3>
-							{console.log(store.user)}
 							<div className="row text-center pt-2">
 								<div className="col">
 									<Link

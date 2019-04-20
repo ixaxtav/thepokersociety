@@ -36,8 +36,6 @@ export class MyAccount extends React.Component {
 								My Account{" "}
 							</h1>
 
-							{console.log(store.user)}
-
 							<div className="text-center pt-2 pb-2">
 								<input
 									className="inputStyle"

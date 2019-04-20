@@ -27,7 +27,6 @@ export class Login extends React.Component {
 								backgroundColor: "black",
 								height: "100vh"
 							}}>
-							{console.log(tour)}
 							<img
 								src="https://i.imgur.com/Z25EJFx.jpg"
 								className="logo"

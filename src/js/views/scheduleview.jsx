@@ -15,7 +15,6 @@ export default class ScheduleView extends React.Component {
 
 	handleClick(e) {
 		this.setState({ showButtons: !this.state.showButtons });
-		console.log("the tournament id is " + e);
 	}
 
 	render() {
@@ -119,7 +118,7 @@ export default class ScheduleView extends React.Component {
 									</div>
 
 									<div className="row text-center border-top p-2">
-										<div className="col-4">
+										<div className="col-3">
 											<button
 												className="btn btn-light"
 												onClick={e =>
@@ -145,7 +144,7 @@ export default class ScheduleView extends React.Component {
 												</span>
 											</button>
 										</div>
-										<div className="col-4">
+										<div className="col-3">
 											<button
 												className="btn btn-light"
 												onClick={e =>
@@ -171,8 +170,8 @@ export default class ScheduleView extends React.Component {
 												</span>
 											</button>
 										</div>
-										<div className="col-2" />
-										<div className="col-2">
+										<div className="col-3" />
+										<div className="col-3">
 											<button
 												className="btn btn-light"
 												onClick={e =>

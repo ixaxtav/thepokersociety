@@ -23,7 +23,6 @@ export const TournamentView = property => (
 			}
 
 			const tour = store.currentTournament;
-			console.log(tour);
 			let tournamentDate =
 				tour["tournament-date"] + " " + tour["tournament-time"];
 
