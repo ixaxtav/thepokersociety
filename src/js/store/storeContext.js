@@ -505,6 +505,7 @@ const parsePrice = incomingPrice => {
 	return incomingPrice
 		.replace("$", "")
 		.replace("+", "")
+		.replace("++", "")
 		.replace(",", "")
 		.replace(" ", "");
 };
