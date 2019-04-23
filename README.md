@@ -6,7 +6,7 @@ A web app designed for poker players in Miami, FL. The user are able to see an u
 ![Alt Text](https://media.giphy.com/media/cdflGOrSCDY3Hjqehq/giphy.gif)
 
 # Link 
-No link available at the moment.
+https://ixaxtav.github.io/thepokersociety/
 
 ### Run the Project from Cloud 9 IDE
 ### Make sure you have node version 8
