@@ -32,27 +32,29 @@ export default class ScheduleView extends React.Component {
 
 					return (
 						<div className="container">
-							<div className="row pt-2">
+							<div className="row pt-2 align-items-center mx-auto">
 								<div className="col-2">
 									<a
 										href="javascript:history.back()"
 										style={{
 											color: "black",
-											fontSize: "32px"
+											fontSize: "32px",
+											verticalAlign: "middle"
 										}}>
 										<i className="fas fa-arrow-circle-left" />
 									</a>
 								</div>
 
-								<div className="col-10">
-									<h1
+								<div className="col-10 mx-auto">
+									<span
 										style={{
 											fontFamily: "Staatliches",
+											fontSize: "32px",
 											color: "black"
 										}}>
 										{" "}
 										{schedule.name}
-									</h1>
+									</span>
 								</div>
 							</div>
 							<div
@@ -94,9 +96,10 @@ export default class ScheduleView extends React.Component {
 											$
 											{s.price
 												.replace("$", "")
-												.replace(",", "")
 												.replace("++", "")
-												.replace("+", "")}
+												.replace("+", "")
+												.replace(",", "")
+												.replace(" ", "")}
 										</div>
 
 										<div className="col-2">
@@ -109,9 +112,10 @@ export default class ScheduleView extends React.Component {
 											{parseFloat(
 												s.price
 													.replace("$", "")
-													.replace(",", "")
 													.replace("++", "")
-													.replace("+", "") *
+													.replace("+", "")
+													.replace(",", "")
+													.replace(" ", "") *
 													s.bullets
 											)}
 										</div>
